@@ -197,14 +197,33 @@ main{
 }
 
 /* TABLET RESPONSIVE */
-@media (max-width: 1300px){
+@media (max-width: 1366px){
     header{
         padding: 1rem 0rem;
     }
 
-    nav{
-        display: none;
+    nav {
+        display: flex;
+        gap: 3rem;
+        margin-left: 20%;
+        margin-top: 5%
+        ;
     }
+    
+    nav a {
+        font-size: 1.4rem;
+        letter-spacing: 0.08rem;
+        transition: color 0.2s ease;
+        text-decoration: none;
+        align-items: center; 
+        color: #757575;
+        font-weight: 200;
+    }
+
+    nav a:hover{
+        color: #6600c5;
+    }
+
     header h1{
         font-size: 2rem;
     }
@@ -213,10 +232,15 @@ main{
         margin-top: 60%;
     }
 
+    .content .description{
+        font-size: 1.5rem;
+
+    }
+
     .robot-3d{
-        scale: 0.8;
-        top: -30%;
-        right: 40%;
+        scale: 1;
+        top: -10%;
+        right: 98%;
     }
 }
 
@@ -226,17 +250,13 @@ main{
         padding: 1rem 0.1rem;
     }
     nav{
-        margin-top: 0.2rem;
-        gap:0.5rem;
+        display: none;
     }
     header h1{
         font-size: 2rem;
     }
 
-    .description{
-
-
-    }
+    
     .btn-contactar{
         padding: 0.6rem 1.5rem;
         width: 8rem;
