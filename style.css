@@ -44,6 +44,7 @@ body {
     overflow: hidden;
 }
 
+
 /* HEADER */
 header{
 
@@ -57,7 +58,7 @@ header{
 
 header h1{
     margin: 0;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 300;
 }
 
@@ -80,11 +81,11 @@ nav a:hover{
     color : #e7e7e7;
 }
 
-.btn-signing{
+.btn-contactop{
     background-color: #a7a7a7;
     color: black;
-    padding: 0.8rem 2rem;
-    border-radius: 50px;;
+    padding: 0.6rem 1rem;
+    border-radius: 50px;
     border:none;
     font-size: 1rem;
     font-weight: 500;
@@ -92,7 +93,7 @@ nav a:hover{
     cursor: pointer;
 }
 
-.btn-signing:hover{
+.btn-contactop:hover{
     background-color: white;
 }
 
@@ -145,6 +146,11 @@ main{
     color: #5300a0;
 }
 
+.content .soluciones{
+    font-size: 3rem;
+
+}
+
 .content h1{
     font-size: 4rem;
     font-weight: 600;
@@ -159,6 +165,7 @@ main{
     letter-spacing: 0.05em;
     max-width: 35rem;
     color: gray;
+    padding-bottom: 2rem;
 }
 
 .buttons{
