@@ -58,8 +58,9 @@ header{
 
 header h1{
     margin: 0;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 300;
+    padding-top: 5;
 }
 
 nav {
@@ -201,4 +202,18 @@ main{
     font-weight: 600;
     letter-spacing: 0.1em;
     transition: background-color 0.2s ease ;
+}
+
+.robot-3d{
+
+    position: absolute;
+    top: 5%;
+    right: -30%
+}
+
+/* TABLET RESPONSIVE */
+@media (max-width: 1300px){
+    header{
+        padding: 1rem 0.5rem;
+    }
 }
