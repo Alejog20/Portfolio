@@ -173,6 +173,7 @@ main{
 .buttons{
     display: flex;
     gap: 1rem;
+    align-items: center;
 }
 
 .btn-proyectos{
@@ -189,7 +190,9 @@ main{
 }
 
 .btn-proyectos:hover{
-    background-color: #1a1a1a;
+    color: azure;
+    background-color: transparent;
+
 }
 
 .btn-contactar {
