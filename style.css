@@ -83,15 +83,16 @@ nav a:hover{
 }
 
 .btn-contactop{
-    background-color: #a7a7a7;
+    text-decoration: none;
+    background-color:lightgray ;
     color: black;
-    padding: 0.6rem 1rem;
+    padding: 0.6rem 2.5rem;
     border-radius: 50px;
-    border:none;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: background-color 0.2s ease;
-    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    transition: background-color 0.2s ease ;
+    
 }
 
 .btn-contactop:hover{
@@ -202,6 +203,7 @@ main{
     font-weight: 600;
     letter-spacing: 0.1em;
     transition: background-color 0.2s ease ;
+
 }
 
 .robot-3d{
