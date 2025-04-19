@@ -84,22 +84,6 @@ nav a:hover{
     color : white;
 }
 
-.btn-contactop{
-    text-decoration: none;
-    background-color:lightgray ;
-    color: black;
-    padding: 0.6rem 2.5rem;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    transition: background-color 0.2s ease ;
-    
-}
-
-.btn-contactop:hover{
-    background-color: white;
-}
 
 /* MAIN CONTENT */
 
@@ -126,6 +110,7 @@ main{
     background-size: 200%;
     animation: animationGradient 10s linear infinite;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+
 }
 
 @keyframes animationGradient {
@@ -148,15 +133,13 @@ main{
     border-radius: 50px;
     font-size: 1.2rem;
     font-weight: 600;
+    color: #757575;
 }
 
 .tag-box .tag:hover{
     color: #5300a0;
 }
 
-.tag-btn {
-
-}
 
 .content .soluciones{
     font-size: 3rem;
@@ -203,6 +186,50 @@ main{
 /* TABLET RESPONSIVE */
 @media (max-width: 1300px){
     header{
-        padding: 1rem 0.5rem;
+        padding: 1rem 0rem;
+    }
+
+    nav{
+        display: none;
+    }
+    header h1{
+        font-size: 2rem;
+    }
+
+    .content{
+        margin-top: 60%;
+    }
+
+    .robot-3d{
+        scale: 0.8;
+        top: -30%;
+        right: 40%;
     }
 }
+
+/**MOBIL PANTALLA**/
+@media (max-width: 768px){
+    header{
+        padding: 1rem 0.1rem;
+    }
+    nav{
+        display: none;
+    }
+    header h1{
+        font-size: 2rem;
+    }
+    .btn-contactar{
+        padding: 0.6rem 1.5rem;
+    }
+    .content{
+        margin-top: 25rem;
+    }
+
+    .robot-3d{
+        scale: 0.8;
+        top: -20%;
+        right: 80%;
+    }
+
+};
+    
