@@ -117,7 +117,6 @@ main{
 }
 
 .tag-box{
-    color:#5300a0;
     position: relative;
     width: 18rem;
     height: 2.5rem;
@@ -185,7 +184,7 @@ main{
 .btn-contactar {
     text-decoration: none;
     background-color:#757575 ;
-    color: purple;
+    color: ;
     padding: 0.6rem 2.5rem;
     border-radius: 50px;
     font-size: 1.2rem;
@@ -198,8 +197,8 @@ main{
 .robot-3d{
 
     position: absolute;
-    top: 5%;
-    right: -30%
+    top: -10%;
+    right: -12%
 }
 
 /* TABLET RESPONSIVE */
