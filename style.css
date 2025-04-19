@@ -108,7 +108,7 @@ main{
     border-radius: 50px;
     background: linear-gradient(to right, #656565, #6600c5, #5300a0, #757575, #656565);
     background-size: 200%;
-    animation: animationGradient 10s linear infinite;
+    animation: animationGradient 12s linear infinite;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 
 }
@@ -182,11 +182,14 @@ main{
     font-weight: 600;
     letter-spacing: 0.1em;
     transition: background-color 0.2s ease ;
+    align-items: center;
+    justify-content: center;
+    
 
 }
 
 .btn-contactar:hover{
-    color: #5300a0;
+    color: #black;
 }
 
 .robot-3d{
@@ -245,20 +248,21 @@ main{
 
     .robot-3d{
         scale: 1;
-        top: -20%;
-        right: 98%;
+        top:-8%;
+        right: 43%;
     }
 
     .tag-box{
-        width: 15rem;
+        width: 18rem;
+        height: 4rem;
     }
     .content h1{
-        font-size: 2.5rem;
+        font-size: 4rem;
         
     }
 
     .tag-box .tag{
-        font-size: 1.2rem;
+        font-size: 2rem;
         color:black;
     }
 
@@ -270,15 +274,19 @@ main{
         font-size: 2rem ;
     }
 
-    .btn-contactar{
-        font-size: 1.2rem
-        padding: 1.2rem 1.5rem;
-        width: 12rem;
+    .buttons a{
+        font-size: 2rem;
+
     }
 
-    .btn-contactar-box {
-        max-width: 30rem;;
+    .btn-contactar{
+        height: 4rem;
+        
+        font-size: 1.4rem;
+        padding: 1.2rem 1.5rem;
+        width: 15rem;
     }
+
 }
 
 /**MOBIL PANTALLA**/
@@ -301,34 +309,57 @@ main{
         font-size: 1rem;
         max-width: 100%;
     }
+
+    .buttons{
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        color: black;
+        font-size: 2rem ;
+    }
     
     .btn-contactar{
         padding: 0.6rem 1.5rem;
         width: 8rem;
+        height: 2.5rem;
+        font-size: 1.1rem;
+        text-align: center;
+        align-items: center;
+        color: black;
     }
 
-    .btn-contactar-box {
-        max-width: 12rem;
+    .buttons a{
+        font-size: 1rem;
+        text-align: center;
+        padding-left: -20% ;
     }
+
 
     .content{
         margin-top: 25rem;
     }
 
     .robot-3d{
-        scale: 0.8;
+        scale: 0.5;
         top: -35%;
-        right: 140%;
+        right: 80%;
     }
 
+    .container{
+        max-width: 100%;
+
+
+    }
     .content{
-        max-width: 30rem;
+        max-width: 100rem;
+        text-align: justify;
         margin-left: 10%;
         
     }
 
     .tag-box{
         width: 12rem;
+        height: 2.5rem;
     }
     .content h1{
         font-size: 2.5rem;
@@ -336,7 +367,7 @@ main{
     }
 
     .tag-box .tag{
-        font-size: 0.8rem;
+        font-size: 1rem;
         color:black;
     }
 
