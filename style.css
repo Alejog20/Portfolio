@@ -65,22 +65,23 @@ header h1{
 
 nav {
     display: flex;
-    align-items: center;
     gap: 3rem;
-    margin-left: -5%;;
+    margin-left: 35%;;
 }
 
 nav a {
-    font-size: 1rem;
+    font-size: 1.5rem;
     letter-spacing: 0.1rem;
     transition: color 0.2s ease;
     text-decoration: none;
     color: inherit;
-    align-items: center;
+    align-items: center; 
+    color: #757575;
+    font-weight: bolder;
 }
 
 nav a:hover{
-    color : #e7e7e7;
+    color : white;
 }
 
 .btn-contactop{
@@ -123,7 +124,7 @@ main{
     border-radius: 50px;
     background: linear-gradient(to right, #656565, #6600c5, #5300a0, #757575, #656565);
     background-size: 200%;
-    animation: animationGradient 2.5s linear infinite;
+    animation: animationGradient 10s linear infinite;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
@@ -136,7 +137,7 @@ main{
 .tag-box .tag{
     position: absolute;
     inset: 3px 3px 3px 3px;
-    background-color:  #757575;
+    background-color: transparent;
     border-radius: 50px;
     display: flex ;
     align-items: center;
@@ -153,6 +154,10 @@ main{
     color: #5300a0;
 }
 
+.tag-btn {
+
+}
+
 .content .soluciones{
     font-size: 3rem;
 
@@ -160,6 +165,7 @@ main{
 
 .content h1{
     font-size: 4rem;
+    color: #757575;
     font-weight: 600;
     letter-spacing: 0.1em;
     margin: 2rem 0;
@@ -167,24 +173,17 @@ main{
     text-shadow: 0 0 10px rgba(128, 128, 128, 0.418);
 }
 
-.description{
-    font-size: 1.2rem;
-    letter-spacing: 0.05em;
-    max-width: 35rem;
-    color: gray;
-    padding-bottom: 2rem;
-}
-
 .buttons{
     display: flex;
     gap: 1rem;
     align-items: center;
+    color: black;
 }
 
 .btn-contactar {
     text-decoration: none;
     background-color:#757575 ;
-    color: ;
+    color: black;
     padding: 0.6rem 2.5rem;
     border-radius: 50px;
     font-size: 1.2rem;
