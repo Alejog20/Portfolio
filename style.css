@@ -29,8 +29,8 @@ body {
   position: absolute;
   top: 20%;
   right: 0; 
-  box-shadow: 0 0 700px 15px white; 
-  rotate: -30deg;
+  box-shadow: 0 0 700px 15px gray; 
+  rotate: -60deg;
   z-index: -1;
 }
 
@@ -67,7 +67,7 @@ nav {
     display: flex;
     align-items: center;
     gap: 3rem;
-    margin-left: -5%;
+    margin-left: -5%;;
 }
 
 nav a {
@@ -76,6 +76,7 @@ nav a {
     transition: color 0.2s ease;
     text-decoration: none;
     color: inherit;
+    align-items: center;
 }
 
 nav a:hover{
@@ -116,6 +117,7 @@ main{
 }
 
 .tag-box{
+    color:#5300a0;
     position: relative;
     width: 18rem;
     height: 2.5rem;
@@ -135,13 +137,17 @@ main{
 .tag-box .tag{
     position: absolute;
     inset: 3px 3px 3px 3px;
-    background-color: black;
+    background-color:  #757575;
     border-radius: 50px;
     display: flex ;
     align-items: center;
     justify-content: center;
     transition:0.5s ease;
     cursor: pointer;
+    padding: 0.6rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 .tag-box .tag:hover{
@@ -176,30 +182,10 @@ main{
     align-items: center;
 }
 
-.btn-proyectos{
-    text-decoration: none;
-    border: 1px solid #2a2a2a;
-    font-weight: 500;
-    padding: 0.7rem 1.2rem;
-    color: #5300a0;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    transition: background-color 0.2s ease;
-}
-
-.btn-proyectos:hover{
-    color: azure;
-    background-color: transparent;
-
-}
-
 .btn-contactar {
-
     text-decoration: none;
-    background-color:lightgray ;
-    color: black;
+    background-color:#757575 ;
+    color: purple;
     padding: 0.6rem 2.5rem;
     border-radius: 50px;
     font-size: 1.2rem;
