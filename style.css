@@ -146,6 +146,13 @@ main{
 
 }
 
+.content .description{
+    color: #656565;
+    padding-bottom: 10%;
+    font-size: 1rem;
+        
+}
+
 .content h1{
     font-size: 4rem;
     color: #757575;
@@ -153,7 +160,7 @@ main{
     letter-spacing: 0.1em;
     margin: 2rem 0;
     line-height: 1.2;
-    text-shadow: 0 0 10px rgba(128, 128, 128, 0.418);
+    text-shadow: white;
 }
 
 .buttons{
@@ -214,15 +221,21 @@ main{
 }
 
 /**MOBIL PANTALLA**/
-@media (max-width: 768px){
+@media (max-width: 430px ){
     header{
         padding: 1rem 0.1rem;
     }
     nav{
-        display: none;
+        margin-top: 0.2rem;
+        gap:0.5rem;
     }
     header h1{
         font-size: 2rem;
+    }
+
+    .description{
+
+
     }
     .btn-contactar{
         padding: 0.6rem 1.5rem;
@@ -238,9 +251,9 @@ main{
     }
 
     .robot-3d{
-        scale: 0.5;
-        top: -25%;
-        right: 50%;
+        scale: 0.8;
+        top: -28%;
+        right: 120%;
     }
 
     .content{
@@ -257,11 +270,9 @@ main{
         
     }
 
-
-    
     .tag-box .tag{
-
-        font-size: 0.9rem
+        font-size: 0.8rem;
+        color:black;
     }
 
     
