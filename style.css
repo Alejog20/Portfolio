@@ -103,8 +103,8 @@ main{
 
 .tag-box{
     position: relative;
-    width: 18rem;
-    height: 2.5rem;
+    width: 14rem;
+    height: 3rem;
     border-radius: 50px;
     background: linear-gradient(to right, #656565, #6600c5, #5300a0, #757575, #656565);
     background-size: 200%;
@@ -133,10 +133,10 @@ main{
     border-radius: 50px;
     font-size: 1.2rem;
     font-weight: 600;
-    color: black;
 }
 
 .tag-box .tag:hover{
+    font-size: 1rem;
     color: #767676;
 }
 
@@ -164,16 +164,22 @@ main{
 }
 
 .btn-contactar {
+    position: relative;
+    height: 3rem;
     text-decoration: none;
     background-color:#757575 ;
     color: black;
     padding: 0.6rem 2.5rem;
     border-radius: 50px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     letter-spacing: 0.1em;
     transition: background-color 0.2s ease ;
 
+}
+
+.btn-contactar:hover{
+    color: #5300a0;
 }
 
 .robot-3d{
@@ -220,7 +226,13 @@ main{
     }
     .btn-contactar{
         padding: 0.6rem 1.5rem;
+        width: 8rem;
     }
+
+    .btn-contactar-box {
+        max-width: 12rem;
+    }
+
     .content{
         margin-top: 25rem;
     }
@@ -245,6 +257,7 @@ main{
         
     }
 
+
     
     .tag-box .tag{
 
@@ -254,3 +267,4 @@ main{
     
 };
     
+
