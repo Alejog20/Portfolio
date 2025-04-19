@@ -133,11 +133,11 @@ main{
     border-radius: 50px;
     font-size: 1.2rem;
     font-weight: 600;
-    color: #757575;
+    color: black;
 }
 
 .tag-box .tag:hover{
-    color: #5300a0;
+    color: #767676;
 }
 
 
@@ -226,10 +226,31 @@ main{
     }
 
     .robot-3d{
-        scale: 0.8;
-        top: -20%;
-        right: 80%;
+        scale: 0.5;
+        top: -25%;
+        right: 50%;
     }
 
+    .content{
+        max-width: 30rem;
+        margin-left: 10%;
+        
+    }
+
+    .tag-box{
+        width: 12rem;
+    }
+    .content h1{
+        font-size: 2.5rem;
+        
+    }
+
+    
+    .tag-box .tag{
+
+        font-size: 0.9rem
+    }
+
+    
 };
     
