@@ -310,16 +310,18 @@ main{
 
 
     .content{
-        max-width: 100%;
+        max-width: 192%;
     }
 
     .content .soluciones{
-        margin-top: 10%;
-        font-size: 3rem;
+        margin-top: 2%;
+        font-size: 3.5rem;
+        max-width: 92%;
     }
 
     .content .description{
-        max-width: 100%;
+        max-width: 92%;
+        font-size: 1.3rem;
     }
 
     .buttons{
@@ -353,8 +355,8 @@ main{
 
     .robot-3d{
         scale: 0.5;
-        top: -25%;
-        right: 80%;
+        top: -30%;
+        right: 78%;
     }
 
     .container{
