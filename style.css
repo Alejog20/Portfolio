@@ -1,393 +1,335 @@
+/* Variables CSS actualizadas */
+:root {
+    --primary-color: #6600c5;
+    --text-primary: #e7e7e7;
+    --text-secondary: #757575;
+    --gradient-primary: linear-gradient(to right, #656565, #6600c5, #5300a0, #757575, #656565);
+    --transition-speed: 0.3s;
+    --section-spacing: 2rem;
+    --neon-glow: 0 0 10px rgba(102, 0, 197, 0.5);
+    --title-font: 'Courier New', monospace;
+    --body-font: 'Share Tech Mono', monospace;
+}
 
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+/* Reset y estilos base */
 * {
-    margin : 0;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: var(--body-font);
     background-color: black;
-    color: #e7e7e7;
+    color: var(--text-primary);
     min-height: 100vh;
     line-height: 1.5;
+    overflow-x: hidden;
 }
 
-/* GRADIENT IMAGE */
+/* Efecto de spotlight mejorado */
+.spotlight {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    pointer-events: none;
+    background: radial-gradient(
+        circle,
+        rgba(102, 0, 197, 0.15) 0%,
+        rgba(102, 0, 197, 0.1) 20%,
+        transparent 70%
+    );
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    mix-blend-mode: screen;
+}
 
-.image-gradient{
-    position: absolute;
+/* Background */
+.bg-wrapper {
+    position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.image-gradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     opacity: 0.5;
-    z-index:  -1;
 }
 
-.layer-blur{
-  height: 0;
-  width: 30rem;
-  position: absolute;
-  top: 20%;
-  right: 0; 
-  box-shadow: 0 0 700px 15px gray; 
-  rotate: -60deg;
-  z-index: -1;
-}
-
-/* CONTAINER */
-
-.container  {
-    width: 100;
-    margin: 0 auto;
-    padding: 0 2rem;
-    position: relative;
-    overflow: hidden;
-}
-
-
-/* HEADER */
-header{
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5rem;
-    z-index: 999;
-
-}
-
-header h1{
-    font-size: 2rem;
-    font-weight: 300;
-    padding-top: 5;
+/* Header y navegación */
+header {
+    padding: 1.5rem 5rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(102, 0, 197, 0.3);
 }
 
 nav {
     display: flex;
-    gap: 3rem;
-    margin-left: 35%;;
+    justify-content: center;
+    gap: 4rem;
 }
 
 nav a {
-    font-size: 1.5rem;
-    letter-spacing: 0.1rem;
-    transition: color 0.2s ease;
+    font-family: var(--title-font);
+    font-size: 1.4rem;
+    color: var(--text-secondary);
     text-decoration: none;
-    color: inherit;
-    align-items: center; 
-    color: #757575;
-    font-weight: bolder;
-    margin-top: 15%;
+    transition: all var(--transition-speed) ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
 }
 
-nav a:hover{
-    color : white;
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: var(--primary-color);
+    transition: width var(--transition-speed) ease;
+    box-shadow: var(--neon-glow);
 }
 
+nav a:hover {
+    color: var(--text-primary);
+    text-shadow: 0 0 5px var(--primary-color);
+}
 
-/* MAIN CONTENT */
+nav a:hover::after {
+    width: 100%;
+}
 
-main{
+/* Robot 3D Container ajustado */
+.robot-container {
+    position: absolute;
+    top: 15vh; /* Ajustado para estar justo debajo del navbar */
+    right: 10%;
+    width: 35%;
+    height: 40vh;
+    z-index: 1;
+}
+
+.robot-3d {
+    width: 100%;
+    height: 100%;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
     display: flex;
-    flex-direction: column  ;
-    justify-content: center;
-    min-height: calc(90vh - 6rem);
-
+    align-items: center;
+    padding-top: 15vh;
 }
 
-.content{
-    max-width: 40rem;
+.content {
+    max-width: 45%;
     margin-left: 10%;
-    z-index: 999
+    z-index: 2;
 }
 
-.tag-box{
+.soluciones {
+    font-family: var(--title-font);
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(102, 0, 197, 0.7);
+}
+
+.description {
+    font-family: var(--body-font);
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Botones mejorados */
+.buttons {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.tag-box {
     position: relative;
     width: 14rem;
     height: 3rem;
     border-radius: 50px;
-    background: linear-gradient(to right, #656565, #6600c5, #5300a0, #757575, #656565);
+    background: var(--gradient-primary);
     background-size: 200%;
     animation: animationGradient 12s linear infinite;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-
+    box-shadow: 0 0 15px rgba(102, 0, 197, 0.3);
 }
 
+.tag {
+    position: absolute;
+    inset: 3px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-family: var(--title-font);
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all var(--transition-speed) ease;
+}
+
+.tag:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color);
+}
+
+.btn-contactar {
+    padding: 0.8rem 2.5rem;
+    border-radius: 50px;
+    background: var(--text-secondary);
+    color: black;
+    text-decoration: none;
+    font-family: var(--title-font);
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all var(--transition-speed) ease;
+}
+
+.btn-contactar:hover {
+    background: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(102, 0, 197, 0.5);
+}
+
+/* Secciones */
+.section {
+    padding: var(--section-spacing) 0;
+    position: relative;
+    margin-top: 3rem;
+}
+
+.section-title {
+    font-family: var(--title-font);
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(102, 0, 197, 0.7);
+}
+
+/* Skills Grid con efecto metálico */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.skill-card {
+    background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid rgba(102, 0, 197, 0.3);
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 15px rgba(102, 0, 197, 0.1);
+}
+
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(102, 0, 197, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.skill-card:hover::before {
+    transform: translateX(100%);
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(102, 0, 197, 0.2);
+}
+
+/* Animaciones */
 @keyframes animationGradient {
-    to{
+    to {
         background-position: 200%;
     }
 }
 
-.tag-box .tag{
-    position: absolute;
-    inset: 3px 3px 3px 3px;
-    background-color: transparent;
-    border-radius: 50px;
-    display: flex ;
-    align-items: center;
-    justify-content: center;
-    transition:0.5s ease;
-    cursor: pointer;
-    padding: 0.6rem 2.5rem;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    font-weight: 600;
+/* Media Queries */
+@media (max-width: 1366px) {
+    .robot-container {
+        width: 30%;
+        height: 35vh;
+    }
+
+    .content {
+        max-width: 50%;
+    }
+
+    .soluciones {
+        font-size: 3.5rem;
+    }
 }
 
-.tag-box .tag:hover{
-    color: #767676;
-}
-
-
-.content .soluciones{
-    font-size: 3rem;
-
-}
-
-.content .description{
-    color: #656565;
-    padding-bottom: 10%;
-    font-size: 1rem;
-        
-}
-
-.content h1{
-    font-size: 4rem;
-    color: #757575;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    margin: 2rem 0;
-    line-height: 1.2;
-    text-shadow: white;
-}
-
-.buttons{
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    color: black;
-}
-
-.btn-contactar {
-    position: relative;
-    height: 3rem;
-    text-decoration: none;
-    background-color:#757575 ;
-    color: black;
-    padding: 0.6rem 2.5rem;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    transition: background-color 0.2s ease ;
-    align-items: center;
-    justify-content: center;
-    
-
-}
-
-.btn-contactar:hover{
-    color: #black;
-}
-
-.robot-3d{
-
-    position: absolute;
-    top: -10%;
-    right: -12%
-}
-
-/* TABLET RESPONSIVE */
-@media (max-width: 1366px){
-    header{
-        padding: 1rem 0rem;
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
     }
 
     nav {
-        display: flex;
-        gap: 3rem;
-        margin-left: 20%;
-        margin-top:0%;
-    }
-    
-    nav a {
-        font-size: 1.8rem;
-        letter-spacing: 0.08rem;
-        transition: color 0.2s ease;
-        text-decoration: none;
-        align-items: center; 
-        color: #757575;
-        font-weight: 200;
-    
-    }
-
-    nav a:hover{
-        color: #6600c5;
-        vector-effect: ;
-    }
-
-    header h1{
-        font-size: 2rem;
-    }
-
-    .content{
-        margin-top: 40%;
-        max-width: 80%;
-    }
-
-
-    .content .soluciones{
-        margin-top: 25%;
-        text-align: justify;
-        font-size: 4rem;
-    }
-    .content .description{
-        text-align: justify;
-        font-size: 1.6rem;
-        margin-top: 2%;
-    }
-
-    .robot-3d{
-        scale: 1;
-        top:-8%;
-        right: 40%;
-    }
-
-    .tag-box{
-        width: 18rem;
-        height: 4rem;
-    }
-    .content h1{
-        font-size: 4rem;
-        
-    }
-
-    .tag-box .tag{
-        font-size: 2rem;
-        color:#757575;
-        border-color: black;
-        border-width: 4px;
-    }
-
-    .buttons{
-        display: flex;
-        gap: 2rem;
-        align-items: center;
-        color: black;
-        font-size: 2rem ;
-    }
-
-    .buttons a{
-        font-size: 2rem;
-
-    }
-
-    .btn-contactar{
-        padding: 0.6rem 1.5rem;
-        width: 16rem;
-        height: 4rem;
-        font-size: 1rem;
-        text-align: center;
-        align-items: center;
-        color: black;
-    }
-
-}
-
-/**MOBIL PANTALLA**/
-@media (max-width: 430px ){
-    header{
-        padding: 1rem 0.1rem;
-    }
-    nav{
         display: none;
     }
 
-    header h1{
-        padding: 1rem 0rem;
+    .robot-container {
+        position: relative;
+        width: 80%;
+        height: 30vh;
+        margin: 2rem auto;
+        right: initial;
+        top: initial;
     }
 
-
-    .content{
-        max-width: 192%;
-    }
-
-    .content .soluciones{
-        margin-top: 2%;
-        font-size: 3.5rem;
-        max-width: 92%;
-    }
-
-    .content .description{
-        max-width: 92%;
-        font-size: 1.3rem;
-    }
-
-    .buttons{
-        display: flex;
-        gap: 0.4rem;
-        align-items: center;
-        color: black;
-    }
-    
-    .btn-contactar{
-        padding: 0.6rem 1.5rem;
-        width: 10rem;
-        height: 3rem;
-        font-size: 1.2rem;
+    .content {
+        margin-left: 5%;
+        max-width: 90%;
         text-align: center;
-        align-items: center;
-        color: black;
     }
 
-    .buttons a{
-        font-size: 1.2rem;
-        text-align: center;
-        padding-left: -20% ;
-    
-    }
-
-
-    .content{
-        margin-top: 25rem;
-    }
-
-    .robot-3d{
-        scale: 0.5;
-        top: -30%;
-        right: 78%;
-    }
-
-    .container{
-        max-width: 100%;
-
-
-    }
-    .content{
-        max-width: 100%;
-        text-align: justify;
-        margin-left: 10%;
-        
-    }
-
-    .tag-box{
-        width: 14rem;
-        height: 3rem;
-    }
-    .content h1{
+    .soluciones {
         font-size: 2.5rem;
-        
     }
 
-    .tag-box .tag{
-        font-size: 1.2rem;
-        color:black;
-        width: 120%;
-        margin-left: -10%;
+    .buttons {
+        flex-direction: column;
+        align-items: center;
     }
-
-    
-};
-    
-
+}

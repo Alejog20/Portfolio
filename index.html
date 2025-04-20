@@ -1,44 +1,131 @@
 <!DOCTYPE html>
-<html :lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Alejandro García - Desarrollador Python</title>
     <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body>
-    <img class="image-gradient" src="./bg.jpg" alt ="gradient">
-    <div class="layer-blur"></div>
-    <div class="container">
-        <header>
-            <nav>
-                <a href="#">Sobre mí</a>
-                <a href="#">Proyectos</a>
-                <a href="#">Habilidades</a>
-                <a href="#">CV</a>
-            </nav>   
-        </header>
+    <!-- Spotlight effect -->
+    <div class="spotlight"></div>
 
-        <main>
+    <!-- Background wrapper -->
+    <div class="bg-wrapper">
+        <img class="image-gradient" src="./bg.jpg" alt="gradient">
+    </div>
+    
+    <header>
+        <nav>
+            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#habilidades">Habilidades</a>
+            <a href="#cv">CV</a>
+        </nav>   
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="robot-container">
+                <spline-viewer class="robot-3d" url="https://prod.spline.design/ovm70akBh7nmtl9R/scene.splinecode"></spline-viewer>
+            </div>
             <div class="content">
                 <h1 class="soluciones">Soluciones digitales</h1>
-                <p class="description"> Ayudo a compañías a transformar ideas en proyectos que tengan impacto real al disminuir costos, tiempo y de esta manera hacerlos mas eficientes</p>
+                <p class="description">Ayudo a compañías a transformar ideas en proyectos que tengan impacto real al disminuir costos, tiempo y de esta manera hacerlos mas eficientes</p>
                 <div class="buttons">
                     <div class="tag-box">
-                        <a href="#" class="tag">Ver Proyectos</a>
+                        <a href="#proyectos" class="tag">Ver Proyectos</a>
                     </div>
-                    <a href="#" class="btn-contactar">Contactar </a>
+                    <a href="#contacto" class="btn-contactar">Contactar</a>
                 </div>
             </div>
-        </main>
-        
-    <spline-viewer class="robot-3d" url="https://prod.spline.design/ovm70akBh7nmtl9R/scene.splinecode"></spline-viewer>
-    </div>
+        </section>
+
+        <!-- Habilidades Section con iconos modernos -->
+        <section id="habilidades" class="section">
+            <h2 class="section-title">Habilidades</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="ri-code-box-line skill-icon"></i>
+                    <h3>Python</h3>
+                    <p>Pandas, NumPy, Selenium, BeautifulSoup, Matplotlib</p>
+                </div>
+                <div class="skill-card">
+                    <i class="ri-bar-chart-box-line skill-icon"></i>
+                    <h3>Análisis de Datos</h3>
+                    <p>Power BI, Google Looker Studio, Excel</p>
+                </div>
+                <div class="skill-card">
+                    <i class="ri-robot-line skill-icon"></i>
+                    <h3>Automatización</h3>
+                    <p>ETL, Web Scraping, Tareas programadas</p>
+                </div>
+                <div class="skill-card">
+                    <i class="ri-database-2-line skill-icon"></i>
+                    <h3>SQL</h3>
+                    <p>Consultas complejas, optimización</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proyectos Section con glass cards -->
+        <section id="proyectos" class="section">
+            <h2 class="section-title">Proyectos Destacados</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <div class="project-content">
+                        <h3>Sistema de Automatización</h3>
+                        <p>Reduje procesamiento de 20 a 2 horas semanales</p>
+                        <a href="#" class="project-link" target="_blank">Ver proyecto</a>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-content">
+                        <h3>Dashboard de KPIs</h3>
+                        <p>Integración automática vía APIs</p>
+                        <a href="#" class="project-link" target="_blank">Ver proyecto</a>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-content">
+                        <h3>Validador de Facturas</h3>
+                        <p>Reducción de 85% en errores de procesamiento</p>
+                        <a href="#" class="project-link" target="_blank">Ver proyecto</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Otras secciones... -->
+
+    </main>
+
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
+    <script>
+        // Efecto spotlight mejorado
+        const spotlight = document.querySelector('.spotlight');
+        
+        document.addEventListener('mousemove', (e) => {
+            spotlight.style.left = e.pageX + 'px';
+            spotlight.style.top = e.pageY + 'px';
+            
+            // Calcular posición relativa para el robot
+            const robotViewer = document.querySelector('spline-viewer');
+            if (robotViewer) {
+                const rect = robotViewer.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                // Calcular ángulos para la rotación del robot
+                const angleX = (e.clientY - centerY) / window.innerHeight * 30;
+                const angleY = (e.clientX - centerX) / window.innerWidth * 30;
+                
+                // Aplicar rotación al robot
+                robotViewer.style.transform = `rotateX(${-angleX}deg) rotateY(${angleY}deg)`;
+            }
+        });
+    </script>
 </body>
 </html>
-
-
-
-<spline-viewer url="undefined"></spline-viewer>
-
