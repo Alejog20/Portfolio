@@ -233,19 +233,19 @@ main{
 
     .content{
         margin-top: 40%;
-        max-width: 75%;
+        max-width: 80%;
     }
 
 
     .content .soluciones{
-        text-align: left;
-        font-size: 6rem;
-        max-width: 100%;
+        margin-top: 25%;
+        text-align: justify;
+        font-size: 4rem;
     }
     .content .description{
         text-align: justify;
-        font-size: 1.5rem;
-        margin-top: 8%;
+        font-size: 1.6rem;
+        margin-top: 2%;
     }
 
     .robot-3d{
