@@ -238,18 +238,20 @@ main{
 
 
     .content .soluciones{
-        font-size: 3rem;
-        margin-top: -6%;
+
+        font-size: 5rem;
+        margin-top: 10%;
     }
     .content .description{
         font-size: 1.5rem;
-        margin-right: 20%;
+
+        margin-top: 10%;
     }
 
     .robot-3d{
         scale: 1;
-        top:-8%;
-        right: 43%;
+        top:-6%;
+        right: 40%;
     }
 
     .tag-box{
@@ -280,11 +282,13 @@ main{
     }
 
     .btn-contactar{
+        padding: 0.6rem 1.5rem;
+        width: 16rem;
         height: 4rem;
-        
-        font-size: 1.4rem;
-        padding: 1.2rem 1.5rem;
-        width: 15rem;
+        font-size: 1rem;
+        text-align: center;
+        align-items: center;
+        color: black;
     }
 
 }
