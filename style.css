@@ -1,9 +1,9 @@
 /* Variables CSS actualizadas */
 :root {
     --primary-color: #6600c5;
-    --text-primary: #e7e7e7;
-    --text-secondary: #757575;
-    --gradient-primary: linear-gradient(to right, #656565, #6600c5, #5300a0, #757575, #656565);
+    --text-primary: #757575;
+    --text-secondary: #14f195;
+    --gradient-primary: linear-gradient(to right, #656565, #6600c5, #8b31ff, #14f195, #656565);
     --transition-speed: 0.3s;
     --section-spacing: 2rem;
     --neon-glow: 0 0 10px rgba(102, 0, 197, 0.5);
@@ -117,7 +117,7 @@ nav a:hover::after {
 /* Robot 3D Container ajustado */
 .robot-container {
     position: absolute;
-    top: -10%; /* Ajustado para estar justo debajo del navbar */
+    top: -15%; /* Ajustado para estar justo debajo del navbar */
     right: 98%;
     width: 35%;
     height: 40vh;
@@ -222,8 +222,6 @@ nav a:hover::after {
 
 /* Secciones */
 
-
-
 .sobre_mi{
     text-align: justify;
     align-items: center;
@@ -261,12 +259,29 @@ nav a:hover::after {
     background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
     padding: 2rem;
     border-radius: 10px;
-    border: 1px solid #00fff0;
+    border: 1px solid #6600c5;
     transition: all var(--transition-speed) ease;
     position: relative;
     overflow: hidden;
     box-shadow: inset 0 0 15px rgba(102, 0, 197, 0.1);
 }
+
+.hero-card {
+    margin-bottom: 35%;
+    background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+    padding: 2rem;
+    border-radius: 50px;
+    border: 1px solid #8b31ff;
+    background: transparent;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #14f195;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 15px rgba(102, 0, , 0.9);
+    max-height: 100%;
+}
+
 
 .skill-card::before {
     content: '';
@@ -304,11 +319,11 @@ nav a:hover::after {
     }
 
     .content {
-        max-width: 50%;
+        max-width: 100%;
     }
 
     .soluciones {
-        font-size: 3.5rem;
+        font-size: 2.5rem;
     }
 }
 
