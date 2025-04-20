@@ -303,9 +303,9 @@ main{
     nav{
         display: none;
     }
-    
+
     header h1{
-     
+        padding: 1rem 0rem;
     }
 
 
@@ -315,11 +315,13 @@ main{
 
     .content .soluciones{
         margin-top: 10%;
+        font-size: 3rem;
     }
 
     .content .description{
-        max-width: 90%;
+        max-width: 100%;
     }
+
     .buttons{
         display: flex;
         gap: 0.4rem;
@@ -329,18 +331,19 @@ main{
     
     .btn-contactar{
         padding: 0.6rem 1.5rem;
-        width: 8rem;
-        height: 2.5rem;
-        font-size: 1.1rem;
+        width: 10rem;
+        height: 3rem;
+        font-size: 1.2rem;
         text-align: center;
         align-items: center;
         color: black;
     }
 
     .buttons a{
-        font-size: 1rem;
+        font-size: 1.2rem;
         text-align: center;
         padding-left: -20% ;
+    
     }
 
 
@@ -360,15 +363,15 @@ main{
 
     }
     .content{
-        max-width: 100rem;
+        max-width: 100%;
         text-align: justify;
         margin-left: 10%;
         
     }
 
     .tag-box{
-        width: 12rem;
-        height: 2.5rem;
+        width: 14rem;
+        height: 3rem;
     }
     .content h1{
         font-size: 2.5rem;
@@ -376,8 +379,10 @@ main{
     }
 
     .tag-box .tag{
-        font-size: 1rem;
+        font-size: 1.2rem;
         color:black;
+        width: 120%;
+        margin-left: -10%;
     }
 
     
