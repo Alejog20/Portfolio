@@ -1,0 +1,145 @@
+<svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="1000" height="700" fill="#f8f9fa" />
+  
+  <!-- Título del diagrama -->
+  <text x="500" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">
+    Optimizaciones para iPhone 14 Pro Max
+  </text>
+  
+  <!-- iPhone frame -->
+  <g transform="translate(120, 100)">
+    <rect width="250" height="500" rx="40" fill="#111" stroke="#333" stroke-width="2" />
+    <rect x="10" y="10" width="230" height="480" rx="30" fill="#222" />
+    
+    <!-- Notch -->
+    <rect x="75" y="10" width="100" height="25" rx="10" fill="#111" />
+    
+    <!-- Screen content -->
+    <rect x="20" y="35" width="210" height="430" rx="2" fill="#000" />
+    
+    <!-- iPhone label -->
+    <text x="125" y="530" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#fff">
+      iPhone 14 Pro Max
+    </text>
+    <text x="125" y="550" font-family="Arial" font-size="12" text-anchor="middle" fill="#aaa">
+      390 x 844 px
+    </text>
+  </g>
+  
+  <!-- Web content mockup on iPhone -->
+  <g transform="translate(140, 135)">
+    <!-- Header -->
+    <rect width="210" height="40" fill="#5c3c2e" opacity="0.9" />
+    <text x="105" y="25" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#ffd54f">
+      HEADER
+    </text>
+    
+    <!-- Hero -->
+    <rect y="40" width="210" height="120" fill="#111" />
+    <rect x="20" y="50" width="170" height="20" rx="5" fill="#6600c5" opacity="0.7" />
+    <rect x="20" y="80" width="170" height="40" rx="10" fill="#222" stroke="#8b31ff" stroke-width="1" />
+    <rect x="20" y="130" width="80" height="20" rx="10" fill="#6600c5" opacity="0.5" />
+    <rect x="110" y="130" width="80" height="20" rx="10" fill="#757575" opacity="0.5" />
+    
+    <!-- About -->
+    <rect y="160" width="210" height="120" fill="#111" />
+    <rect x="70" y="170" width="70" height="70" rx="35" fill="#222" stroke="#14f195" stroke-width="1" />
+    <rect x="20" y="250" width="170" height="25" rx="5" fill="#222" stroke="#8b31ff" stroke-width="1" />
+    
+    <!-- Projects -->
+    <rect y="280" width="210" height="90" fill="#111" />
+    <rect x="10" y="295" width="58" height="70" rx="5" fill="#222" stroke="#6600c5" stroke-width="1" />
+    <rect x="76" y="295" width="58" height="70" rx="5" fill="#222" stroke="#6600c5" stroke-width="1" />
+    <rect x="142" y="295" width="58" height="70" rx="5" fill="#222" stroke="#6600c5" stroke-width="1" />
+    
+    <!-- Contact form -->
+    <rect y="370" width="210" height="95" fill="#111" />
+    <rect x="20" y="380" width="170" height="20" rx="5" fill="#222" stroke="#8b31ff" stroke-width="1" />
+    <rect x="20" y="410" width="170" height="20" rx="5" fill="#222" stroke="#8b31ff" stroke-width="1" />
+    <rect x="20" y="440" width="170" height="20" rx="10" fill="#6600c5" opacity="0.5" />
+  </g>
+  
+  <!-- Optimization pointers -->
+  <!-- Header optimization -->
+  <line x1="350" y1="155" x2="450" y2="120" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,5" />
+  <circle cx="350" cy="155" r="8" fill="#e74c3c" />
+  <rect x="450" y="90" width="250" height="60" rx="10" fill="#fdedec" stroke="#e74c3c" stroke-width="2" />
+  <text x="575" y="115" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#e74c3c">
+    Optimización del Header
+  </text>
+  <text x="575" y="135" font-family="Arial" font-size="12" text-anchor="middle" fill="#e74c3c">
+    Padding reducido: 1rem 1.5rem
+  </text>
+  
+  <!-- Hero optimizations -->
+  <line x1="350" y1="200" x2="450" y2="200" stroke="#3498db" stroke-width="2" stroke-dasharray="5,5" />
+  <circle cx="350" cy="200" r="8" fill="#3498db" />
+  <rect x="450" y="170" width="250" height="80" rx="10" fill="#ebf5fb" stroke="#3498db" stroke-width="2" />
+  <text x="575" y="195" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#3498db">
+    Disposición Hero Reajustada
+  </text>
+  <text x="575" y="215" font-family="Arial" font-size="12" text-anchor="middle" fill="#3498db">
+    Elementos centrados
+  </text>
+  <text x="575" y="235" font-family="Arial" font-size="12" text-anchor="middle" fill="#3498db">
+    Botones en columna con 100% de ancho
+  </text>
+  
+  <!-- Image optimizations -->
+  <line x1="350" y1="260" x2="450" y2="280" stroke="#2ecc71" stroke-width="2" stroke-dasharray="5,5" />
+  <circle cx="350" cy="260" r="8" fill="#2ecc71" />
+  <rect x="450" y="250" width="250" height="60" rx="10" fill="#eafaf1" stroke="#2ecc71" stroke-width="2" />
+  <text x="575" y="275" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#2ecc71">
+    Tamaño de Imagen Optimizado
+  </text>
+  <text x="575" y="295" font-family="Arial" font-size="12" text-anchor="middle" fill="#2ecc71">
+    width: 60%; max-width: 200px;
+  </text>
+  
+  <!-- Grid layout optimizations -->
+  <line x1="350" y1="320" x2="450" y2="360" stroke="#9b59b6" stroke-width="2" stroke-dasharray="5,5" />
+  <circle cx="350" cy="320" r="8" fill="#9b59b6" />
+  <rect x="450" y="330" width="250" height="60" rx="10" fill="#f4ecf7" stroke="#9b59b6" stroke-width="2" />
+  <text x="575" y="355" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#9b59b6">
+    Grid de Una Columna
+  </text>
+  <text x="575" y="375" font-family="Arial" font-size="12" text-anchor="middle" fill="#9b59b6">
+    grid-template-columns: 1fr;
+  </text>
+  
+  <!-- Form optimizations -->
+  <line x1="350" y1="420" x2="450" y2="440" stroke="#f39c12" stroke-width="2" stroke-dasharray="5,5" />
+  <circle cx="350" cy="420" r="8" fill="#f39c12" />
+  <rect x="450" y="410" width="250" height="60" rx="10" fill="#fef5e7" stroke="#f39c12" stroke-width="2" />
+  <text x="575" y="435" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#f39c12">
+    Formulario Responsivo
+  </text>
+  <text x="575" y="455" font-family="Arial" font-size="12" text-anchor="middle" fill="#f39c12">
+    Padding y tamaño de fuente ajustados
+  </text>
+  
+  <!-- Safari-specific optimizations -->
+  <rect x="120" y="600" width="300" height="80" rx="10" fill="#d1f2eb" stroke="#1abc9c" stroke-width="2" />
+  <text x="270" y="625" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#1abc9c">
+    Optimizaciones específicas Safari iOS
+  </text>
+  <text x="270" y="650" font-family="Arial" font-size="12" text-anchor="middle" fill="#1abc9c">
+    min-height: -webkit-fill-available;
+  </text>
+  <text x="270" y="670" font-family="Arial" font-size="12" text-anchor="middle" fill="#1abc9c">
+    Arreglo para el problema de 100vh en Safari
+  </text>
+  
+  <!-- Hover fix optimizations -->
+  <rect x="440" y="600" width="300" height="80" rx="10" fill="#fcf3cf" stroke="#f1c40f" stroke-width="2" />
+  <text x="590" y="625" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#f1c40f">
+    Solución para efectos hover
+  </text>
+  <text x="590" y="650" font-family="Arial" font-size="12" text-anchor="middle" fill="#f1c40f">
+    @media (hover: none) { /* CSS alternativo */ }
+  </text>
+  <text x="590" y="670" font-family="Arial" font-size="12" text-anchor="middle" fill="#f1c40f">
+    Usa :active en lugar de :hover para táctiles
+  </text>
+</svg>

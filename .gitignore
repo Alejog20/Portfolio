@@ -1,4 +1,6 @@
 # Logs
+*.pdf
+.pdf
 logs
 *.log
 npm-debug.log*
@@ -24,4 +26,7 @@ dist-ssr
 *.sw?
 
 *./Docs
+*.md
+.vscode
+.docx
 *.md

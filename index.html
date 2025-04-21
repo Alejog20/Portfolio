@@ -7,140 +7,141 @@
     <link rel="stylesheet" href="./style.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
-<body>
+<body class="page">
     <!-- Spotlight effect -->
-    <div class="spotlight"></div>
-
-    <!-- Background wrapper -->
-    <div class="bg-wrapper">
-        <img class="image-gradient" src="./bg.jpg" alt="gradient">
+    <div class="effect__spotlight"></div>
+    
+    <!-- Background  -->
+    <div class="background">
+        <img class="background__image" src="./bg.jpg" alt="gradient">
     </div>
     
-    <header>
-        <nav>
-            <a href="#sobre-mi">Sobre mí</a>
-            <a href="#proyectos">Proyectos</a>
-            <a href="#habilidades">Habilidades</a>
-            <a href="#cv">CV</a>
+    <!-- Header -->
+    <header class="header">
+        <nav class="header__nav">
+            <a href="#sobre-mi" class="header__link">Sobre mí</a>
+            <a href="#proyectos" class="header__link">Proyectos</a>
+            <a href="#habilidades" class="header__link">Habilidades</a>
+            <a href="#cv" class="header__link">CV</a>
+            <a href="#contacto" class="header__link">Contacto</a>
         </nav>   
     </header>
-
-    <main>
-        <!-- Hero Section -->
+    
+    <main class="main">
+        <!-- Hero  -->
         <section class="hero">
-            <div class="robot-container">
-                <spline-viewer class="robot-3d" url="https://prod.spline.design/ovm70akBh7nmtl9R/scene.splinecode"></spline-viewer>
+            <div class="hero__robot-container">
+                <spline-viewer class="hero__robot-3d" url="https://prod.spline.design/ovm70akBh7nmtl9R/scene.splinecode"></spline-viewer>
             </div>
-            <div class="content">
-                <h1 class="soluciones">Soluciones digitales</h1>
-                <p class="hero-card">Ayudo a compañías a transformar ideas en proyectos que tengan impacto real al disminuir costos, tiempo y de esta manera hacerlos mas eficientes</p>
-                <div class="buttons">
-                    <div class="tag-box">
-                        <a href="#proyectos" class="tag">Ver Proyectos</a>
+            <div class="hero__content">
+                <h1 class="hero__title">Soluciones digitales</h1>
+                <p class="hero__card">'Ayudo a compañías a transformar ideas en proyectos que tengan impacto real al disminuir costos, tiempo y de esta manera hacerlos mas eficientes'</p>
+                <div class="hero__buttons">
+                    <div class="hero__button-container">
+                        <a href="#proyectos" class="hero__button">Ver Proyectos</a>
                     </div>
-                    <a href="#contacto" class="btn-contactar">Contactar</a>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- Habilidades Section con iconos modernos -->
-        <section class="sobre_mi">
-            <div>
-                <h2 class="section-title">Sobre Mi</h2>
-                <img class="sobremi-img" src="./img-sm.png" alt="Sobre mí, imagen">
-                <div class="content2">
-                    <p class="sobremi-card">Especialista en automatización con Python, transformo procesos manuales repetitivos en soluciones eficientes que reducen tiempos operativos hasta un 90%. Mi enfoque data-driven combina habilidades técnicas con visión de negocio para crear soluciones que generan valor inmediato</p>
-                </div>
-        </section>
-
-        <!-- Habilidades Section con iconos modernos -->
-        <section id="habilidades" class="section">
-            <h2 class="section-title">Habilidades</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <i class="ri-code-box-line skill-icon"></i>
-                    <h3>Python</h3>
-                    <p>Pandas, NumPy, Selenium, BeautifulSoup, Matplotlib</p>
-                </div>
-                <div class="skill-card">
-                    <i class="ri-bar-chart-box-line skill-icon"></i>
-                    <h3>Análisis de Datos</h3>
-                    <p>Power BI, Google Looker Studio, Excel</p>
-                </div>
-                <div class="skill-card">
-                    <i class="ri-robot-line skill-icon"></i>
-                    <h3>Automatización</h3>
-                    <p>ETL, Web Scraping, Tareas programadas</p>
-                </div>
-                <div class="skill-card">
-                    <i class="ri-database-2-line skill-icon"></i>
-                    <h3>SQL</h3>
-                    <p>Consultas complejas, optimización</p>
-                </div>
-                <div class="skill-card">
-                    <i class="ri-code-box-line skill-icon"></i>
-                    <h3>Desarrollo FullStack</h3>
-                    <p>JS, vanilla JS, Bootstrap, React, CSS, HTML5</p>
+                    <div class="hero__button-container hero__button-container--alt">
+                        <a href="#contacto" class="hero__button hero__button--contact">Contactar</a>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <!-- Proyectos Section con glass cards -->
-        <section id="proyectos" class="section">
-            <h2 class="section-title">Proyectos Destacados</h2>
-            <div class="projects-grid">
-                <article class="project-card">
-                    <div class="project-content">
-                        <h3>Sistema de Automatización</h3>
-                        <p>Reduje procesamiento de 20 a 2 horas semanales</p>
-                        <a href="#" class="project-link" target="_blank">Ver proyecto</a>
-                    </div>
-                </article>
-                <article class="project-card">
-                    <div class="project-content">
-                        <h3>Dashboard de KPIs</h3>
-                        <p>Integración automática vía APIs</p>
-                        <a href="#" class="project-link" target="_blank">Ver proyecto</a>
-                    </div>
-                </article>
-                <article class="project-card">
-                    <div class="project-content">
-                        <h3>Validador de Facturas</h3>
-                        <p>Reducción de 85% en errores de procesamiento</p>
-                        <a href="#" class="project-link" target="_blank">Ver proyecto</a>
-                    </div>
-                </article>
+        
+        <!-- Sobre Mí  -->
+        <section class="sobre-mi" id="sobre-mi">
+            <div class="sobre-mi__container">
+                <h2 class="sobre-mi__titulo">Sobre Mi</h2>
+                <img class="sobre-mi__imagen" src="./img-sm.png" alt="Sobre mí, imagen">
+                <div class="sobre-mi__contenido">
+                    <p class="sobre-mi__tarjeta">Me especializo en automatización, donde transformo procesos manuales repetitivos en soluciones eficientes que reducen tiempos operativos hasta un 90%. Mi enfoque data-driven junto con mi pregrado en Negocios Internacionales combina habilidades técnicas con visión de negocio para crear soluciones que generan valor  <br><br>
+                    Soy un entusiasta de las nuevas tecnologías, me encanta el cine, la fotografía y los videojuegos así como la música, Valoro mucho el tiempo que comparto con familia y amigos y el tiempo que también dedico a seguir aprendiendo.</p>
+                </div>
             </div>
         </section>
-
-
-
+        
+        <!-- Proyectos  -->
+        <section class="proyectos" id="proyectos">
+            <div class="proyectos__container">
+                <h2 class="proyectos__titulo">Proyectos Destacados</h2>
+                <div class="proyectos__grid">
+                    <article class="proyecto-card">
+                        <div class="proyecto-card__contenido">
+                            <h3 class="proyecto-card__titulo">Sistema de Automatización</h3>
+                            <p class="proyecto-card__descripcion">Reduje procesamiento de 20 a 2 horas semanales</p>
+                            <a href="#" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                        </div>
+                    </article>
+                    <article class="proyecto-card">
+                        <div class="proyecto-card__contenido">
+                            <h3 class="proyecto-card__titulo">Dashboard de KPIs</h3>
+                            <p class="proyecto-card__descripcion">Integración automática vía APIs</p>
+                            <a href="#" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                        </div>
+                    </article>
+                    <article class="proyecto-card">
+                        <div class="proyecto-card__contenido">
+                            <h3 class="proyecto-card__titulo">Validador de Facturas</h3>
+                            <p class="proyecto-card__descripcion">Reducción de 85% en errores de procesamiento</p>
+                            <a href="#" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Habilidades Section -->
+        <section class="habilidades" id="habilidades">
+            <div class="habilidades__container">
+                <h2 class="habilidades__titulo">Habilidades</h2>
+                <div class="habilidades__grid">
+                    <div class="habilidad-card">
+                        <i class="ri-code-box-line habilidad-card__icono"></i>
+                        <h3 class="habilidad-card__titulo">Python</h3>
+                        <p class="habilidad-card__descripcion">Pandas, NumPy, Selenium, BeautifulSoup, Matplotlib</p>
+                    </div>
+                    <div class="habilidad-card">
+                        <i class="ri-bar-chart-box-line habilidad-card__icono"></i>
+                        <h3 class="habilidad-card__titulo">Análisis de Datos</h3>
+                        <p class="habilidad-card__descripcion">Power BI, Google Looker Studio, Excel</p>
+                    </div>
+                    <div class="habilidad-card">
+                        <i class="ri-robot-line habilidad-card__icono"></i>
+                        <h3 class="habilidad-card__titulo">Automatización</h3>
+                        <p class="habilidad-card__descripcion">ETL, Web Scraping, Tareas programadas</p>
+                    </div>
+                    <div class="habilidad-card">
+                        <i class="ri-database-2-line habilidad-card__icono"></i>
+                        <h3 class="habilidad-card__titulo">SQL</h3>
+                        <p class="habilidad-card__descripcion">Consultas complejas, optimización</p>
+                    </div>
+                    <div class="habilidad-card">
+                        <i class="ri-code-box-line habilidad-card__icono"></i>
+                        <h3 class="habilidad-card__titulo">Desarrollo FullStack</h3>
+                        <p class="habilidad-card__descripcion">Vanilla JS, Bootstrap, React, CSS, HTML5</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contacto Section -->
+        <section class="contacto" id="contacto">
+            <div class="contacto__container">
+                <h2 class="contacto__titulo">Contacto</h2>
+                <div class="contacto__contenido">
+                    <!-- Aquí iría el formulario o información de contacto -->
+                </div>
+            </div>
+        </section>
     </main>
-
+    
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
     <script>
         // Efecto spotlight mejorado
-        const spotlight = document.querySelector('.spotlight');
+        const spotlight = document.querySelector('.effect__spotlight');
         
         document.addEventListener('mousemove', (e) => {
             spotlight.style.left = e.pageX + 'px';
             spotlight.style.top = e.pageY + 'px';
-            
-            // Calcular posición relativa para el robot
-            const robotViewer = document.querySelector('spline-viewer');
-            if (robotViewer) {
-                const rect = robotViewer.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-                
-                // Calcular ángulos para la rotación del robot
-                const angleX = (e.clientY - centerY) / window.innerHeight * 30;
-                const angleY = (e.clientX - centerX) / window.innerWidth * 30;
-                
-                // Aplicar rotación al robot
-                robotViewer.style.transform = `rotateX(${-angleX}deg) rotateY(${angleY}deg)`;
-            }
         });
     </script>
 </body>
