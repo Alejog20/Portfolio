@@ -1,4 +1,7 @@
 # Logs
+*.svg
+.svg
+
 *.pdf
 .pdf
 logs
