@@ -1,9 +1,4 @@
 # Logs
-*.svg
-.svg
-
-*.pdf
-.pdf
 logs
 *.log
 npm-debug.log*
@@ -11,6 +6,15 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+
+
+*.svg
+.svg
+*.png
+.png
+*.pdf
+.pdf
+
 
 node_modules
 dist
