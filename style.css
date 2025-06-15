@@ -81,7 +81,7 @@ body.theme-solar {
     --color-neon-primary: #FFD700; /* Gold */
     --color-neon-secondary: #FF4500; /* OrangeRed */
     --color-accent: #00FFFF;
-    --glass-background: rgba(30, 15, 0, 0.4);
+    --glass-background: rgba(98, 98, 97, 0.4);
     --glass-border: rgba(255, 215, 0, 0.2);
     --font-display: 'Turret Road', cursive;
     --font-body: 'Syne', sans-serif;
@@ -204,32 +204,43 @@ body {
     transition: background-color var(--transition-speed);
 }
 
+/* --- 1. Contenedor del Fondo --- */
 .background {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -1;
-    background: radial-gradient(ellipse at top, transparent, var(--color-background)), var(--color-background);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* El color de fondo base solo se verá si la imagen no carga */
+    background-color: #0A0A14; 
+    z-index: -3;
 }
 
-.background::after {
-    content: "";
+/* --- 2. Tu Imagen de Fondo --- */
+.background__image {
+    display: block; /* Aseguramos que la imagen sea visible */
     position: absolute;
-    width: 2px; height: 2px;
-    background: transparent;
-    box-shadow: /* A more dense and varied starfield */
-        -5vw 20vh 1px #fff, 8vw 45vh 2px #fff, 15vw 90vh 1px #fff,
-        25vw 10vh 2px #fff, 33vw 33vh 1px #fff, 42vw 82vh 2px #fff,
-        56vw 6vh 1px #fff, 63vw 50vh 2px #fff, 71vw 89vh 1px #fff,
-        88vw 13vh 2px #fff, 95vw 62vh 1px #fff, 2vw 70vh 2px #fff,
-        -15vw 80vh 1px #fff, 28vw 55vh 2px #fff, 45vw 19vh 1px #fff,
-        65vw 95vh 2px #fff, 83vw 23vh 1px #fff, 92vw 72vh 2px #fff;
-    animation: move-stars 200s linear infinite;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* La imagen cubre toda la pantalla */
+    z-index: -2; /* Se posiciona detrás del lienzo de estrellas */
 }
 
-@keyframes move-stars {
-    from { transform: translateY(0px); }
-    to   { transform: translateY(-2000px); }
+/* --- 3. El Lienzo para las Estrellas --- */
+#starfield {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: -1; /* El lienzo va encima de la imagen, pero detrás del contenido */
 }
 
+/* Nota: Para añadir más estrellas, simplemente añade más líneas 'Xvw Yvh Zpx #COLOR,'
+   a la propiedad box-shadow de la capa que prefieras. */
 /* ==========================================================================
    Layout & Structure
    ========================================================================== */
@@ -336,7 +347,7 @@ body {
     right: 0; /* Position from the right edge of .hero */
     top: 50%;
     transform: translateY(-50%); /* Vertically center */
-    width: 50%; /* Define a width */
+    width: 100%; /* Define a width */
     display: flex;
     flex-direction: column;
     align-items: flex-end; /* Align items to the right */
@@ -357,43 +368,118 @@ body {
 }
 
 .hero__card {
-    text-align: left;
-    margin-bottom: 2rem;
-    max-width: 600px;
-    font-size: 1.1rem;
+    /* --- MANTENEMOS TUS REQUERIMIENTOS --- */
+    text-align: right;
+    margin-top: 5rem; 
+    margin-bottom: 10rem;
+    max-width: 1000px; 
+    max-height: 100px; /* Se respeta la altura máxima */
+  
+    display: flex; 
+    align-items: center;   
+    /* 3. Alineamos el bloque de texto a la derecha */
+    justify-content: flex-end;
+
+    /* 4. OPTIMIZADO: Reducimos el espacio entre líneas y el padding */
+    font-size: 0.95rem;  /* Reducido ligeramente para asegurar el ajuste */
+    line-height: 1.3;    /* Reducido para juntar más las líneas */
+    padding: 2rem 2rem;  /* Reducido el padding vertical para dar más espacio al texto */
 }
 
 .hero__buttons {
     display: flex;
     gap: 1.5rem;
 }
-
-
 /* ==========================================================================
-   Card Component - IMPROVED & PROPORTIONAL
+   V-FINAL STYLING - Typewriter, Hero Card Fix & Crystal Cards
    ========================================================================== */
+
+/* --- 1. Corrección de la Tarjeta de la Sección Principal --- */
+
+/* El contenedor de la tarjeta ahora controla el tamaño y la alineación */
+.hero-card-container {
+    max-width: 700px; /* Ancho máximo para buena legibilidad */
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center; /* Centra el texto verticalmente */
+    justify-content: center; /* Centra el texto horizontalmente */
+    /* Hereda el estilo de tarjeta de cristal que definiremos a continuación */
+}
+
+/* El texto solo se preocupa por su propio estilo */
+.hero-card-text {
+    text-align: right;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text-body);
+    padding: 1rem; /* Un pequeño padding interno */
+}
+
+
+/* --- 2. Efecto Vidrio Líquido/Cristal para TODAS las Tarjetas --- */
 .card {
-    background: var(--glass-background);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid var(--glass-border);
+    position: relative;
+    /* Fondo casi transparente con un gradiente sutil para el reflejo */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+    /* Efecto de desenfoque de fondo, la clave del glassmorphism */
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    
     border-radius: var(--border-radius);
-    padding: 2.5rem;
-    transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    /* Borde muy sutil que simula el borde de un cristal */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Sombra exterior para dar profundidad */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    overflow: hidden;
+
+    /* Estilos generales que ya tenías */
     width: 100%;
-    /* This will be used in grid layouts to make cards have equal height */
     display: flex;
     flex-direction: column;
+    padding: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+    transition: transform 0.4s ease;
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    border-color: var(--color-neon-primary);
-    box-shadow: 0 0 40px rgba(0,0,0,0.5), var(--neon-glow-primary);
+/* Pseudo-elemento para el reflejo de luz que sigue al mouse */
+.card::before {
+    content: '';
+    position: absolute;
+    top: var(--mouse-y);
+    left: var(--mouse-x);
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(163, 217, 255, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.card:hover::before {
+    opacity: 1;
 }
 
 
+/* --- 3. Estilos para el Efecto de Teclado (Typewriter) --- */
+.hero__title.typing-effect {
+    /* El borde simula el cursor parpadeante */
+    border-right: 0.15em solid var(--color-accent); 
+    white-space: nowrap;
+    overflow: hidden;
+    animation: blinking-cursor 0.75s step-end infinite;
+}
+
+.hero__title.typing-done {
+    border-right: none;
+    white-space: normal;
+    overflow: visible;
+}
+
+@keyframes blinking-cursor {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--color-accent); }
+}
 /* ==========================================================================
    Buttons - REFINED
    ========================================================================== */
@@ -882,3 +968,104 @@ html {
 .card {
     padding: clamp(1.5rem, 2vw + 1rem, 2.5rem);
 }
+
+/* ==========================================================================
+   V2.5 ADDITIONS - Effects, Background & Mobile Polish
+   ========================================================================== */
+
+/* --- 1. Estilos para el Efecto de Teclado (Typewriter) --- */
+.hero__title.typing-effect {
+    /* Crea el cursor parpadeante usando un borde derecho */
+    border-right: 0.15em solid var(--color-accent); 
+    white-space: nowrap; /* Evita que el texto se rompa en varias líneas mientras se escribe */
+    overflow: hidden; /* Oculta el resto del texto que aún no se ha escrito */
+    animation: 
+        blinking-cursor 0.75s step-end infinite;
+}
+
+/* El título final ya no necesita el cursor parpadeante */
+.hero__title.typing-done {
+    border-right: none;
+    white-space: normal;
+    overflow: visible;
+}
+
+/* Animación para el parpadeo del cursor */
+@keyframes blinking-cursor {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--color-accent); }
+}
+
+/* --- 2. Eliminar Definitivamente la Sombra Lateral --- */
+/* Esta regla fuerza la desaparición del pseudo-elemento que causaba el brillo */
+body::before {
+    display: none !important;
+}
+
+/* --- 1. Fondo con Imagen y Canvas para Estrellas --- */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-background);
+    z-index: -3;
+}
+
+.background__image {
+    display: block; /* Hacemos visible tu imagen de fondo */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3; /* La hacemos sutil para que las estrellas destaquen */
+}
+
+#starfield-canvas {
+    position: absolute; /* El lienzo se superpone a la imagen de fondo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+
+/* --- 4. Mejoras Responsivas para Smartphones --- */
+
+/* Usamos un breakpoint más específico para móviles pequeños */
+@media (max-width: 576px) {
+    .hero {
+        /* Ajustamos el padding para dar más espacio al contenido */
+        padding-top: 5rem;
+        gap: 0; /* Reducimos el espacio entre robot y texto */
+    }
+
+    .hero__robot-container {
+        /* Hacemos el contenedor del robot mucho más pequeño */
+        height: 35vh; 
+        min-height: 240px;
+        /* Lo movemos un poco hacia arriba */
+        position: relative;
+        top: -2rem;
+    }
+    
+    .hero__robot-3d {
+        /* Reducimos la escala del modelo 3D dentro de su contenedor */
+        width: 110%;
+        height: 110%;
+    }
+
+    .hero__content {
+        /* Nos aseguramos de que el contenido no se solape con el robot */
+        position: relative;
+        top: -4rem; 
+    }
+    
+    .hero__buttons {
+        /* Ajustamos los botones para que no se sientan tan grandes */
+        transform: scale(0.9);
+    }
+}
+
+
