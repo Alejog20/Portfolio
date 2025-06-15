@@ -29,7 +29,7 @@ app = FastAPI()
 # Esto es CRÍTICO. Permite que tu página web (front-end) se comunique
 # con este backend, aunque estén en dominios diferentes (o localhost).
 origins = [
-    "http://127.0.0.1:5500",  # Si usas Live Server de VS Code (cambia el puerto si es necesario)
+    "http://127.0.0.1:3000",  # Si usas Live Server de VS Code (cambia el puerto si es necesario)
     "null",  # Para permitir peticiones desde archivos locales (abriendo el index.html directamente)
     # "https://www.tu-dominio.com", # ¡Añade tu dominio cuando publiques la web!
 ]

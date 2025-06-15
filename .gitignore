@@ -16,6 +16,7 @@ lerna-debug.log*
 .pdf
 *.jpg
 .jpg
+*.pdf
 
 
 node_modules

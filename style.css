@@ -1,919 +1,854 @@
 /* ==========================================================================
-   Variables CSS
+   STELLARIS DESIGN SYSTEM - V2.0
+   Author: Coding Partner
+   Description: A futuristic, neon, liquid-glass design system.
+   ========================================================================== */
+
+/* --- Google Fonts Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800&family=Roboto+Mono&family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&family=Turret+Road:wght@800&family=Syne:wght@400;700&display=swap');
+
+/* ==========================================================================
+   CSS Variables & Core Setup
    ========================================================================== */
 :root {
-    --primary-color: #6600c5;
-    --text-primary: #757575;
-    --text-secondary: #14f195;
-    --gradient-primary: linear-gradient(to right, #656565, #6600c5, #8b31ff, #14f195, #656565);
-    --transition-speed: 0.3s;
-    --section-spacing: 5rem;
-    --neon-glow: 0 0 10px rgba(102, 0, 197, 0.5);
-    --title-font: 'Courier New', monospace;
-    --body-font: 'Share Tech Mono', monospace;
-    --platinum-base: #e8eaf6;
-    --platinum-shadow: #b0b4c5;
-    /* Nuevas variables para liquid glass */
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.18);
-    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    --neon-cyan: #00ffff;
-    --neon-purple: #bf00ff;
+    /* Default Theme: "Nebula Purpura" (Your Original Vibe) */
+    --color-background: #0A0A14;
+    --color-text-body: #C0C5E0;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #D473EC; /* Púrpura Nebulosa */
+    --color-neon-secondary: #FF40A7; /* Rosa Neón */
+    --color-accent: #A3D9FF; /* Accent Ice */
+
+    --font-display: 'Exo 2', sans-serif;
+    --font-body: 'Roboto Mono', monospace;
+
+    /* --- Universal Settings --- */
+    --glass-background: rgba(16, 16, 32, 0.4);
+    --glass-border: rgba(212, 115, 236, 0.2);
+    --glass-blur: 12px;
+    --neon-glow-primary: 0 0 15px var(--color-neon-primary);
+    --neon-glow-secondary: 0 0 15px var(--color-neon-secondary);
+    --transition-speed: 0.4s;
+    --section-spacing: 8rem;
+    --border-radius: 24px;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+@keyframes twinkle-stars {
+    0%, 100% {
+        box-shadow: /* Re-paste the original box-shadow from .background::after */
+            -5vw 20vh 1px rgba(255,255,255, 0.8), 8vw 45vh 2px rgba(255,255,255, 1), 15vw 90vh 1px rgba(255,255,255, 0.8),
+            25vw 10vh 2px rgba(255,255,255, 1), 33vw 33vh 1px rgba(255,255,255, 0.8), 42vw 82vh 2px rgba(255,255,255, 1),
+            56vw 6vh 1px rgba(255,255,255, 0.8), 63vw 50vh 2px rgba(255,255,255, 1), 71vw 89vh 1px rgba(255,255,255, 0.8),
+            88vw 13vh 2px rgba(255,255,255, 1), 95vw 62vh 1px rgba(255,255,255, 0.8), 2vw 70vh 2px rgba(255,255,255, 1),
+            -15vw 80vh 1px rgba(255,255,255, 0.8), 28vw 55vh 2px rgba(255,255,255, 1), 45vw 19vh 1px rgba(255,255,255, 0.8),
+            65vw 95vh 2px rgba(255,255,255, 1), 83vw 23vh 1px rgba(255,255,255, 0.8), 92vw 72vh 2px rgba(255,255,255, 1);
+    }
+    50% {
+        box-shadow: /* Make some stars dimmer or brighter */
+            -5vw 20vh 1px rgba(255,255,255, 0.4), 8vw 45vh 2px rgba(255,255,255, 0.7), 15vw 90vh 1px rgba(255,255,255, 0.4),
+            25vw 10vh 2px rgba(255,255,255, 0.7), 33vw 33vh 1px rgba(255,255,255, 0.4), 42vw 82vh 2px rgba(255,255,255, 0.7),
+            56vw 6vh 1px rgba(255,255,255, 0.4), 63vw 50vh 2px rgba(255,255,255, 0.7), 71vw 89vh 1px rgba(255,255,255, 0.4),
+            88vw 13vh 2px rgba(255,255,255, 0.7), 95vw 62vh 1px rgba(255,255,255, 0.4), 2vw 70vh 2px rgba(255,255,255, 0.7),
+            -15vw 80vh 1px rgba(255,255,255, 0.4), 28vw 55vh 2px rgba(255,255,255, 0.7), 45vw 19vh 1px rgba(255,255,255, 0.4),
+            65vw 95vh 2px rgba(255,255,255, 0.7), 83vw 23vh 1px rgba(255,255,255, 0.4), 92vw 72vh 2px rgba(255,255,255, 0.7);
+    }
+}
 
 /* ==========================================================================
-   Reset y Estilos Base
+   Theme Variations
    ========================================================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+/* Theme 1: Cyber-Seafoam */
+body.theme-seafoam {
+    --color-background: #02161A;
+    --color-text-body: #B0D9D5;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #33FFD1; /* Seafoam Green */
+    --color-neon-secondary: #00E5FF; /* Cyan */
+    --color-accent: #FFC300;
+    --glass-background: rgba(10, 30, 30, 0.4);
+    --glass-border: rgba(51, 255, 209, 0.2);
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
 }
 
-html {
-    scroll-behavior: smooth;
+/* Theme 2: Solar Flare */
+body.theme-solar {
+    --color-background: #1C0A00;
+    --color-text-body: #EADFC9;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #FFD700; /* Gold */
+    --color-neon-secondary: #FF4500; /* OrangeRed */
+    --color-accent: #00FFFF;
+    --glass-background: rgba(30, 15, 0, 0.4);
+    --glass-border: rgba(255, 215, 0, 0.2);
+    --font-display: 'Turret Road', cursive;
+    --font-body: 'Syne', sans-serif;
 }
 
-.page {
-    font-family: var(--body-font);
-    background-color: black;
-    color: var(--text-primary);
-    min-height: 100vh;
-    line-height: 1.6;
+/* Theme 3: Void Runner */
+body.theme-void {
+    --color-background: #000000;
+    --color-text-body: #A0A0A0;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #FFFFFF; /* White */
+    --color-neon-secondary: #FF0000; /* Red */
+    --color-accent: #4B0082; /* Indigo */
+    --glass-background: rgba(20, 20, 20, 0.3);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --font-display: 'Rajdhani', sans-serif;
+    --font-body: 'Roboto Mono', monospace;
+}
+
+/* Theme 4: Galactic Green */
+body.theme-galactic {
+    --color-background: #051405;
+    --color-text-body: #B8DAB8;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #00FF00; /* Lime Green */
+    --color-neon-secondary: #ADFF2F; /* GreenYellow */
+    --color-accent: #FF00FF;
+    --glass-background: rgba(5, 20, 5, 0.4);
+    --glass-border: rgba(0, 255, 0, 0.2);
+    --font-display: 'Exo 2', sans-serif;
+    --font-body: 'Syne', sans-serif;
+}
+
+
+/* Theme 5: Cosmic Lilac */
+body.theme-lilac {
+    --color-background: #191221;
+    --color-text-body: #D9D2E9;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #C5A5FF; /* Lilac */
+    --color-neon-secondary: #8E44AD; /* Deep Purple */
+    --color-accent: #E5E4E2; /* Platinum */
+    --glass-background: rgba(40, 30, 50, 0.4);
+    --glass-border: rgba(197, 165, 255, 0.2);
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Syne', sans-serif;
+}
+
+/* Theme 6: Supernova Pink */
+body.theme-supernova {
+    --color-background: #1A0B1A;
+    --color-text-body: #FAD0F4;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #FF00FF; /* Magenta */
+    --color-neon-secondary: #FA2D9A; /* Vibrant Pink */
+    --color-accent: #39FF14; /* Neon Green */
+    --glass-background: rgba(35, 15, 35, 0.45);
+    --glass-border: rgba(255, 0, 255, 0.25);
+    --font-display: 'Turret Road', cursive;
+    --font-body: 'Rajdhani', sans-serif;
+}
+
+/* Theme 7: Andromeda Violet */
+body.theme-andromeda {
+    --color-background: #0D0C1D;
+    --color-text-body: #C4C3E0;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #7F00FF; /* Violet */
+    --color-neon-secondary: #E100FF; /* Ethereal Pink */
+    --color-accent: #00E5FF; /* Cyan */
+    --glass-background: rgba(20, 18, 40, 0.4);
+    --glass-border: rgba(127, 0, 255, 0.2);
+    --font-display: 'Exo 2', sans-serif;
+    --font-body: 'Roboto Mono', monospace;
+}
+
+/* Theme 8: Orion Nebula */
+body.theme-orion {
+    --color-background: #100C18;
+    --color-text-body: #DDCDE5;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #B39DDB; /* Light Violet */
+    --color-neon-secondary: #F48FB1; /* Light Pink */
+    --color-accent: #A5D6A7; /* Light Green */
+    --glass-background: rgba(30, 25, 40, 0.5);
+    --glass-border: rgba(179, 157, 219, 0.25);
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
+}
+
+/* Theme 9: Platinum Comet */
+body.theme-platinum {
+    --color-background: #0E1116;
+    --color-text-body: #EAEAEA;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #DCDCDC; /* Platinum/Silver */
+    --color-neon-secondary: #9370DB; /* Medium Purple */
+    --color-accent: #32CD32; /* Lime Green */
+    --glass-background: rgba(30, 35, 40, 0.4);
+    --glass-border: rgba(220, 220, 220, 0.2);
+    --font-display: 'Rajdhani', sans-serif;
+    --font-body: 'Syne', sans-serif;
+}
+
+
+/* ==========================================================================
+   Global Resets & Animated Background
+   ========================================================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-background);
+    color: var(--color-text-body);
+    line-height: 1.7;
     overflow-x: hidden;
-}
-
-.main {
     position: relative;
-    width: 100%;
-}
-
-/* ==========================================================================
-   Efectos Globales
-   ========================================================================== */
-.effect__spotlight {
-    position: fixed;
-    width: 500px;
-    height: 500px;
-    pointer-events: none;
-    background: radial-gradient(circle, rgba(102, 0, 197, 0.25) 0%, rgba(102, 0, 197, 0.1) 25%, transparent 60%);
-    border-radius: 50%;
-    filter: blur(40px);
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    mix-blend-mode: screen;
+    z-index: 1;
+    transition: background-color var(--transition-speed);
 }
 
 .background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    background: radial-gradient(ellipse at top, transparent, var(--color-background)), var(--color-background);
 }
 
-.background__image {
+.background::after {
+    content: "";
     position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.5;
+    width: 2px; height: 2px;
+    background: transparent;
+    box-shadow: /* A more dense and varied starfield */
+        -5vw 20vh 1px #fff, 8vw 45vh 2px #fff, 15vw 90vh 1px #fff,
+        25vw 10vh 2px #fff, 33vw 33vh 1px #fff, 42vw 82vh 2px #fff,
+        56vw 6vh 1px #fff, 63vw 50vh 2px #fff, 71vw 89vh 1px #fff,
+        88vw 13vh 2px #fff, 95vw 62vh 1px #fff, 2vw 70vh 2px #fff,
+        -15vw 80vh 1px #fff, 28vw 55vh 2px #fff, 45vw 19vh 1px #fff,
+        65vw 95vh 2px #fff, 83vw 23vh 1px #fff, 92vw 72vh 2px #fff;
+    animation: move-stars 200s linear infinite;
+}
+
+@keyframes move-stars {
+    from { transform: translateY(0px); }
+    to   { transform: translateY(-2000px); }
 }
 
 /* ==========================================================================
-   Componentes y Clases de Utilidad
+   Layout & Structure
    ========================================================================== */
+.main {
+    position: relative;
+    width: 100%;
+    z-index: 2;
+}
+
 .section {
     width: 90%;
     max-width: 1200px;
-    margin: var(--section-spacing) auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Clases para animación de entrada al hacer scroll */
-.hero, .section {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.hero.visible, .section.visible {
-    opacity: 1;
-    transform: translateY(0);
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: var(--section-spacing);
+    padding-bottom: var(--section-spacing);
 }
 
 .section__title {
-    font-family: var(--title-font);
-    color: var(--platinum-base);
-    font-size: clamp(2rem, 5vw, 2.5rem);
-    font-weight: bold;
+    font-family: var(--font-display);
+    color: var(--color-text-title);
+    font-size: clamp(2rem, 5vw, 2.8rem);
     text-transform: uppercase;
-    letter-spacing: 3px;
-    text-shadow: 
-        0 0 10px var(--neon-cyan),
-        0 0 20px var(--neon-cyan),
-        0 0 30px var(--neon-cyan),
-        0 0 40px var(--neon-purple);
+    letter-spacing: 5px;
     text-align: center;
     margin-bottom: 4rem;
     position: relative;
-}
-
-.section__title::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 3px;
-    background: var(--text-secondary);
-    border-radius: 2px;
-    box-shadow: 
-        0 0 10px var(--text-secondary),
-        0 0 20px var(--text-secondary);
-}
-
-/* Liquid Glass Card Effect */
-.card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 2rem;
-    transition: all var(--transition-speed) ease;
-    position: relative;
-    overflow: hidden;
-    color: var(--platinum-base);
-    box-shadow: var(--glass-shadow);
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.25);
-    box-shadow: 
-        0 10px 20px rgba(0, 0, 0, 0.2),
-        0 0 30px rgba(102, 0, 197, 0.4),
-        inset 0 0 20px rgba(255, 255, 255, 0.05);
-}
-
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        135deg,
-        transparent 30%,
-        rgba(255, 255, 255, 0.1) 50%,
-        transparent 70%
-    );
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
-
-.card:hover::before {
-    transform: translateX(100%);
-}
-
-.gradient-button-container {
-    position: relative;
-    height: 4rem;
-    border-radius: 50px;
-    background: var(--gradient-primary);
-    background-size: 200%;
-    animation: animationGradient 12s linear infinite;
-    box-shadow: 
-        0 0 15px rgba(102, 0, 197, 0.5),
-        0 0 30px rgba(20, 241, 149, 0.3);
-    transition: all var(--transition-speed) ease;
-}
-
-.gradient-button-container:hover {
-    box-shadow: 
-        0 0 20px rgba(102, 0, 197, 0.7),
-        0 0 40px rgba(20, 241, 149, 0.5),
-        0 0 60px rgba(139, 49, 255, 0.3);
-}
-
-.gradient-button {
-    position: absolute;
-    inset: 3px;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--platinum-base);
-    text-decoration: none;
-    font-family: var(--title-font);
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: all var(--transition-speed) ease;
-    border: none;
-    cursor: pointer;
-}
-
-.gradient-button:hover {
-    background-color: rgba(0, 0, 0, 0.6);
-    color: var(--platinum-shadow);
-    text-shadow: 
-        0 0 5px var(--neon-cyan),
-        0 0 10px var(--neon-purple);
+    text-shadow: 0 0 5px var(--color-accent), 0 0 15px var(--color-neon-secondary);
 }
 
 /* ==========================================================================
-   Estilos Específicos por Sección
+   Header & Navigation
    ========================================================================== */
-
-/* HEADER con efecto neón mejorado */
 .header {
-    padding: 1.5rem clamp(1.5rem, 5vw, 5rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
     position: fixed;
-    width: 100%;
     top: 0;
-    z-index: 100;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(10, 10, 25, 0.5); /* Kept consistent for legibility */
+    backdrop-filter: blur(var(--glass-blur));
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .header__nav {
     display: flex;
-    justify-content: center;
-    gap: clamp(2rem, 4vw, 4rem);
+    gap: clamp(1rem, 4vw, 2rem);
 }
 
 .header__link {
-    font-family: var(--title-font);
-    font-size: 1.4rem;
-    color: var(--platinum-base);
-    text-decoration: none;
-    transition: all var(--transition-speed) ease;
-    text-transform: uppercase;
+    font-family: var(--font-display);
+    font-size: 1rem;
     letter-spacing: 2px;
-    position: relative;
-    padding: 0.5rem 1rem;
+    font-weight: 700;
+    color: var(--color-text-body);
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0.5rem;
+    transition: color var(--transition-speed), text-shadow var(--transition-speed);
 }
 
-/* Efecto neón en hover para navbar */
 .header__link:hover {
-    color: #fff;
-    text-shadow: 
-        0 0 5px #fff,
-        0 0 10px #fff,
-        0 0 15px var(--neon-cyan),
-        0 0 20px var(--neon-cyan),
-        0 0 35px var(--neon-cyan),
-        0 0 40px var(--neon-cyan);
+    color: var(--color-text-title);
+    text-shadow: 0 0 4px var(--color-text-title), 0 0 10px var(--color-neon-primary);
 }
 
-.header__link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
-    transition: width var(--transition-speed) ease;
-    box-shadow: 
-        0 0 5px var(--neon-cyan),
-        0 0 10px var(--neon-cyan);
-}
-
-.header__link:hover::after {
-    width: 100%;
-}
-
-/* SECCIÓN HERO - Optimizada para pantallas grandes */
+/* ==========================================================================
+   Hero Section - APPROACH C: ABSOLUTE POSITIONING
+   ========================================================================== */
 .hero {
+    position: relative; /* Establish a positioning context */
     min-height: 100vh;
-    width: 100%;
-    padding: 0 5%;
-    display: grid;
-    grid-template-columns: 45% 1fr;
-    align-items: center;
-    gap: 2rem;
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 5rem;
 }
 
-/* Contenedor del robot optimizado para pantallas grandes */
 .hero__robot-container {
-    width: 100%;
-    height: 70vh;
-    position: relative;
+    position: absolute;
+    left: -30%; /* Position from the left edge of .hero */
+    top: 50%;
+    transform: translateY(-50%); /* Vertically center */
+    width: 50%; /* Define a width */
+    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Robot 3D centrado y escalado para pantallas grandes */
 .hero__robot-3d {
-    width: 100%;
-    height: 100%;
-    max-width: 600px;
-    max-height: 600px;
+    width: 140%;
+    height: 140%;
+    max-width: none;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: transform 0.3s ease-out;
-}
-
-/* Media query específica para pantallas muy grandes */
-@media (min-width: 1920px) {
-    .hero {
-        grid-template-columns: 40% 1fr;
-        max-width: 1600px;
-        margin: 0 auto;
-    }
-    
-    .hero__robot-container {
-        height: 80vh;
-    }
-    
-    .hero__robot-3d {
-        max-width: 800px;
-        max-height: 800px;
-    }
 }
 
 .hero__content {
-    z-index: 1;
-    text-align: right;
+    position: absolute;
+    right: 0; /* Position from the right edge of .hero */
+    top: 50%;
+    transform: translateY(-50%); /* Vertically center */
+    width: 50%; /* Define a width */
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-end; /* Align items to the right */
+    text-align: right; /* Align text to the right */
+    z-index: 1;
 }
 
+/* Keep .hero__title, .hero__card, .hero__buttons as they are */
+
 .hero__title {
-    font-family: var(--title-font);
-    color: var(--platinum-base);
-    font-size: clamp(2.2rem, 6vw, 3rem);
-    font-weight: bold;
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: var(--color-text-title);
     text-transform: uppercase;
-    margin-bottom: 2rem;
-    letter-spacing: 3px;
-    text-shadow: 
-        0 0 10px var(--neon-purple),
-        0 0 20px var(--neon-purple),
-        0 0 30px var(--neon-purple);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 8px var(--color-accent), 0 0 20px var(--color-neon-primary);
 }
 
 .hero__card {
-    border-radius: 30px;
-    text-align: right;
-    margin-bottom: 2.5rem;
-    max-width: 100%;
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    text-align: left;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    font-size: 1.1rem;
 }
 
 .hero__buttons {
     display: flex;
     gap: 1.5rem;
-    align-items: center;
-    justify-content: flex-end;
+}
+
+
+/* ==========================================================================
+   Card Component - IMPROVED & PROPORTIONAL
+   ========================================================================== */
+.card {
+    background: var(--glass-background);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     width: 100%;
-}
-
-.hero__button-container {
-    width: 100%;
-    max-width: 25rem;
-}
-
-/* SECCIÓN SOBRE MÍ */
-.sobre-mi__imagen {
-    width: 100%;
-    max-width: 250px;
-    border-radius: 50%;
-    border: 2px solid var(--text-secondary);
-    box-shadow: 
-        0 0 20px rgba(102, 0, 197, 0.3),
-        0 0 40px rgba(20, 241, 149, 0.2);
-    margin-bottom: 3rem;
-    transition: transform var(--transition-speed) ease;
-}
-
-.sobre-mi__imagen:hover {
-    transform: scale(1.05);
-    box-shadow: 
-        0 0 30px rgba(102, 0, 197, 0.5),
-        0 0 60px rgba(20, 241, 149, 0.3);
-}
-
-.sobre-mi__tarjeta {
-    width: 100%;
-    max-width: 800px;
-    text-align: center;
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.8;
-}
-
-/* SECCIÓN PROYECTOS */
-.proyectos__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    width: 100%;
-}
-
-.proyecto-card {
+    /* This will be used in grid layouts to make cards have equal height */
     display: flex;
     flex-direction: column;
-    transition: all var(--transition-speed) ease;
 }
 
-.proyecto-card:hover {
-    transform: translateY(-10px) scale(1.02);
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--color-neon-primary);
+    box-shadow: 0 0 40px rgba(0,0,0,0.5), var(--neon-glow-primary);
+}
+
+
+/* ==========================================================================
+   Buttons - REFINED
+   ========================================================================== */
+.gradient-button-container {
+    border-radius: 50px;
+    padding: 2px;
+    position: relative;
+    background: linear-gradient(120deg, var(--color-neon-primary), var(--color-neon-secondary), var(--color-accent), var(--color-neon-primary));
+    background-size: 300% 300%;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.gradient-button-container:hover {
+    transform: scale(1.05);
+    box-shadow: var(--neon-glow-primary), var(--neon-glow-secondary);
+    animation: gradient-flow 3s ease-in-out infinite;
+}
+
+@keyframes gradient-flow {
+    to { background-position: 100% center; }
+}
+
+.gradient-button {
+    display: block;
+    background: var(--color-background);
+    color: var(--color-text-title);
+    text-decoration: none;
+    border-radius: 50px;
+    padding: 0.8rem 1.8rem;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: background var(--transition-speed) ease, text-shadow var(--transition-speed) ease;
+}
+
+.gradient-button-container:hover .gradient-button {
+    background: transparent;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+/* ==========================================================================
+   Specific Sections
+   ========================================================================== */
+
+/* --- Sobre Mí --- */
+.sobre-mi__imagen {
+    display: block;
+    margin: 0 auto 2.5rem auto;
+    width: 100%;
+    max-width: 250px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 3px solid var(--color-neon-primary);
+    box-shadow: var(--neon-glow-primary);
+    object-fit: cover;
+}
+.sobre-mi__tarjeta p {
+    margin-bottom: 1.5rem;
+}
+.sobre-mi__tarjeta p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* --- Proyectos --- */
+.proyectos__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2.5rem;
 }
 
 .proyecto-card__contenido {
-    padding: 0;
-    height: 100%;
+    flex-grow: 1; /* Allows the card to fill vertical space */
     display: flex;
     flex-direction: column;
 }
 
 .proyecto-card__titulo {
-    font-family: var(--title-font);
-    color: var(--platinum-base);
-    font-size: 1.5rem;
+    font-family: var(--font-display);
+    color: var(--color-text-title);
+    font-size: 1.6rem;
+    text-shadow: 0 0 8px var(--color-neon-secondary);
     margin-bottom: 1rem;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
 .proyecto-card__descripcion {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
+    margin-bottom: 2rem;
+    flex-grow: 1; /* Pushes the button to the bottom */
 }
 
 .proyecto-card__enlace {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--neon-purple));
-    color: var(--platinum-base);
+    /* UNIFIED BUTTON STYLE */
+    margin-top: auto; /* Pushes itself to the bottom of the flex container */
     text-decoration: none;
-    border-radius: 5px;
-    transition: all var(--transition-speed) ease;
+    color: var(--color-text-body);
+    font-family: var(--font-display);
+    border: 2px solid var(--glass-border);
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
     text-align: center;
-    font-weight: bold;
-    margin-top: auto;
-    box-shadow: 0 0 10px rgba(191, 0, 255, 0.5);
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: all var(--transition-speed) ease;
 }
 
 .proyecto-card__enlace:hover {
-    box-shadow: 
-        0 0 20px rgba(191, 0, 255, 0.7),
-        inset 0 0 10px rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
+    background-color: var(--color-neon-primary);
+    border-color: var(--color-neon-primary);
+    color: var(--color-background);
+    text-shadow: none;
+    box-shadow: var(--neon-glow-primary);
 }
 
-/* SECCIÓN HABILIDADES - Corregida */
+
+/* --- Habilidades --- */
 .habilidades__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    width: 100%;
-    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2.5rem;
 }
 
 .habilidad-card {
     text-align: center;
-    min-height: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2.5rem;
 }
 
 .habilidad-card__icono {
-    font-size: 3rem;
-    color: var(--text-secondary);
+    font-size: 4rem;
+    color: var(--color-neon-primary);
+    text-shadow: var(--neon-glow-primary);
     margin-bottom: 1.5rem;
-    display: block;
-    filter: drop-shadow(0 0 10px currentColor);
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 10px currentColor);
-    }
-    50% {
-        transform: scale(1.1);
-        filter: drop-shadow(0 0 20px currentColor);
-    }
 }
 
 .habilidad-card__titulo {
-    font-family: var(--title-font);
-    color: var(--platinum-base);
-    font-size: 1.5rem;
+    font-family: var(--font-display);
+    color: var(--color-text-title);
+    font-size: 1.6rem;
     margin-bottom: 1rem;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
-.habilidad-card__descripcion {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
 
-/* SECCIÓN CONTACTO */
-.contacto__contenido {
-    width: 100%;
-    max-width: 900px;
-    padding: 3rem;
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-}
-
-.contacto__subtitulo {
-    font-family: var(--title-font);
-    color: var(--text-secondary);
-    font-size: clamp(1.2rem, 4vw, 1.4rem);
-    margin-bottom: 2rem;
+/* --- CV Section --- */
+.cv__tarjeta {
     text-align: center;
-    letter-spacing: 1px;
-    text-shadow: 
-        0 0 5px var(--text-secondary),
-        0 0 10px var(--text-secondary);
+    padding: 4rem 2.5rem;
 }
 
-.contacto__wrapper {
-    display: flex;
-    gap: 2.5rem;
-    width: 100%;
+/* --- Contacto --- */
+.contacto__contenido {
+    max-width: 800px;
+    margin: 0 auto;
 }
-
+.contacto__subtitulo {
+    font-family: var(--font-display);
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--color-text-title);
+    margin-bottom: 2.5rem;
+}
 .contacto__form {
-    flex: 2;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
-
 .contacto__grupo {
     position: relative;
 }
-
-.contacto__label {
-    position: absolute;
-    left: 1rem;
-    top: 1rem;
-    color: var(--text-primary);
-    transition: all var(--transition-speed) ease;
-    pointer-events: none;
-    background-color: transparent;
-    padding: 0 0.3rem;
-}
-
 .contacto__input,
 .contacto__textarea {
     width: 100%;
     padding: 1rem;
-    font-family: var(--body-font);
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    color: var(--color-text-body);
+    font-family: var(--font-body);
     font-size: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    color: var(--platinum-base);
     transition: all var(--transition-speed) ease;
 }
-
+.contacto__input:focus,
+.contacto__textarea:focus {
+    outline: none;
+    border-color: var(--color-neon-primary);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5), var(--neon-glow-primary);
+}
 .contacto__textarea {
     min-height: 150px;
     resize: vertical;
 }
-
-.contacto__input:focus,
-.contacto__textarea:focus,
-.contacto__input:not(:placeholder-shown),
-.contacto__textarea:not(:placeholder-shown) {
-    border-color: var(--text-secondary);
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 
-        0 0 10px rgba(20, 241, 149, 0.2),
-        inset 0 0 5px rgba(255, 255, 255, 0.05);
-    outline: none;
-}
-
-.contacto__input:focus + .contacto__label,
-.contacto__textarea:focus + .contacto__label,
-.contacto__input:not(:placeholder-shown) + .contacto__label,
-.contacto__textarea:not(:placeholder-shown) + .contacto__label {
-    transform: translateY(-1.8rem) scale(0.9);
-    color: var(--text-secondary);
-    background-color: #000;
-    padding: 0 0.5rem;
-}
-
-.contacto__boton-container {
-    width: 100%;
-    height: 3.5rem;
-}
-
-.contacto__boton {
-    font-size: 1rem;
-}
-
-.contacto__info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    padding-left: 2rem;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.contacto__item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.contacto__icono {
-    font-size: 1.5rem;
-    color: var(--text-secondary);
-    filter: drop-shadow(0 0 5px currentColor);
-}
-
-/* SECCIÓN CV */
-.cv__tarjeta {
-    max-width: 800px;
-    width: 100%;
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-}
-
-.cv__seccion {
-    margin-bottom: 2.5rem;
-}
-
-.cv__subtitulo {
-    font-family: var(--title-font);
-    color: var(--text-secondary);
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 0 5px currentColor;
-}
-
-.cv__item {
-    margin-bottom: 1.5rem;
-    padding-left: 1rem;
-    border-left: 2px solid var(--neon-purple);
+.contacto__label {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: var(--color-text-body);
+    pointer-events: none;
     transition: all var(--transition-speed) ease;
 }
-
-.cv__item:hover {
-    border-left-color: var(--neon-cyan);
-    padding-left: 1.5rem;
+.contacto__input:focus + .contacto__label,
+.contacto__input:not(:placeholder-shown) + .contacto__label,
+.contacto__textarea:focus + .contacto__label,
+.contacto__textarea:not(:placeholder-shown) + .contacto__label {
+    top: -0.75rem;
+    left: 0.75rem;
+    font-size: 0.8rem;
+    background-color: var(--color-background);
+    padding: 0 0.5rem;
+    color: var(--color-neon-primary);
 }
-
-.cv__item-titulo {
-    font-family: var(--title-font);
-    color: var(--platinum-base);
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-}
-
-.cv__item-detalle {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    font-style: italic;
-    margin-bottom: 0.5rem;
-}
-
-.cv__item-descripcion {
-    color: var(--platinum-base);
-    font-size: 1rem;
-}
-
-.cv__boton-container {
-    width: 100%;
-    margin-top: 2rem;
+.contacto__boton-container {
+    align-self: center;
 }
 
 /* ==========================================================================
-   Animaciones
+   Responsive Design
    ========================================================================== */
-@keyframes animationGradient {
-    to {
-        background-position: 200%;
-    }
-}
-
-/* ==========================================================================
-   Media Queries - Optimizadas para móviles
-   ========================================================================== */
-@media (max-width: 1200px) {
+@media (max-width: 992px) {
     .hero {
-        grid-template-columns: 1fr;
-        min-height: 100vh;
-        padding-top: 100px;
+        grid-template-columns: 1fr; /* Single column on tablets */
+        text-align: center;
+        padding-top: 8rem;
         gap: 1rem;
     }
-    
+    .hero__robot-container {
+        order: 1; /* Robot first */
+        height: 40vh;
+        min-height: 350px;
+    }
     .hero__content {
-        max-width: 90%;
+        order: 2; /* Content second */
         align-items: center;
         text-align: center;
-        order: 2;
-        margin: 0 auto;
     }
-    
-    .hero__robot-container {
-        order: 1;
-        width: 100%;
-        max-width: 500px;
-        height: 50vh;
-        margin: 0 auto 2rem;
+    .hero__title {
+        font-size: clamp(2rem, 10vw, 3rem);
     }
-    
-    .hero__buttons {
-        justify-content: center;
+    .hero__card {
+        text-align: center;
     }
 }
 
-/* Optimización específica para smartphones */
 @media (max-width: 768px) {
     :root {
-        --section-spacing: 3rem;
+        --section-spacing: 5rem;
     }
-    
     .header {
-        padding: 1rem;
-        background: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+    }
+    .header__nav {
+       /* For a real project, you'd add a hamburger menu here.
+          For now, we just ensure it doesn't break the layout. */
+       display: none;
     }
 
-    .header__nav {
-        display: none;
-    }
-    
-    .hero {
-        padding: 100px 20px 20px;
-        min-height: 100vh;
-    }
-    
-    .hero__robot-container {
-        height: 40vh;
-        max-width: 350px;
-    }
-    
-    .hero__robot-3d {
-        width: 120%;
-        height: 120%;
-        max-width: none;
-        max-height: none;
-    }
-    
-    .hero__title {
-        font-size: 2rem;
-    }
-    
-    .hero__card {
-        padding: 1.5rem;
-        font-size: 0.95rem;
-    }
-    
     .hero__buttons {
         flex-direction: column;
-        gap: 1rem;
-        width: 100%;
-    }
-    
-    .hero__button-container {
+        align-items: center;
         width: 100%;
         max-width: 300px;
     }
-    
-    .section {
-        width: 92%;
+    .gradient-button-container {
+        width: 100%;
     }
     
-    .card {
-        padding: 1.5rem;
-    }
-    
-    .contacto__wrapper {
+}
+/* ==========================================================================
+   V2.3 ADDITIONS - Interactive Effects & New Themes
+   ========================================================================== */
+
+/* --- 1. Interactive Mouse Spotlight Effect --- */
+.effect__spotlight {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(
+        circle at var(--mouse-x) var(--mouse-y),
+        rgba(255, 255, 255, 0.06) 0%, /* Brightest point */
+        rgba(255, 255, 255, 0.0) 20%  /* Fades out over 20% of the radius */
+    );
+    pointer-events: none; /* Ensures the layer doesn't block mouse clicks */
+    z-index: 3; /* Position it above the content but below the header */
+    transition: background 0.2s ease-out; /* Smooths the movement slightly */
+}
+
+/* --- 2. Enhanced Star Twinkling Logic --- */
+/* This new keyframe creates a more dramatic "shine and fade" effect */
+@keyframes shine-and-fade {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* We create a SECOND layer of stars using another pseudo-element.
+   This adds depth and variation to the twinkling effect. */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200vw;
+    height: 200vh;
+    background: transparent;
+    z-index: -2;
+    /* A different set of stars */
+    box-shadow: 10vw 80vh 2px #fff, 30vw 10vh 2px #fff, 55vw 45vh 2px #fff, 70vw 90vh 2px #fff, 95vw 25vh 2px #fff;
+    /* Apply the new animation with a different duration */
+    animation: shine-and-fade 7s ease-in-out infinite;
+}
+
+/* --- 3. Five NEW Unique Themes --- */
+
+/* Theme 10: "Antimatter" - High-tech and clean */
+body.theme-antimatter {
+    --color-background: #010409;
+    --color-text-body: #B0B8C4;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #33A3FF; /* Electric Blue */
+    --color-neon-secondary: #E5E7EB; /* Stark White/Grey */
+    --color-accent: #33FFD1;
+    --glass-background: rgba(10, 20, 30, 0.4);
+    --glass-border: rgba(51, 163, 255, 0.2);
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Roboto Mono', monospace;
+}
+
+/* Theme 11: "Quasar" - Intense and energetic */
+body.theme-quasar {
+    --color-background: #110C24;
+    --color-text-body: #D3CCF0;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #FF5722; /* Fiery Orange */
+    --color-neon-secondary: #00BCD4; /* Vibrant Cyan */
+    --color-accent: #FFEB3B; /* Yellow */
+    --glass-background: rgba(25, 20, 45, 0.5);
+    --glass-border: rgba(255, 87, 34, 0.25);
+    --font-display: 'Exo 2', sans-serif;
+    --font-body: 'Syne', sans-serif;
+}
+
+/* Theme 12: "Cryosleep" - Cold and futuristic */
+body.theme-cryosleep {
+    --color-background: #0E1C24;
+    --color-text-body: #A8C4D4;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #FFFFFF;
+    --color-neon-secondary: #74E3C8; /* Muted Mint Green */
+    --color-accent: #A3D9FF;
+    --glass-background: rgba(25, 40, 50, 0.4);
+    --glass-border: rgba(200, 220, 230, 0.2);
+    --font-display: 'Rajdhani', sans-serif;
+    --font-body: 'Syne', sans-serif;
+}
+
+/* Theme 13: "Cyberspace" - Classic hacker vibe */
+body.theme-cyberspace {
+    --color-background: #000000;
+    --color-text-body: #C0C0C0;
+    --color-text-title: #39FF14;
+    --color-neon-primary: #39FF14; /* Matrix Green */
+    --color-neon-secondary: #444444; /* Dark Grey */
+    --color-accent: #39FF14;
+    --glass-background: rgba(10, 25, 10, 0.3);
+    --glass-border: rgba(57, 255, 20, 0.2);
+    --font-display: 'Roboto Mono', monospace;
+    --font-body: 'Roboto Mono', monospace;
+}
+
+/* Theme 14: "Stardust" - Ethereal and magical */
+body.theme-stardust {
+    --color-background: #191A2F;
+    --color-text-body: #D3D4E5;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #FDBFDE; /* Pastel Pink */
+    --color-neon-secondary: #C8B6FF; /* Lavender */
+    --color-accent: #FFD700; /* Gold */
+    --glass-background: rgba(30, 32, 55, 0.5);
+    --glass-border: rgba(253, 191, 222, 0.25);
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
+}
+
+/* ==========================================================================
+   V2.2 ADDITIONS - Layout, Effects & Responsive Fixes
+   ========================================================================== */
+
+/* --- 1. Activate Twinkling Stars --- */
+/* This rule targets the existing starfield and adds the twinkle animation to it. */
+.background::after {
+    animation: move-stars 200s linear infinite, 
+               twinkle-stars 5s ease-in-out infinite;
+}
+
+
+/* --- 3. Adjust Hero Content Width for Desktop --- */
+/* We are overriding the width of the hero content to give it more space. */
+.hero__content {
+    /* Make the content area wider, taking up about 60% of the hero section. */
+    width: 60%;
+}
+
+/* We also need to move the robot further left to make room for the wider text. */
+.hero__robot-container {
+    /* Pushing it more to the left prevents overlap with the new, wider text area.
+       Feel free to adjust this value as needed. */
+    left: -40%;
+}
+
+
+/* --- 4. Responsive Fixes for Hero Section --- */
+/* This media query specifically targets tablet and mobile screens to fix the hero layout. */
+@media (max-width: 992px) {
+    /* We reset the hero to behave like a normal section on smaller screens. */
+    .hero {
+        display: flex;
         flex-direction: column;
+        text-align: center;
+        padding-top: 8rem;
         gap: 2rem;
+        /* Removing absolute positioning context for mobile */
+        position: relative; 
     }
 
-    .contacto__info {
-        border-left: none;
-        padding-left: 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: 2rem;
+    /* We take the robot and content out of absolute positioning so they can stack. */
+    .hero__robot-container,
+    .hero__content {
+        position: static; /* VERY IMPORTANT: This resets the absolute positioning. */
+        transform: none;  /* Reset any transform properties. */
+        width: 100%;      /* Allow them to take up the full width of the column. */
+        text-align: center;
+    }
+
+    /* We need to specifically reset the alignment for the content block. */
+    .hero__content {
+        order: 2; /* Content comes after the robot */
         align-items: center;
     }
     
-    .cv__subtitulo {
-        font-size: 1.5rem;
-    }
-    
-    .cv__item-titulo {
-        font-size: 1.2rem;
-    }
-    
-    .habilidades__grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .habilidad-card {
-        min-height: 200px;
-        padding: 2rem;
-    }
-}
-
-/* Optimización para iPhone 14/16 Pro y similares */
-@media (max-width: 430px) {
-    .hero {
-        padding: 80px 15px 15px;
-    }
-    
     .hero__robot-container {
-        height: 35vh;
-        max-width: 300px;
+        order: 1; /* Robot comes first */
+        height: 40vh;
+        min-height: 350px;
     }
-    
+
     .hero__title {
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
+        font-size: clamp(2rem, 10vw, 3rem);
     }
     
+    /* Ensure the card text is centered on mobile. */
     .hero__card {
-        padding: 1.2rem;
-        font-size: 0.9rem;
-        margin-bottom: 2rem;
-    }
-    
-    .section__title {
-        font-size: 1.8rem;
-        margin-bottom: 3rem;
-    }
-    
-    .proyectos__grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .gradient-button-container {
-        height: 3.5rem;
-    }
-    
-    .gradient-button {
-        font-size: 0.9rem;
+        text-align: center;
     }
 }
 
-/* Ultra small devices */
-@media (max-width: 360px) {
-    .hero__robot-container {
-        height: 30vh;
-        max-width: 250px;
-    }
-    
-    .hero__title {
-        font-size: 1.5rem;
-    }
-    
-    .section {
-        width: 95%;
-        margin-top: 2.5rem;
-        margin-bottom: 2.5rem;
-    }
-    
-    .card, .contacto__contenido {
-        padding: 1.2rem;
-    }
-    
-    .cv__tarjeta {
-        padding: 1.2rem;
-    }
-    
-    .cv__subtitulo {
-        font-size: 1.3rem;
-    }
-}
+
