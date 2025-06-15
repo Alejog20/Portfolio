@@ -1594,7 +1594,7 @@ body::before {
 
 @media (max-width: 480px) {
   .musica__embed-container iframe {
-    height: 570px;
+    height: 100%;
   }
 }
 
