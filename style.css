@@ -32,7 +32,8 @@
     --neon-glow-secondary: 0 0 12px rgba(255, 204, 255, 0.3);  /* Paleta más suave y balanceada */
     --transition-speed: 0.3s ease-in-out;
     --section-spacing: 6rem;                                 /* Más compacto, más moderno */
-    --border-radius: 20px;    
+    --border-radius: 20px; 
+    backdrop-filter: blur(var(--glass-blur));   
 }
 
 
@@ -1043,23 +1044,25 @@ body::before {
 
     .hero__robot-container {
         /* Hacemos el contenedor del robot mucho más pequeño */
-        height: 35vh; 
-        min-height: 240px;
+        height: 20vh; 
+        min-height: 180px;
         /* Lo movemos un poco hacia arriba */
-        position: relative;
-        top: -2rem;
+        position: absolute;
+        top: 4rem;
     }
     
     .hero__robot-3d {
-        /* Reducimos la escala del modelo 3D dentro de su contenedor */
-        width: 110%;
-        height: 110%;
+        align-items: left;
+        width: 80%;
+        height: 70%;
+        flex-wrap: wrap;
     }
 
     .hero__content {
         /* Nos aseguramos de que el contenido no se solape con el robot */
+        flex-direction: column;
         position: relative;
-        top: -4rem; 
+        top: 10rem; 
     }
     
     .hero__buttons {
@@ -1330,61 +1333,407 @@ body::before {
     transition: all 0.4s ease;
 }
 
-/* Overlay glassmorphic para integrar mejor con el fondo animado */
-.musica__embed-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Permite clics en el iframe */
-    background: linear-gradient(135deg, 
-                rgba(var(--color-neon-primary), 0.05), 
-                rgba(var(--color-neon-secondary), 0.03));
-    border-radius: var(--border-radius);
-    z-index: 6;
+/* ==========================================================================
+   Apple Music Player - Enhanced Liquid Glass
+   ========================================================================== */
+
+/* Contenedor principal con efecto liquid glass mejorado */
+.musica__embed-container {
+  position: relative;
+  width: 100%;
+  max-width: 8000px;
+  margin: 0 auto;
+  overflow: visible;
+  border-radius: var(--border-radius);
+  background: transparent;
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 5;
 }
 
-/* Ajustes responsive para dispositivos móviles */
+/* Efecto de brillo en los bordes para el efecto líquido */
+.musica__embed-container::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border-radius: calc(var(--border-radius) + 1px);
+  background: linear-gradient(135deg,
+              rgba(var(--color-neon-primary, 212, 115, 236), 0.2),
+              rgba(var(--color-neon-secondary, 255, 64, 167), 0.1),
+              rgba(var(--color-accent, 163, 217, 255), 0.15),
+              rgba(var(--color-neon-primary, 212, 115, 236), 0.1));
+  z-index: -1;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Mejora del iframe para que sea más transparente */
+.musica__embed-container iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+  border-radius: var(--border-radius);
+  background: transparent;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: none;
+}
+
+/* Efectos de hover */
+.musica__embed-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 12px 40px 0 rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.musica__embed-container:hover::before {
+  opacity: 1;
+}
+
+/* Ajustes responsivos mejorados */
 @media (max-width: 768px) {
-    .musica__embed-container {
-        width: 95%;
-    }
-    
-    .musica__embed-container iframe {
-        min-height: 500px; /* Altura aumentada para móviles para mostrar todo el contenido */
-        border-radius: 16px; /* Bordes ligeramente más pequeños en móvil */
-    }
+  .musica__embed-container {
+    max-width: 95%;
+  }
+  
+  .musica__embed-container iframe {
+    height: 500px;
+  }
 }
 
-/* Ajustes específicos para dispositivos muy pequeños */
 @media (max-width: 480px) {
-    .musica__embed-container iframe {
-        min-height: 570px; /* Más altura para asegurar que se vean todos los elementos */
-        border-radius: 12px;
-    }
-    
-    .musica__title {
-        margin-bottom: 1.5rem;
-    }
+  .musica__embed-container {
+    border-radius: 16px;
+  }
+  
+  .musica__embed-container iframe {
+    height: 570px;
+    border-radius: 16px;
+  }
+  
+  /* Aumentar contraste visual en pantallas pequeñas */
+  .musica__embed-container::before {
+    opacity: 0.8;
+  }
 }
 
-/* Añadimos un brillo sutil alrededor del reproductor */
+/* Soluciones específicas para problemas de visualización en iOS */
+@supports (-webkit-touch-callout: none) {
+  .musica__embed-container iframe {
+    /* Ajustes para dispositivos Apple */
+    min-height: 580px;
+  }
+}
+
+/* ==========================================================================
+   Apple Music Player - Advanced Liquid Glass Effect
+   ========================================================================== */
+
+/* Contenedor principal mejorado */
+.musica__embed-container {
+  position: relative;
+  width: 100%;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: var(--border-radius);
+  background: transparent;
+  overflow: visible;
+  z-index: 5;
+}
+
+/* Capa base con efecto de vidrio líquido */
+.musica__embed-container::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: calc(var(--border-radius) + 4px);
+  background: linear-gradient(135deg, 
+              rgba(255, 255, 255, 0.03) 0%, 
+              rgba(var(--color-neon-primary-rgb, 75, 0, 130), 0.05) 50%, 
+              rgba(var(--color-neon-secondary-rgb, 220, 220, 220), 0.03) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    inset 0 0 1px 1px rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: -1;
+  overflow: hidden;
+  transform: translateZ(0); /* Mejora rendimiento en algunos navegadores */
+}
+
+/* Efecto de brillo en los bordes */
 .musica__embed-container::after {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    border-radius: calc(var(--border-radius) + 2px);
-    background: transparent;
-    z-index: 4;
-    pointer-events: none;
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: linear-gradient(135deg,
+              rgba(255, 255, 255, 0.1) 0%,
+              transparent 50%,
+              rgba(255, 255, 255, 0.05) 100%);
+  border-radius: var(--border-radius);
+  pointer-events: none;
+  z-index: 10;
 }
 
-/* Mejora la transición al hacer hover sobre el reproductor */
-.musica__embed-container:hover iframe {
-    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5), 
-                0 0 15px rgba(var(--color-neon-primary), 0.3);
+/* El iframe necesita tener un fondo transparente */
+.musica__embed-container iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+  border-radius: var(--border-radius);
+  /* Usamos una máscara específica para recortar solo la parte del reproductor que queremos visible */
+  -webkit-mask-image: linear-gradient(to bottom,
+                      transparent 0%,
+                      black 5%,
+                      black 95%,
+                      transparent 100%);
+  mask-image: linear-gradient(to bottom,
+              transparent 0%,
+              black 5%,
+              black 95%,
+              transparent 100%);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+  /* Añadimos esta propiedad crucial para la ilusión de transparencia */
+  mix-blend-mode: screen;
+}
+
+/* Variables RGB para gradientes y efectos */
+:root {
+  --color-neon-primary-rgb: 75, 0, 130; /* Valores RGB para el Violet */
+  --color-neon-secondary-rgb: 220, 220, 220; /* Valores RGB para Ethereal Pink */
+  --color-accent-rgb: 229, 228, 226; /* Valores RGB para Cyan */
+}
+
+/* Efecto de reflejo de luz que se mueve con el cursor */
+.musica__embed-container:hover::before {
+  background: linear-gradient(135deg, 
+              rgba(255, 255, 255, 0.05) 0%, 
+              rgba(var(--color-neon-primary-rgb, 75, 0, 130), 0.08) 50%, 
+              rgba(var(--color-neon-secondary-rgb, 220, 220, 220), 0.05) 100%);
+}
+
+/* Animación sutil de brillo en los bordes */
+@keyframes glass-shine {
+  0%, 100% {
+    opacity: 0.3;
+    background-position: -100% 100%;
+  }
+  50% {
+    opacity: 0.5;
+    background-position: 200% 100%;
+  }
+}
+
+.musica__embed-container::after {
+  animation: glass-shine 8s linear infinite;
+  background-size: 200% 200%;
+}
+
+/* Ajustes responsivos mejorados */
+@media (max-width: 768px) {
+  .musica__embed-container iframe {
+    height: 500px;
+  }
+}
+
+@media (max-width: 480px) {
+  .musica__embed-container iframe {
+    height: 570px;
+  }
+}
+
+/* Añadimos una capa adicional para simular reflejos de vidrio */
+.musica__glass-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  border-radius: var(--border-radius);
+  background: linear-gradient(135deg, 
+              rgba(255, 255, 255, 0.05) 0%, 
+              transparent 50%);
+  z-index: 5;
+  mix-blend-mode: overlay;
+}
+
+/* ==========================================================================
+   Apple Music Player - Dark Liquid Glass Effect
+   ========================================================================== */
+
+/* Contenedor principal con efecto vidrio oscuro */
+.musica__embed-container {
+  position: relative;
+  width: 100%;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: var(--border-radius);
+  background: transparent;
+  overflow: visible;
+  z-index: 5;
+}
+
+/* Panel de vidrio oscuro líquido */
+.musica__embed-container::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: calc(var(--border-radius) + 5px);
+  background: linear-gradient(135deg, 
+              rgba(10, 10, 20, 0.7) 0%, 
+              rgba(20, 20, 40, 0.8) 50%, 
+              rgba(10, 10, 25, 0.7) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.4),
+    inset 0 0 1px 1px rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: -1;
+}
+
+/* Efecto de brillo en los bordes */
+.musica__embed-container::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: linear-gradient(135deg,
+              rgba(var(--color-neon-primary-rgb, 75, 0, 130), 0.15) 0%,
+              transparent 50%,
+              rgba(var(--color-accent-rgb, 229, 228, 226), 0.1) 100%);
+  border-radius: var(--border-radius);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Iframe con configuración para oscurecer solo partes específicas */
+.musica__embed-container iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+  border-radius: var(--border-radius);
+  background: transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+  /* Filtro que oscurece el blanco pero preserva colores vivos */
+  filter: contrast(1.1) brightness(0.9);
+}
+
+/* Overlay para dar efecto de vidrio oscuro, pero preservando colores */
+.musica__dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none; /* Permite interactuar con el reproductor */
+  border-radius: var(--border-radius);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  /* Modo de mezcla que oscurece pero preserva colores vivos */
+  mix-blend-mode: color-burn;
+  opacity: 0.7;
+  z-index: 3;
+}
+
+/* Efecto de reflejo de vidrio */
+.musica__glass-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  pointer-events: none;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  background: linear-gradient(to bottom,
+              rgba(255, 255, 255, 0.07) 0%,
+              transparent 100%);
+  z-index: 4;
+  opacity: 0.5;
+}
+
+/* Animación sutil de reflejo */
+@keyframes glass-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.7; }
+}
+
+.musica__glass-highlight {
+  animation: glass-pulse 8s ease-in-out infinite;
+}
+
+/* Efecto hover para dar vida al componente */
+.musica__embed-container:hover::before {
+  background: linear-gradient(135deg, 
+              rgba(15, 15, 30, 0.75) 0%, 
+              rgba(25, 25, 50, 0.85) 50%, 
+              rgba(15, 15, 35, 0.75) 100%);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.5),
+    inset 0 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Variables RGB para efectos de color */
+:root {
+  --color-neon-primary-rgb: 75, 0, 130; /* Valores para Violet */
+  --color-neon-secondary-rgb: 220, 220, 220; /* Valores para Ethereal Pink */
+  --color-accent-rgb: 229, 228, 226; /* Valores para Cyan */
+}
+
+/* Ajustes responsivos mejorados */
+@media (max-width: 768px) {
+  .musica__embed-container iframe {
+    height: 500px;
+  }
+}
+
+@media (max-width: 480px) {
+  .musica__embed-container iframe {
+    height: 570px;
+  }
+  
+  /* Optimizaciones para móviles */
+  .musica__embed-container::before {
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: calc(var(--border-radius) - 2px);
+  }
+}
+
+/* Soporte específico para iOS */
+@supports (-webkit-touch-callout: none) {
+  .musica__embed-container iframe {
+    min-height: 580px;
+  }
 }
