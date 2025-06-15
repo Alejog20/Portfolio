@@ -705,14 +705,35 @@ p {
 
 .contacto__boton-container {
     align-self: center;
-    margin: 1.5rem auto 0; /* Centrar horizontalmente con margen */
-    display: block; /* Asegurar que se comporte como bloque */
-    text-align: center; /* Centrar el contenido interno */
+    margin: 1.5rem auto 0; 
+    display: block; 
+    text-align: center;
+    width: 100%;
+    max-width: 300px; /* Define un ancho máximo para el botón */
+    border-radius: 50px;
+    padding: 2px;
+    position: relative;
+    background: linear-gradient(120deg, var(--color-neon-primary), var(--color-neon-secondary), var(--color-accent), var(--color-neon-primary));
+    background-size: 300% 300%;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
-
 .contacto__boton {
-    display: inline-block; /* Comportamiento en línea pero con capacidad de margen */
-    margin: 0 auto; /* Centrar horizontalmente */
+    display: block;
+    width: 100%;
+    background: var(--color-background);
+    color: var(--color-text-title);
+    text-decoration: none;
+    border-radius: 50px;
+    padding: 0.8rem 1.8rem;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: background var(--transition-speed) ease, text-shadow var(--transition-speed) ease;
 }
 
 /* ==========================================================================
@@ -1249,21 +1270,23 @@ body::before {
 
 /* --- Estilos para la Nueva Sección de Música --- */
 .musica__embed-container {
-    position: relative;
-    width: 100%;
-    max-width: 660px;
-    margin: 0 auto;
-    padding: 0;
-    border-radius: var(--border-radius);
-    background: transparent;
-    overflow: visible;
-    z-index: 2; /* Reducir z-index para evitar conflictos */
+  position: relative;
+  width: 100%;
+  max-width: 660px;  /* <- CAMBIAR ESTO */
+  margin: 0 auto;
+  padding: 0;
+  border-radius: var(--border-radius);
+  background: transparent;
+  overflow: visible;
+  z-index: 5;
 }
 
 .musica__embed-container iframe {
-    /* Invierte los colores (blanco a negro, negro a blanco) y luego
-       rota los tintes para que los colores de las carátulas se parezcan más a los originales */
-    border-radius: 12px;
+  width: 100%;
+  height: 450px;  /* <- CAMBIAR ESTO */
+  border: none;
+  border-radius: var(--border-radius);
+  /* otras propiedades... */
 }
 
 /* ==========================================================================
@@ -1420,14 +1443,14 @@ body::before {
 /* Mejora del iframe para que sea más transparente */
 .musica__embed-container iframe {
   width: 100%;
-  height: 450px;
+  height: 100%;  /* Cambia altura fija por 100% */
+  min-height: 450px;  /* Altura mínima para evitar que sea muy pequeño */
   border: none;
   border-radius: var(--border-radius);
-  background: transparent;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: none;
+  position: relative;
+  z-index: 2;
+  filter: contrast(1.1) brightness(0.9);
+  background-color: transparent;
 }
 
 /* Efectos de hover */
@@ -1541,10 +1564,7 @@ body::before {
               transparent 100%);
   transition: all 0.3s ease;
   position: relative;
-  z-index: 2;
-  /* Añadimos esta propiedad crucial para la ilusión de transparencia */
-  mix-blend-mode: screen;
-}
+  z-index: 2;}
 
 /* Variables RGB para gradientes y efectos */
 :root {
@@ -1588,7 +1608,7 @@ body::before {
 /* Ajustes responsivos mejorados */
 @media (max-width: 768px) {
   .musica__embed-container iframe {
-    height: 500px;
+    height: 100%;
   }
 }
 
@@ -1693,11 +1713,7 @@ body::before {
   bottom: 0;
   pointer-events: none; /* Permite interactuar con el reproductor */
   border-radius: var(--border-radius);
-  background: radial-gradient(
-    ellipse at center,
-    rgba(0, 0, 0, 0.2) 0%,
-    rgba(0, 0, 0, 0.4) 100%
-  );
+  background: transparent;
   /* Modo de mezcla que oscurece pero preserva colores vivos */
   mix-blend-mode: color-burn;
   opacity: 0.7;

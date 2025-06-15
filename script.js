@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (i < textToType.length) {
                     titleElement.textContent += textToType.charAt(i);
                     i++;
-                    setTimeout(type, 100);
+                    setTimeout(type, 180);
                 } else {
                     titleElement.classList.remove('typing-effect');
                     titleElement.classList.add('typing-done');
