@@ -1,0 +1,146 @@
+<svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="1000" height="600" fill="#f8f9fa" />
+  
+  <!-- Título del diagrama -->
+  <text x="500" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">
+    Interacciones del Formulario de Contacto
+  </text>
+  
+  <!-- Formulario en estado inicial -->
+  <g transform="translate(50, 100)">
+    <rect width="250" height="400" rx="15" fill="#f0f0f0" stroke="#333" stroke-width="2" />
+    <text x="125" y="30" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">
+      Estado Inicial
+    </text>
+    
+    <!-- Campos de formulario -->
+    <rect x="25" y="60" width="200" height="50" rx="5" fill="#222" stroke="#6600c5" stroke-width="1" opacity="0.8" />
+    <text x="45" y="90" font-family="Arial" font-size="14" fill="#757575">
+      Nombre
+    </text>
+    
+    <rect x="25" y="130" width="200" height="50" rx="5" fill="#222" stroke="#6600c5" stroke-width="1" opacity="0.8" />
+    <text x="45" y="160" font-family="Arial" font-size="14" fill="#757575">
+      Correo electrónico
+    </text>
+    
+    <rect x="25" y="200" width="200" height="50" rx="5" fill="#222" stroke="#6600c5" stroke-width="1" opacity="0.8" />
+    <text x="45" y="230" font-family="Arial" font-size="14" fill="#757575">
+      Asunto
+    </text>
+    
+    <rect x="25" y="270" width="200" height="70" rx="5" fill="#222" stroke="#6600c5" stroke-width="1" opacity="0.8" />
+    <text x="45" y="300" font-family="Arial" font-size="14" fill="#757575">
+      Mensaje
+    </text>
+    
+    <!-- Botón -->
+    <rect x="25" y="360" width="200" height="40" rx="20" fill="#6600c5" opacity="0.8" />
+    <text x="125" y="385" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#fff">
+      ENVIAR MENSAJE
+    </text>
+  </g>
+  
+  <!-- Formulario en estado focus -->
+  <g transform="translate(350, 100)">
+    <rect width="250" height="400" rx="15" fill="#f0f0f0" stroke="#333" stroke-width="2" />
+    <text x="125" y="30" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">
+      Estado Focus
+    </text>
+    
+    <!-- Campos de formulario -->
+    <rect x="25" y="60" width="200" height="50" rx="5" fill="#222" stroke="#14f195" stroke-width="2" opacity="0.8" />
+    <text x="45" y="70" font-family="Arial" font-size="12" fill="#14f195">
+      Nombre
+    </text>
+    <text x="45" y="90" font-family="Arial" font-size="14" fill="#e8eaf6">
+      John Doe
+    </text>
+    
+    <rect x="25" y="130" width="200" height="50" rx="5" fill="#222" stroke="#6600c5" stroke-width="1" opacity="0.8" />
+    <text x="45" y="160" font-family="Arial" font-size="14" fill="#757575">
+      Correo electrónico
+    </text>
+    
+    <rect x="25" y="200" width="200" height="50" rx="5" fill="#222" stroke="#6600c5" stroke-width="1" opacity="0.8" />
+    <text x="45" y="230" font-family="Arial" font-size="14" fill="#757575">
+      Asunto
+    </text>
+    
+    <rect x="25" y="270" width="200" height="70" rx="5" fill="#222" stroke="#6600c5" stroke-width="1" opacity="0.8" />
+    <text x="45" y="300" font-family="Arial" font-size="14" fill="#757575">
+      Mensaje
+    </text>
+    
+    <!-- Botón -->
+    <rect x="25" y="360" width="200" height="40" rx="20" fill="#6600c5" opacity="0.8" />
+    <text x="125" y="385" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#fff">
+      ENVIAR MENSAJE
+    </text>
+    
+    <!-- Flecha indicando movimiento de label -->
+    <path d="M 45 160 L 45 125 L 60 125" stroke="#14f195" stroke-width="2" fill="none" stroke-dasharray="5,3" />
+    <text x="75" y="125" font-family="Arial" font-size="12" fill="#14f195">
+      El label se mueve
+    </text>
+  </g>
+  
+  <!-- Formulario completado -->
+  <g transform="translate(650, 100)">
+    <rect width="250" height="400" rx="15" fill="#f0f0f0" stroke="#333" stroke-width="2" />
+    <text x="125" y="30" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">
+      Formulario Completado
+    </text>
+    
+    <!-- Campos de formulario -->
+    <rect x="25" y="60" width="200" height="50" rx="5" fill="#222" stroke="#6600c5" stroke-width="1" opacity="0.8" />
+    <text x="45" y="70" font-family="Arial" font-size="12" fill="#14f195">
+      Nombre
+    </text>
+    <text x="45" y="90" font-family="Arial" font-size="14" fill="#e8eaf6">
+      John Doe
+    </text>
+    
+    <rect x="25" y="130" width="200" height="50" rx="5" fill="#222" stroke="#6600c5" stroke-width="1" opacity="0.8" />
+    <text x="45" y="140" font-family="Arial" font-size="12" fill="#14f195">
+      Correo electrónico
+    </text>
+    <text x="45" y="160" font-family="Arial" font-size="14" fill="#e8eaf6">
+      john@example.com
+    </text>
+    
+    <rect x="25" y="200" width="200" height="50" rx="5" fill="#222" stroke="#6600c5" stroke-width="1" opacity="0.8" />
+    <text x="45" y="210" font-family="Arial" font-size="12" fill="#14f195">
+      Asunto
+    </text>
+    <text x="45" y="230" font-family="Arial" font-size="14" fill="#e8eaf6">
+      Consulta de proyecto
+    </text>
+    
+    <rect x="25" y="270" width="200" height="70" rx="5" fill="#222" stroke="#6600c5" stroke-width="1" opacity="0.8" />
+    <text x="45" y="280" font-family="Arial" font-size="12" fill="#14f195">
+      Mensaje
+    </text>
+    <text x="45" y="300" font-family="Arial" font-size="14" fill="#e8eaf6">
+      Me interesa un proyecto de...
+    </text>
+    
+    <!-- Botón hover -->
+    <rect x="25" y="360" width="200" height="40" rx="20" fill="#14f195" opacity="0.8" />
+    <text x="125" y="385" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#222">
+      ENVIAR MENSAJE
+    </text>
+  </g>
+  
+  <!-- CSS correspondiente -->
+  <g transform="translate(50, 520)">
+    <rect width="850" height="60" rx="5" fill="#272822" />
+    <text x="20" y="25" font-family="monospace" font-size="12" fill="#f8f8f2">
+      .contacto__input:focus + .contacto__label,
+    </text>
+    <text x="20" y="45" font-family="monospace" font-size="12" fill="#f8f8f2">
+      .contacto__input:not(:placeholder-shown) + .contacto__label { transform: translateY(-1.8rem); color: var(--text-secondary); }
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,163 @@
+<svg viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="1000" height="800" fill="#f8f9fa" />
+  
+  <!-- Título del diagrama -->
+  <text x="500" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">
+    Implementación de BEM en el Proyecto
+  </text>
+  
+  <!-- Estructura general BEM -->
+  <g transform="translate(50, 80)">
+    <rect width="900" height="180" rx="10" fill="#e8f4f8" stroke="#3498db" stroke-width="2" />
+    <text x="450" y="30" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#3498db">
+      Estructura BEM
+    </text>
+    
+    <!-- Block -->
+    <rect x="50" y="50" width="200" height="100" rx="5" fill="#fff" stroke="#3498db" stroke-width="2" />
+    <text x="150" y="75" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#3498db">
+      BLOQUE
+    </text>
+    <text x="150" y="100" font-family="Arial" font-size="14" text-anchor="middle" fill="#3498db">
+      Componente independiente
+    </text>
+    <text x="150" y="125" font-family="Arial" font-size="14" text-anchor="middle" fill="#3498db">
+      .hero, .sobre-mi
+    </text>
+    
+    <!-- Element -->
+    <rect x="350" y="50" width="200" height="100" rx="5" fill="#fff" stroke="#3498db" stroke-width="2" />
+    <text x="450" y="75" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#3498db">
+      ELEMENTO
+    </text>
+    <text x="450" y="100" font-family="Arial" font-size="14" text-anchor="middle" fill="#3498db">
+      Parte de un bloque
+    </text>
+    <text x="450" y="125" font-family="Arial" font-size="14" text-anchor="middle" fill="#3498db">
+      .hero__title, .sobre-mi__imagen
+    </text>
+    
+    <!-- Modifier -->
+    <rect x="650" y="50" width="200" height="100" rx="5" fill="#fff" stroke="#3498db" stroke-width="2" />
+    <text x="750" y="75" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#3498db">
+      MODIFICADOR
+    </text>
+    <text x="750" y="100" font-family="Arial" font-size="14" text-anchor="middle" fill="#3498db">
+      Variante o estado
+    </text>
+    <text x="750" y="125" font-family="Arial" font-size="14" text-anchor="middle" fill="#3498db">
+      .hero__button--contact
+    </text>
+  </g>
+  
+  <!-- Ejemplo concreto: Sección Hero -->
+  <g transform="translate(50, 290)">
+    <rect width="900" height="240" rx="10" fill="#ebf5eb" stroke="#27ae60" stroke-width="2" />
+    <text x="450" y="30" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#27ae60">
+      Ejemplo: Estructura de la Sección Hero
+    </text>
+    
+    <!-- HTML Structure -->
+    <rect x="30" y="50" width="400" height="170" rx="5" fill="#fff" stroke="#27ae60" stroke-width="2" />
+    <text x="230" y="70" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#27ae60">
+      HTML
+    </text>
+    
+    <text x="50" y="100" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      &lt;section class="hero"&gt;
+    </text>
+    <text x="70" y="120" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      &lt;div class="hero__robot-container"&gt;...&lt;/div&gt;
+    </text>
+    <text x="70" y="140" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      &lt;div class="hero__content"&gt;
+    </text>
+    <text x="90" y="160" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      &lt;h1 class="hero__title"&gt;...&lt;/h1&gt;
+    </text>
+    <text x="90" y="180" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      &lt;div class="hero__button-container--alt"&gt;
+    </text>
+    <text x="110" y="200" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      &lt;a class="hero__button--contact"&gt;...&lt;/a&gt;
+    </text>
+    
+    <!-- CSS Structure -->
+    <rect x="470" y="50" width="400" height="170" rx="5" fill="#fff" stroke="#27ae60" stroke-width="2" />
+    <text x="670" y="70" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#27ae60">
+      CSS
+    </text>
+    
+    <text x="490" y="100" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      .hero { /* Estilos del bloque */ }
+    </text>
+    <text x="490" y="120" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      .hero__robot-container { /* Estilos del elemento */ }
+    </text>
+    <text x="490" y="140" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      .hero__content { /* Estilos del elemento */ }
+    </text>
+    <text x="490" y="160" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      .hero__title { /* Estilos del elemento */ }
+    </text>
+    <text x="490" y="180" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      .hero__button-container--alt { /* Modificador */ }
+    </text>
+    <text x="490" y="200" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      .hero__button--contact { /* Modificador */ }
+    </text>
+  </g>
+  
+  <!-- Comparación: Antes vs Después -->
+  <g transform="translate(50, 560)">
+    <rect width="900" height="220" rx="10" fill="#feebef" stroke="#e74c3c" stroke-width="2" />
+    <text x="450" y="30" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#e74c3c">
+      Comparación: Antes vs Después
+    </text>
+    
+    <!-- Before BEM -->
+    <rect x="30" y="50" width="400" height="150" rx="5" fill="#fff" stroke="#e74c3c" stroke-width="2" />
+    <text x="230" y="70" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#e74c3c">
+      ANTES
+    </text>
+    
+    <text x="50" y="100" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      &lt;section class="hero"&gt;
+    </text>
+    <text x="70" y="120" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      &lt;div class="robot-container"&gt;...&lt;/div&gt;
+    </text>
+    <text x="70" y="140" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      &lt;div class="content"&gt;
+    </text>
+    <text x="90" y="160" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      &lt;h1 class="soluciones"&gt;...&lt;/h1&gt;
+    </text>
+    <text x="90" y="180" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      &lt;div class="tag-box2"&gt;&lt;a class="btn-contactar"&gt;
+    </text>
+    
+    <!-- After BEM -->
+    <rect x="470" y="50" width="400" height="150" rx="5" fill="#fff" stroke="#27ae60" stroke-width="2" />
+    <text x="670" y="70" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#27ae60">
+      DESPUÉS
+    </text>
+    
+    <text x="490" y="100" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      &lt;section class="hero"&gt;
+    </text>
+    <text x="510" y="120" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      &lt;div class="hero__robot-container"&gt;...&lt;/div&gt;
+    </text>
+    <text x="510" y="140" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      &lt;div class="hero__content"&gt;
+    </text>
+    <text x="530" y="160" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      &lt;h1 class="hero__title"&gt;...&lt;/h1&gt;
+    </text>
+    <text x="530" y="180" font-family="monospace" font-size="12" text-anchor="start" fill="#333">
+      &lt;div class="hero__button-container--alt"&gt;
+    </text>
+  </g>
+</svg>
