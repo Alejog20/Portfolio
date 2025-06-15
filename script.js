@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * MÓDULO 1: FONDO DE ESTRELLAS CON CANVAS
+     * Anima un campo de estrellas en 3D para el fondo de la página.
      */
     function setupStarfield() {
         const canvas = document.getElementById('starfield-canvas');
@@ -59,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * MÓDULO 2: EFECTO DE TECLADO (TYPEWRITER)
+     * Anima el título principal para que aparezca como si se estuviera escribiendo.
      */
     function setupTypewriter() {
         const titleElement = document.querySelector('.hero__title');
@@ -87,6 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * MÓDULO 3: EFECTO DE VIDRIO EN TARJETAS
+     * Crea un reflejo de luz que sigue al mouse sobre las tarjetas con la clase '.card'.
      */
     function setupGlassEffect() {
         const cards = document.querySelectorAll('.card');
@@ -101,10 +104,72 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /**
+     * MÓDULO 4: MANEJO DEL FORMULARIO DE CONTACTO
+     * Captura el envío del formulario, lo envía al backend y da feedback al usuario.
+     */
+    function setupContactForm() {
+        console.log("Módulo de formulario iniciado.");
+
+        const contactForm = document.getElementById('contact-form');
+        if (!contactForm) {
+            console.warn("Advertencia: No se encontró el formulario con el ID 'contact-form' en esta página.");
+            return;
+        }
+
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            console.log("Formulario enviado. Previniendo recarga.");
+
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Enviando...';
+
+            const formData = new FormData(contactForm);
+            const data = {
+                nombre: formData.get('nombre'),
+                email: formData.get('email'),
+                asunto: formData.get('asunto'),
+                mensaje: formData.get('mensaje')
+            };
+
+            console.log("Datos a enviar:", data);
+            
+            // Asegúrate de que esta URL sea la correcta para tu despliegue en Vercel
+            const apiUrl = 'https://portfolio-taupe-eight-43.vercel.app/api/contact';
+
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            })
+            .then(response => {
+                console.log("Respuesta del servidor recibida. Status:", response.status);
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error(`Error del servidor: ${response.status} ${response.statusText}`);
+                }
+            })
+            .then(result => {
+                console.log("Éxito:", result);
+                alert('¡Mensaje enviado exitosamente!');
+                contactForm.reset();
+            })
+            .catch(error => {
+                console.error("Error en la petición fetch:", error);
+                alert(`Hubo un error al enviar el mensaje: ${error.message}.`);
+            })
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Enviar mensaje';
+            });
+        });
+    }
+
     // --- INICIALIZACIÓN DE TODOS LOS MÓDULOS ---
     setupStarfield();
     setupTypewriter();
     setupGlassEffect();
-    
-    // Aquí puedes añadir otras funciones que necesites
+    setupContactForm(); // <-- Llamamos a la nueva función del formulario
 });
