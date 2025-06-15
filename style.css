@@ -1122,3 +1122,73 @@ body::before {
     from, to { border-color: transparent; }
     50% { border-color: var(--color-accent); }
 }
+
+/* ==========================================================================
+   V-FINAL-PLUS: Button Fix, Typewriter & Final Glass Effect
+   ========================================================================== */
+
+/* --- 1. SOLUCIÓN A BOTONES QUE NO FUNCIONAN --- */
+/* Esta es la corrección clave: le decimos a las capas de efectos de las
+   tarjetas que no intercepten los clics ni los hovers del mouse. */
+.card::before,
+.card::after {
+    pointer-events: none; 
+}
+
+/* --- 2. AJUSTE FINAL DE TARJETA PRINCIPAL --- */
+/* Contenedor de la tarjeta principal */
+.hero-card-container.card {
+    max-width: 700px;
+    margin: 2rem 0;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    padding: 0; /* Quitamos el padding del contenedor para que el texto se centre mejor */
+    /* Hereda el nuevo estilo de tarjeta de cristal que definimos a continuación */
+}
+
+/* Estilo del texto dentro de la tarjeta principal */
+.hero-card-text {
+    text-align: right;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text-body);
+    padding: 1.5rem; /* El padding ahora está solo en el texto */
+    margin: 0; 
+}
+
+/* --- 3. EFECTO DE VIDRIO LÍQUIDO DE ALTA FIDELIDAD --- */
+/* Esta regla sobreescribe el estilo .card anterior para un look más limpio */
+.card {
+    position: relative;
+    /* Fondo con transparencia casi total para máximo reflejo del fondo */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(1px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Sombra interior para dar grosor y una exterior para profundidad */
+    box-shadow: 
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.05),
+        0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    overflow: hidden;
+}
+
+/* --- 4. ESTILOS PARA EL EFECTO DE TECLADO --- */
+.hero__title.typing-effect {
+    border-right: 0.15em solid var(--color-accent); 
+    white-space: nowrap;
+    overflow: hidden;
+    animation: blinking-cursor 0.75s step-end infinite;
+}
+
+.hero__title.typing-done {
+    border-right: none;
+    white-space: normal;
+    overflow: visible;
+}
+
+@keyframes blinking-cursor {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--color-accent); }
+}
