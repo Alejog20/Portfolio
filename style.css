@@ -33,6 +33,28 @@
     --border-radius: 24px;
 }
 
+
+@keyframes twinkle-stars {
+    0%, 100% {
+        box-shadow: /* Re-paste the original box-shadow from .background::after */
+            -5vw 20vh 1px rgba(255,255,255, 0.8), 8vw 45vh 2px rgba(255,255,255, 1), 15vw 90vh 1px rgba(255,255,255, 0.8),
+            25vw 10vh 2px rgba(255,255,255, 1), 33vw 33vh 1px rgba(255,255,255, 0.8), 42vw 82vh 2px rgba(255,255,255, 1),
+            56vw 6vh 1px rgba(255,255,255, 0.8), 63vw 50vh 2px rgba(255,255,255, 1), 71vw 89vh 1px rgba(255,255,255, 0.8),
+            88vw 13vh 2px rgba(255,255,255, 1), 95vw 62vh 1px rgba(255,255,255, 0.8), 2vw 70vh 2px rgba(255,255,255, 1),
+            -15vw 80vh 1px rgba(255,255,255, 0.8), 28vw 55vh 2px rgba(255,255,255, 1), 45vw 19vh 1px rgba(255,255,255, 0.8),
+            65vw 95vh 2px rgba(255,255,255, 1), 83vw 23vh 1px rgba(255,255,255, 0.8), 92vw 72vh 2px rgba(255,255,255, 1);
+    }
+    50% {
+        box-shadow: /* Make some stars dimmer or brighter */
+            -5vw 20vh 1px rgba(255,255,255, 0.4), 8vw 45vh 2px rgba(255,255,255, 0.7), 15vw 90vh 1px rgba(255,255,255, 0.4),
+            25vw 10vh 2px rgba(255,255,255, 0.7), 33vw 33vh 1px rgba(255,255,255, 0.4), 42vw 82vh 2px rgba(255,255,255, 0.7),
+            56vw 6vh 1px rgba(255,255,255, 0.4), 63vw 50vh 2px rgba(255,255,255, 0.7), 71vw 89vh 1px rgba(255,255,255, 0.4),
+            88vw 13vh 2px rgba(255,255,255, 0.7), 95vw 62vh 1px rgba(255,255,255, 0.4), 2vw 70vh 2px rgba(255,255,255, 0.7),
+            -15vw 80vh 1px rgba(255,255,255, 0.4), 28vw 55vh 2px rgba(255,255,255, 0.7), 45vw 19vh 1px rgba(255,255,255, 0.4),
+            65vw 95vh 2px rgba(255,255,255, 0.7), 83vw 23vh 1px rgba(255,255,255, 0.4), 92vw 72vh 2px rgba(255,255,255, 0.7);
+    }
+}
+
 /* ==========================================================================
    Theme Variations
    ========================================================================== */
@@ -90,6 +112,77 @@ body.theme-galactic {
     --glass-background: rgba(5, 20, 5, 0.4);
     --glass-border: rgba(0, 255, 0, 0.2);
     --font-display: 'Exo 2', sans-serif;
+    --font-body: 'Syne', sans-serif;
+}
+
+
+/* Theme 5: Cosmic Lilac */
+body.theme-lilac {
+    --color-background: #191221;
+    --color-text-body: #D9D2E9;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #C5A5FF; /* Lilac */
+    --color-neon-secondary: #8E44AD; /* Deep Purple */
+    --color-accent: #E5E4E2; /* Platinum */
+    --glass-background: rgba(40, 30, 50, 0.4);
+    --glass-border: rgba(197, 165, 255, 0.2);
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Syne', sans-serif;
+}
+
+/* Theme 6: Supernova Pink */
+body.theme-supernova {
+    --color-background: #1A0B1A;
+    --color-text-body: #FAD0F4;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #FF00FF; /* Magenta */
+    --color-neon-secondary: #FA2D9A; /* Vibrant Pink */
+    --color-accent: #39FF14; /* Neon Green */
+    --glass-background: rgba(35, 15, 35, 0.45);
+    --glass-border: rgba(255, 0, 255, 0.25);
+    --font-display: 'Turret Road', cursive;
+    --font-body: 'Rajdhani', sans-serif;
+}
+
+/* Theme 7: Andromeda Violet */
+body.theme-andromeda {
+    --color-background: #0D0C1D;
+    --color-text-body: #C4C3E0;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #7F00FF; /* Violet */
+    --color-neon-secondary: #E100FF; /* Ethereal Pink */
+    --color-accent: #00E5FF; /* Cyan */
+    --glass-background: rgba(20, 18, 40, 0.4);
+    --glass-border: rgba(127, 0, 255, 0.2);
+    --font-display: 'Exo 2', sans-serif;
+    --font-body: 'Roboto Mono', monospace;
+}
+
+/* Theme 8: Orion Nebula */
+body.theme-orion {
+    --color-background: #100C18;
+    --color-text-body: #DDCDE5;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #B39DDB; /* Light Violet */
+    --color-neon-secondary: #F48FB1; /* Light Pink */
+    --color-accent: #A5D6A7; /* Light Green */
+    --glass-background: rgba(30, 25, 40, 0.5);
+    --glass-border: rgba(179, 157, 219, 0.25);
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
+}
+
+/* Theme 9: Platinum Comet */
+body.theme-platinum {
+    --color-background: #0E1116;
+    --color-text-body: #EAEAEA;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #DCDCDC; /* Platinum/Silver */
+    --color-neon-secondary: #9370DB; /* Medium Purple */
+    --color-accent: #32CD32; /* Lime Green */
+    --glass-background: rgba(30, 35, 40, 0.4);
+    --glass-border: rgba(220, 220, 220, 0.2);
+    --font-display: 'Rajdhani', sans-serif;
     --font-body: 'Syne', sans-serif;
 }
 
@@ -207,47 +300,51 @@ body {
     text-shadow: 0 0 4px var(--color-text-title), 0 0 10px var(--color-neon-primary);
 }
 
-
 /* ==========================================================================
-   Hero Section - REBUILT WITH CSS GRID
+   Hero Section - APPROACH C: ABSOLUTE POSITIONING
    ========================================================================== */
 .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 equal columns */
-    align-items: center;
-    gap: 2rem;
+    position: relative; /* Establish a positioning context */
     min-height: 100vh;
     width: 90%;
     max-width: 1400px;
     margin: 0 auto;
-    padding-top: 5rem; /* Give space from header */
+    padding-top: 5rem;
 }
 
 .hero__robot-container {
-    width: 100%;
-    height: 100%; /* Fills the grid cell */
-    min-height: 500px;
-    position: relative;
+    position: absolute;
+    left: -30%; /* Position from the left edge of .hero */
+    top: 50%;
+    transform: translateY(-50%); /* Vertically center */
+    width: 50%; /* Define a width */
+    height: 90vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .hero__robot-3d {
-    width: 140%; /* Can be oversized */
+    width: 140%;
     height: 140%;
     max-width: none;
     position: absolute;
-    /* No transforms needed, alignment is handled by the parent grid */
 }
 
 .hero__content {
+    position: absolute;
+    right: 0; /* Position from the right edge of .hero */
+    top: 50%;
+    transform: translateY(-50%); /* Vertically center */
+    width: 50%; /* Define a width */
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Aligned to the left of its column */
-    text-align: left; /* Text aligns left now */
+    align-items: flex-end; /* Align items to the right */
+    text-align: right; /* Align text to the right */
     z-index: 1;
 }
+
+/* Keep .hero__title, .hero__card, .hero__buttons as they are */
 
 .hero__title {
     font-family: var(--font-display);
@@ -563,4 +660,195 @@ body {
     .gradient-button-container {
         width: 100%;
     }
+    
 }
+/* ==========================================================================
+   V2.3 ADDITIONS - Interactive Effects & New Themes
+   ========================================================================== */
+
+/* --- 1. Interactive Mouse Spotlight Effect --- */
+.effect__spotlight {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(
+        circle at var(--mouse-x) var(--mouse-y),
+        rgba(255, 255, 255, 0.06) 0%, /* Brightest point */
+        rgba(255, 255, 255, 0.0) 20%  /* Fades out over 20% of the radius */
+    );
+    pointer-events: none; /* Ensures the layer doesn't block mouse clicks */
+    z-index: 3; /* Position it above the content but below the header */
+    transition: background 0.2s ease-out; /* Smooths the movement slightly */
+}
+
+/* --- 2. Enhanced Star Twinkling Logic --- */
+/* This new keyframe creates a more dramatic "shine and fade" effect */
+@keyframes shine-and-fade {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* We create a SECOND layer of stars using another pseudo-element.
+   This adds depth and variation to the twinkling effect. */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200vw;
+    height: 200vh;
+    background: transparent;
+    z-index: -2;
+    /* A different set of stars */
+    box-shadow: 10vw 80vh 2px #fff, 30vw 10vh 2px #fff, 55vw 45vh 2px #fff, 70vw 90vh 2px #fff, 95vw 25vh 2px #fff;
+    /* Apply the new animation with a different duration */
+    animation: shine-and-fade 7s ease-in-out infinite;
+}
+
+/* --- 3. Five NEW Unique Themes --- */
+
+/* Theme 10: "Antimatter" - High-tech and clean */
+body.theme-antimatter {
+    --color-background: #010409;
+    --color-text-body: #B0B8C4;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #33A3FF; /* Electric Blue */
+    --color-neon-secondary: #E5E7EB; /* Stark White/Grey */
+    --color-accent: #33FFD1;
+    --glass-background: rgba(10, 20, 30, 0.4);
+    --glass-border: rgba(51, 163, 255, 0.2);
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Roboto Mono', monospace;
+}
+
+/* Theme 11: "Quasar" - Intense and energetic */
+body.theme-quasar {
+    --color-background: #110C24;
+    --color-text-body: #D3CCF0;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #FF5722; /* Fiery Orange */
+    --color-neon-secondary: #00BCD4; /* Vibrant Cyan */
+    --color-accent: #FFEB3B; /* Yellow */
+    --glass-background: rgba(25, 20, 45, 0.5);
+    --glass-border: rgba(255, 87, 34, 0.25);
+    --font-display: 'Exo 2', sans-serif;
+    --font-body: 'Syne', sans-serif;
+}
+
+/* Theme 12: "Cryosleep" - Cold and futuristic */
+body.theme-cryosleep {
+    --color-background: #0E1C24;
+    --color-text-body: #A8C4D4;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #FFFFFF;
+    --color-neon-secondary: #74E3C8; /* Muted Mint Green */
+    --color-accent: #A3D9FF;
+    --glass-background: rgba(25, 40, 50, 0.4);
+    --glass-border: rgba(200, 220, 230, 0.2);
+    --font-display: 'Rajdhani', sans-serif;
+    --font-body: 'Syne', sans-serif;
+}
+
+/* Theme 13: "Cyberspace" - Classic hacker vibe */
+body.theme-cyberspace {
+    --color-background: #000000;
+    --color-text-body: #C0C0C0;
+    --color-text-title: #39FF14;
+    --color-neon-primary: #39FF14; /* Matrix Green */
+    --color-neon-secondary: #444444; /* Dark Grey */
+    --color-accent: #39FF14;
+    --glass-background: rgba(10, 25, 10, 0.3);
+    --glass-border: rgba(57, 255, 20, 0.2);
+    --font-display: 'Roboto Mono', monospace;
+    --font-body: 'Roboto Mono', monospace;
+}
+
+/* Theme 14: "Stardust" - Ethereal and magical */
+body.theme-stardust {
+    --color-background: #191A2F;
+    --color-text-body: #D3D4E5;
+    --color-text-title: #FFFFFF;
+    --color-neon-primary: #FDBFDE; /* Pastel Pink */
+    --color-neon-secondary: #C8B6FF; /* Lavender */
+    --color-accent: #FFD700; /* Gold */
+    --glass-background: rgba(30, 32, 55, 0.5);
+    --glass-border: rgba(253, 191, 222, 0.25);
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
+}
+
+/* ==========================================================================
+   V2.2 ADDITIONS - Layout, Effects & Responsive Fixes
+   ========================================================================== */
+
+/* --- 1. Activate Twinkling Stars --- */
+/* This rule targets the existing starfield and adds the twinkle animation to it. */
+.background::after {
+    animation: move-stars 200s linear infinite, 
+               twinkle-stars 5s ease-in-out infinite;
+}
+
+
+/* --- 3. Adjust Hero Content Width for Desktop --- */
+/* We are overriding the width of the hero content to give it more space. */
+.hero__content {
+    /* Make the content area wider, taking up about 60% of the hero section. */
+    width: 60%;
+}
+
+/* We also need to move the robot further left to make room for the wider text. */
+.hero__robot-container {
+    /* Pushing it more to the left prevents overlap with the new, wider text area.
+       Feel free to adjust this value as needed. */
+    left: -40%;
+}
+
+
+/* --- 4. Responsive Fixes for Hero Section --- */
+/* This media query specifically targets tablet and mobile screens to fix the hero layout. */
+@media (max-width: 992px) {
+    /* We reset the hero to behave like a normal section on smaller screens. */
+    .hero {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding-top: 8rem;
+        gap: 2rem;
+        /* Removing absolute positioning context for mobile */
+        position: relative; 
+    }
+
+    /* We take the robot and content out of absolute positioning so they can stack. */
+    .hero__robot-container,
+    .hero__content {
+        position: static; /* VERY IMPORTANT: This resets the absolute positioning. */
+        transform: none;  /* Reset any transform properties. */
+        width: 100%;      /* Allow them to take up the full width of the column. */
+        text-align: center;
+    }
+
+    /* We need to specifically reset the alignment for the content block. */
+    .hero__content {
+        order: 2; /* Content comes after the robot */
+        align-items: center;
+    }
+    
+    .hero__robot-container {
+        order: 1; /* Robot comes first */
+        height: 40vh;
+        min-height: 350px;
+    }
+
+    .hero__title {
+        font-size: clamp(2rem, 10vw, 3rem);
+    }
+    
+    /* Ensure the card text is centered on mobile. */
+    .hero__card {
+        text-align: center;
+    }
+}
+
+
