@@ -25,7 +25,7 @@
     /* --- Universal Settings --- */
     --glass-background: rgba(16, 16, 32, 0.4);
     --glass-border: rgba(212, 115, 236, 0.2);
-    --glass-blur: 12px;
+    --glass-blur: 8px;
     --neon-glow-primary: 0 0 15px var(--color-neon-primary);
     --neon-glow-secondary: 0 0 15px var(--color-neon-secondary);
     --transition-speed: 0.4s;
@@ -101,28 +101,13 @@ body.theme-void {
     --font-body: 'Roboto Mono', monospace;
 }
 
-/* Theme 4: Galactic Green */
-body.theme-galactic {
-    --color-background: #051405;
-    --color-text-body: #B8DAB8;
-    --color-text-title: #FFFFFF;
-    --color-neon-primary: #00FF00; /* Lime Green */
-    --color-neon-secondary: #ADFF2F; /* GreenYellow */
-    --color-accent: #FF00FF;
-    --glass-background: rgba(5, 20, 5, 0.4);
-    --glass-border: rgba(0, 255, 0, 0.2);
-    --font-display: 'Exo 2', sans-serif;
-    --font-body: 'Syne', sans-serif;
-}
-
-
 /* Theme 5: Cosmic Lilac */
 body.theme-lilac {
     --color-background: #191221;
     --color-text-body: #D9D2E9;
     --color-text-title: #FFFFFF;
-    --color-neon-primary: #C5A5FF; /* Lilac */
-    --color-neon-secondary: #8E44AD; /* Deep Purple */
+    --color-neon-primary: #02161A; /* Lilac */
+    --color-neon-secondary: #02161A; /* Deep Purple */
     --color-accent: #E5E4E2; /* Platinum */
     --glass-background: rgba(40, 30, 50, 0.4);
     --glass-border: rgba(197, 165, 255, 0.2);
@@ -132,26 +117,26 @@ body.theme-lilac {
 
 /* Theme 6: Supernova Pink */
 body.theme-supernova {
-    --color-background: #1A0B1A;
+    --color-background: #070007;
     --color-text-body: #FAD0F4;
     --color-text-title: #FFFFFF;
-    --color-neon-primary: #FF00FF; /* Magenta */
-    --color-neon-secondary: #FA2D9A; /* Vibrant Pink */
-    --color-accent: #39FF14; /* Neon Green */
-    --glass-background: rgba(35, 15, 35, 0.45);
-    --glass-border: rgba(255, 0, 255, 0.25);
+    --color-neon-primary: #66248d; /* Magenta */
+    --color-neon-secondary: #4B0082; /* Vibrant Pink */
+    --color-accent: #FFC300;
+    --glass-background:#00FFFFFF;
+    --glass-border: rgba(51, 255, 209, 0.2);;
     --font-display: 'Turret Road', cursive;
     --font-body: 'Rajdhani', sans-serif;
 }
 
 /* Theme 7: Andromeda Violet */
 body.theme-andromeda {
-    --color-background: #0D0C1D;
+    --color-background: #070007;
     --color-text-body: #C4C3E0;
     --color-text-title: #FFFFFF;
-    --color-neon-primary: #7F00FF; /* Violet */
-    --color-neon-secondary: #E100FF; /* Ethereal Pink */
-    --color-accent: #00E5FF; /* Cyan */
+    --color-neon-primary: #4B0082; /* Violet */
+    --color-neon-secondary: #DCDCDC; /* Ethereal Pink */
+    --color-accent: #E5E4E2; /* Cyan */
     --glass-background: rgba(20, 18, 40, 0.4);
     --glass-border: rgba(127, 0, 255, 0.2);
     --font-display: 'Exo 2', sans-serif;
@@ -423,7 +408,7 @@ body {
     /* Fondo casi transparente con un gradiente sutil para el reflejo */
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
     /* Efecto de desenfoque de fondo, la clave del glassmorphism */
-    backdrop-filter: blur(16px) saturate(150%);
+    backdrop-filter: blur(px) saturate(150%);
     -webkit-backdrop-filter: blur(16px) saturate(150%);
     
     border-radius: var(--border-radius);
@@ -1069,3 +1054,71 @@ body::before {
 }
 
 
+
+/* ==========================================================================
+   V-FINAL-PLUS: Button Fix, Typewriter & Final Glass Effect
+   ========================================================================== */
+
+/* --- 1. SOLUCIÓN A BOTONES QUE NO FUNCIONAN --- */
+/* Esta es la corrección clave: le decimos a las capas de efectos de las
+   tarjetas que no intercepten los clics ni los hovers del mouse. */
+.card::before,
+.card::after {
+    pointer-events: none; 
+}
+
+/* --- 2. AJUSTE FINAL DE TARJETA PRINCIPAL --- */
+/* Contenedor de la tarjeta principal */
+.hero-card-container {
+    max-width: 700px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    padding: 0; /* Quitamos el padding para que el texto se centre mejor */
+    /* Hereda el estilo de tarjeta de cristal que definimos a continuación */
+}
+
+/* Estilo del texto dentro de la tarjeta principal */
+.hero-card-text {
+    text-align: right;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text-body);
+    padding: 1.5rem; /* El padding ahora está solo en el texto */
+    margin: 0; /* Aseguramos que el párrafo no tenga márgenes propios */
+}
+
+/* --- 3. EFECTO DE VIDRIO LÍQUIDO DE ALTA FIDELIDAD --- */
+/* Esta regla sobreescribe el estilo .card anterior para un look más limpio */
+.card {
+    position: relative;
+    /* Fondo con transparencia casi total para máximo reflejo del fondo */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
+    overflow: hidden;
+}
+
+/* --- 4. ESTILOS PARA EL EFECTO DE TECLADO --- */
+.hero__title.typing-effect {
+    border-right: 0.15em solid var(--color-accent); 
+    white-space: nowrap;
+    overflow: hidden;
+    animation: blinking-cursor 0.75s step-end infinite;
+}
+
+.hero__title.typing-done {
+    border-right: none;
+    white-space: normal;
+    overflow: visible;
+}
+
+@keyframes blinking-cursor {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--color-accent); }
+}
