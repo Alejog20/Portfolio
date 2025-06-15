@@ -10,6 +10,7 @@ from pathlib import Path
 from sqlalchemy import create_engine, Column, Integer, String, Text
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+from typing import List # Importar List para el response_model
 
 load_dotenv()
 
@@ -64,15 +65,16 @@ app.add_middleware(
 )
 
 
-# --- Endpoints de la API ---
-@app.post("/api/contact")
+# --- Endpoints de la API (RUTAS CORREGIDAS) ---
+@app.post("/contact") # <-- CORRECCIÓN AQUÍ
 async def handle_contact_form(form: ContactForm):
     """
     Recibe datos del formulario y los guarda en la base de datos de Supabase.
     """
     db = SessionLocal()
     try:
-        db_contact = Contact(**form.dict())
+        # Usamos **form.model_dump() en Pydantic v2
+        db_contact = Contact(**form.model_dump())
         db.add(db_contact)
         db.commit()
         db.refresh(db_contact)
@@ -84,7 +86,7 @@ async def handle_contact_form(form: ContactForm):
         db.close()
 
 
-@app.get("/api/contacts", response_model=list[ContactResponse])
+@app.get("/contacts", response_model=List[ContactResponse]) # <-- CORRECCIÓN AQUÍ
 def get_contacts():
     """
     Obtiene todos los mensajes de contacto guardados en la base de datos.
@@ -98,5 +100,6 @@ def get_contacts():
 
 
 # --- Montaje de Archivos Estáticos ---
+# Esto solo se usa para desarrollo local y no afecta a Vercel.
 root_directory = Path(__file__).resolve().parent.parent
 app.mount("/", StaticFiles(directory=root_directory, html=True), name="static")
