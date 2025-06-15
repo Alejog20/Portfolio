@@ -22,15 +22,17 @@
     --font-display: 'Exo 2', sans-serif;
     --font-body: 'Roboto Mono', monospace;
 
-    /* --- Universal Settings --- */
-    --glass-background: rgba(16, 16, 32, 0.4);
-    --glass-border: rgba(212, 115, 236, 0.2);
-    --glass-blur: 8px;
-    --neon-glow-primary: 0 0 15px var(--color-neon-primary);
-    --neon-glow-secondary: 0 0 15px var(--color-neon-secondary);
-    --transition-speed: 0.4s;
-    --section-spacing: 8rem;
-    --border-radius: 24px;
+        /* --- Universal Settings --- */
+    --glass-background: rgba(255, 255, 255, 0.05);           /* Menos saturado, más aireado */
+    --glass-border: rgba(255, 255, 255, 0.12);                /* Inspirado en los paneles translúcidos de macOS */
+    --glass-blur: 16px;                                       /* Blur más fuerte, más realismo */
+    --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);           /* Sombra sutil y flotante */
+    --glass-inner-glow: inset 0 0 0.75px rgba(255, 255, 255, 0.4); /* Sutil realce interior */
+    --neon-glow-primary: 0 0 12px rgba(173, 255, 255, 0.4);    /* Más suave, menos saturado */
+    --neon-glow-secondary: 0 0 12px rgba(255, 204, 255, 0.3);  /* Paleta más suave y balanceada */
+    --transition-speed: 0.3s ease-in-out;
+    --section-spacing: 6rem;                                 /* Más compacto, más moderno */
+    --border-radius: 20px;    
 }
 
 
@@ -1217,7 +1219,6 @@ body::before {
 .musica__embed-container iframe {
     /* Invierte los colores (blanco a negro, negro a blanco) y luego
        rota los tintes para que los colores de las carátulas se parezcan más a los originales */
-    filter: invert(1) hue-rotate(180deg);
     border-radius: 12px;
 }
 
@@ -1246,10 +1247,7 @@ body::before {
     font-size: 1.1rem;
 }
 
-/* --- 2. SOLUCIÓN PARA BOTONES QUE NO FUNCIONAN --- */
 
-/* Hacemos que la capa de efectos de la tarjeta ignore el mouse,
-   permitiendo que los clics lleguen a los botones de abajo. */
 .card::before,
 .card::after {
     pointer-events: none;
@@ -1273,4 +1271,120 @@ body::before {
    El cambio de color ahora será gobernado por la transición suave de arriba. */
 .gradient-button-container:hover {
    animation: none; /* Desactivamos el parpadeo del gradiente al hacer hover */
+}
+
+/* ==========================================================================
+   Apple Music Player Styling - MEJORADO
+   ========================================================================== */
+
+/* Contenedor principal para la sección de música */
+.musica__section {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* Título de la sección con el mismo estilo que otros títulos */
+.musica__title {
+    font-family: var(--font-display);
+    color: var(--color-text-title);
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    text-shadow: 0 0 5px var(--color-accent), 0 0 15px var(--color-neon-secondary);
+}
+
+/* Contenedor mejorado para el embed de Apple Music */
+.musica__embed-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    z-index: 5;
+}
+
+/* Mejoras para el iframe de Apple Music */
+.musica__embed-container iframe {
+    /* Eliminamos los filtros que causaban problemas */
+    filter: none;
+    /* Aplicamos bordes redondeados para que coincida con el estilo */
+    border-radius: var(--border-radius);
+    /* Añadimos ancho responsive */
+    width: 100%;
+    /* Altura mínima para asegurar que todo sea visible */
+    min-height: 450px;
+    /* Añadimos efecto glassmorphic similar a tus cards */
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    /* Ajustamos el color de fondo para que coincida mejor con el tema */
+    background: transparent;
+    /* Transición suave al cargar */
+    transition: all 0.4s ease;
+}
+
+/* Overlay glassmorphic para integrar mejor con el fondo animado */
+.musica__embed-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Permite clics en el iframe */
+    background: linear-gradient(135deg, 
+                rgba(var(--color-neon-primary), 0.05), 
+                rgba(var(--color-neon-secondary), 0.03));
+    border-radius: var(--border-radius);
+    z-index: 6;
+}
+
+/* Ajustes responsive para dispositivos móviles */
+@media (max-width: 768px) {
+    .musica__embed-container {
+        width: 95%;
+    }
+    
+    .musica__embed-container iframe {
+        min-height: 500px; /* Altura aumentada para móviles para mostrar todo el contenido */
+        border-radius: 16px; /* Bordes ligeramente más pequeños en móvil */
+    }
+}
+
+/* Ajustes específicos para dispositivos muy pequeños */
+@media (max-width: 480px) {
+    .musica__embed-container iframe {
+        min-height: 570px; /* Más altura para asegurar que se vean todos los elementos */
+        border-radius: 12px;
+    }
+    
+    .musica__title {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Añadimos un brillo sutil alrededor del reproductor */
+.musica__embed-container::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: calc(var(--border-radius) + 2px);
+    background: transparent;
+    z-index: 4;
+    pointer-events: none;
+}
+
+/* Mejora la transición al hacer hover sobre el reproductor */
+.musica__embed-container:hover iframe {
+    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5), 
+                0 0 15px rgba(var(--color-neon-primary), 0.3);
 }
