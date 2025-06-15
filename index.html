@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alejandro García - Desarrollador Python</title>
-    <link rel="stylesheet" href="./style.css">
+    
+    <title>Alejandro García - Desarrollador Python & Automatización</title>
+    <meta name="description" content="Portafolio de Alejandro García, desarrollador especializado en Python, análisis de datos y automatización de procesos para mejorar la eficiencia empresarial.">
+    <meta property="og:title" content="Alejandro García - Desarrollador Python">
+    <meta property="og:description" content="Especialista en transformar ideas en soluciones digitales eficientes.">
+    <meta property="og:image" content="./img-sm.png"> <meta property="og:url" content="https://www.tu-sitio-web.com"> <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="./style.css"> 
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body class="page">
-    <!-- Spotlight effect -->
     <div class="effect__spotlight"></div>
     
     <div class="background">
-        <img class="background__image" src="./bg.jpg" alt="gradient">
+        <img class="background__image" src="./bg.jpg" alt="Fondo degradado abstracto">
     </div>
     
-    <!-- Header -->
     <header class="header">
         <nav class="header__nav">
             <a href="#sobre-mi" class="header__link">Sobre mí</a>
@@ -27,240 +31,146 @@
     </header>
     
     <main class="main">
-        <!-- Hero  -->
-        <section class="hero">
+        <section class="hero" id="hero">
             <div class="hero__robot-container">
                 <spline-viewer class="hero__robot-3d" url="https://prod.spline.design/ovm70akBh7nmtl9R/scene.splinecode"></spline-viewer>
             </div>
             <div class="hero__content">
-                <h1 class="hero__title">Soluciones digitales</h1>
-                <p class="hero__card">'Ayudo a compañías a transformar ideas en proyectos que tengan impacto real al disminuir costos, tiempo y de esta manera hacerlos mas eficientes'</p>
+                <h1 class="hero__title">Digital Premium Lab</h1>
+                <p class="hero__card card">'Ayudo a compañías a convertir sus ideas en proyectos efectivos que generan un impacto real, optimizando costos, reduciendo tiempos y mejorando la eficiencia operativa'</p>
                 <div class="hero__buttons">
-                    <div class="hero__button-container">
-                        <a href="#proyectos" class="hero__button">Ver Proyectos</a>
+                    <div class="hero__button-container gradient-button-container">
+                        <a href="#proyectos" class="hero__button gradient-button">Ver Proyectos</a>
                     </div>
-                    <div class="hero__button-container hero__button-container--alt">
-                        <a href="#contacto" class="hero__button">Contactar</a>
+                    <div class="hero__button-container gradient-button-container">
+                        <a href="#contacto" class="hero__button gradient-button">Contactar</a>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- Sobre Mí  -->
-        <section class="sobre-mi" id="sobre-mi">
-            <div class="sobre-mi__container">
-                <h2 class="sobre-mi__titulo">Sobre Mi</h2>
-                <img class="sobre-mi__imagen" src="./img-sm.png" alt="Sobre mí, imagen">
-                <div class="sobre-mi__contenido">
-                    <p class="sobre-mi__tarjeta">Me especializo en automatización, donde transformo procesos manuales repetitivos en soluciones eficientes que reducen tiempos operativos hasta un 90%. Mi enfoque data-driven junto con mi pregrado en Negocios Internacionales combina habilidades técnicas con visión de negocio para crear soluciones que generan valor  <br><br>
-                    Soy un entusiasta de las nuevas tecnologías, me encanta el cine, la fotografía y los videojuegos así como la música, Valoro mucho el tiempo que comparto con familia y amigos y el tiempo que también dedico a seguir aprendiendo.</p>
-                </div>
+        <section class="sobre-mi section" id="sobre-mi">
+            <h2 class="section__title">Sobre Mi</h2>
+            <img class="sobre-mi__imagen" src="./img-sm.png" alt="Retrato de Alejandro García">
+            <div class="sobre-mi__tarjeta card">
+            <p>
+                Soy Alejandro, desarrollador full stack con enfoque en automatización y análisis de datos.
+                Lo que más me apasiona es usar la tecnología para resolver problemas reales. Me especializo en transformar procesos manuales y repetitivos en soluciones digitales inteligentes que pueden reducir tiempos operativos hasta en un 90%, generando ahorros y mejorando la precisión en la toma de decisiones.
+                A través de herramientas como Python, Java, FastAPI, Power BI y tecnologías web como React, he desarrollado automatizaciones y dashboards que han tenido impacto directo en operaciones financieras y equipos de trabajo reales. Pero más allá del código, lo que me mueve es crear soluciones que le hagan la vida más fácil a las personas.
+            </p>
+            <p>
+                Mi formación en Negocios Internacionales con profundización en Big Data me da una perspectiva única: no solo entiendo los lenguajes de programación, también hablo el idioma de los negocios. Esto me permite conectar lo técnico con lo estratégico, enfocándome siempre en generar valor y eficiencia desde el primer sprint.
+                Además de mi trabajo, soy un apasionado por el cine, la fotografía, los videojuegos, la música y el ejercicio. Valoro mucho el tiempo que comparto con mi familia y amigos, y también el que dedico a seguir aprendiendo todos los días. Mi propósito es claro: usar la tecnología de forma creativa, eficiente y humana para generar impacto real en los proyectos que construyo.
+            </p>
             </div>
         </section>
         
-        <!-- Proyectos  -->
-        <section class="proyectos" id="proyectos">
-            <div class="proyectos__container">
-                <h2 class="proyectos__titulo">Proyectos Destacados</h2>
-                <div class="proyectos__grid">
-                    <article class="proyecto-card">
-                        <div class="proyecto-card__contenido">
-                            <h3 class="proyecto-card__titulo">Sistema de Automatización</h3>
-                            <p class="proyecto-card__descripcion">Reduje procesamiento de 20 a 2 horas semanales</p>
-                            <a href="#" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
-                        </div>
-                    </article>
-                    <article class="proyecto-card">
-                        <div class="proyecto-card__contenido">
-                            <h3 class="proyecto-card__titulo">Dashboard de KPIs</h3>
-                            <p class="proyecto-card__descripcion">Integración automática vía APIs</p>
-                            <a href="#" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
-                        </div>
-                    </article>
-                    <article class="proyecto-card">
-                        <div class="proyecto-card__contenido">
-                            <h3 class="proyecto-card__titulo">Validador de Facturas</h3>
-                            <p class="proyecto-card__descripcion">Reducción de 85% en errores de procesamiento</p>
-                            <a href="#" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
-                        </div>
-                    </article>
-                </div>
+        <section class="proyectos section" id="proyectos">
+            <h2 class="section__title">Proyectos Destacados</h2>
+            <div class="proyectos__grid">
+                <article class="proyecto-card card">
+                    <div class="proyecto-card__contenido">
+                        <h3 class="proyecto-card__titulo">Scraper de Amazon.com</h3>
+                        <p class="proyecto-card__descripcion">Sistema que usa diversas maneras y detecta la mejor forma para hacer scraping de algún término o producto del que se requiera hacer un análisis posterior</p>
+                        <a href="https://github.com/Alejog20/Ethical_amazon_scraper" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                    </div>
+                </article>
+                <article class="proyecto-card card">
+                    <div class="proyecto-card__contenido">
+                        <h3 class="proyecto-card__titulo">Generador de PDFs de facturación</h3>
+                        <p class="proyecto-card__descripcion">Este programa toma las lineas de un formato de MS Excel con información de facturación para posteriormente generar PDFs de cada linea de facturación</p>
+                        <a href="https://github.com/Alejog20/Invoice_generator_from_xlsx" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                    </div>
+                </article>
+                <article class="proyecto-card card">
+                    <div class="proyecto-card__contenido">
+                        <h3 class="proyecto-card__titulo">E-commerce Samay</h3>
+                        <p class="proyecto-card__descripcion">E-commerce con enfoque social, contiene funciones para login, administradores, validaciones con backend Java, conexion con base de datos SQL, frontend con VanillaJS</p>
+                        <a href="#" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                    </div>
+                </article>
+                <article class="proyecto-card card">
+                    <div class="proyecto-card__contenido">
+                        <h3 class="proyecto-card__titulo">Analizador de extractos bancarios (Bancolombia)</h3>
+                        <p class="proyecto-card__descripcion">Este proyecto utiliza python en todo su desarrollo, herramientas como Streamlit para el desarrollo del frontend y Pandas para la lectura; Análisis, gráficas y estadísticas con Matplotlib y Seaborn </p>
+                        <a href="https://github.com/Alejog20/Finance_tracker" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                    </div>
+                </article>
+                <article class="proyecto-card card">
+                    <div class="proyecto-card__contenido">
+                        <h3 class="proyecto-card__titulo">Sistema de análisis de tráfico de red local</h3>
+                        <p class="proyecto-card__descripcion">Con este proyecto podemos analizar via consola los puertos que actualmente estan encendidos en nuestra máquina, los procesos, paquetes y redes están accediendo a dichos puertos desde que direcciones IP</p>
+                        <a href="https://github.com/Alejog20/Finance_tracker" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                    </div>
+                </article>
             </div>
         </section>
         
-        <!-- Habilidades  -->
-        <section class="habilidades" id="habilidades">
-            <div class="habilidades__container">
-                <h2 class="habilidades__titulo">Habilidades</h2>
-                <div class="habilidades__grid">
-                    <div class="habilidad-card">
-                        <i class="ri-code-box-line habilidad-card__icono"></i>
-                        <h3 class="habilidad-card__titulo">Python</h3>
-                        <p class="habilidad-card__descripcion">Pandas, NumPy, Selenium, BeautifulSoup, Matplotlib</p>
-                    </div>
-                    <div class="habilidad-card">
-                        <i class="ri-bar-chart-box-line habilidad-card__icono"></i>
-                        <h3 class="habilidad-card__titulo">Análisis de Datos</h3>
-                        <p class="habilidad-card__descripcion">Power BI, Google Looker Studio, Excel</p>
-                    </div>
-                    <div class="habilidad-card">
-                        <i class="ri-robot-line habilidad-card__icono"></i>
-                        <h3 class="habilidad-card__titulo">Automatización</h3>
-                        <p class="habilidad-card__descripcion">ETL, Web Scraping, Tareas programadas</p>
-                    </div>
-                    <div class="habilidad-card">
-                        <i class="ri-database-2-line habilidad-card__icono"></i>
-                        <h3 class="habilidad-card__titulo">SQL</h3>
-                        <p class="habilidad-card__descripcion">Consultas complejas, optimización</p>
-                    </div>
-                    <div class="habilidad-card">
-                        <i class="ri-code-box-line habilidad-card__icono"></i>
-                        <h3 class="habilidad-card__titulo">Desarrollo FullStack</h3>
-                        <p class="habilidad-card__descripcion">Vanilla JS, Bootstrap, React, CSS, HTML5</p>
-                    </div>
+        <section class="habilidades section" id="habilidades">
+            <h2 class="section__title">Habilidades</h2>
+            <div class="habilidades__grid">
+                <div class="habilidad-card card">
+                    <i class="ri-code-box-line habilidad-card__icono"></i>
+                    <h3 class="habilidad-card__titulo">Desarrollo Backend</h3>
+                    <p class="habilidad-card__descripcion">Python, Java, SpringBoot, Pandas, NumPy, Selenium, Requests, BeautifulSoup, Matplotlib, Seaborn, Openpyxl</p>
+                </div>
+                <div class="habilidad-card card">
+                    <i class="ri-code-box-line habilidad-card__icono"></i>
+                    <h3 class="habilidad-card__titulo">Desarrollo Frontend</h3>
+                    <p class="habilidad-card__descripcion">Vanilla JS, CSS, Bootstrap, Tailwind, Matplotlib</p>
+                </div>
+                </div>
+                <div class="habilidad-card card">
+                    <i class="ri-code-box-line habilidad-card__icono"></i>
+                    <h3 class="habilidad-card__titulo">Data Analytics</h3>
+                    <p class="habilidad-card__descripcion">Python, Pandas, PowerBI, MS Excel, Looker Studio, SQLite, SQL, Web Scraping</p>
+                </div>
+                </div>
+        </section>
+
+        <section class="cv section" id="cv">
+            <h2 class="section__title">Curriculum Vitae</h2>
+            <div class="cv__tarjeta card">
+                <div class="cv__boton-container gradient-button-container">
+                    <a href="#" class="cv__boton gradient-button" download>Descargar CV Completo</a>
                 </div>
             </div>
         </section>
 
-        <!-- Curriculum Vitae -->
-        <section class="cv" id="cv">
-            <div class="cv__container">
-                <h2 class="cv__titulo">Curriculum Vitae</h2>
-                <div class="cv__contenido">
-                    <div class="cv__tarjeta">
-
-                        <div class="cv__seccion">
-                            <h3 class="cv__subtitulo">Educación</h3>
-                            <div class="cv__item">
-                                <h4 class="cv__item-titulo">Grado en Negocios Internacionales</h4>
-                                <p class="cv__item-detalle">Universidad Santo Tomás • 2020 - 2025</p>
-                                <p class="cv__item-descripcion">Profundización en análisis de datos para negocios internacionales & Big Data Tesis: Análisis del mercado internacional TIC para pymes con Machine Learning</p>
-                            </div>
-                            <div class="cv__item">
-                                <h4 class="cv__item-titulo">Diplomado en Programación</h4>
-                                <p class="cv__item-detalle">Universidad de Caldas • 2022</p>
-                                <p class="cv__item-descripcion">Profundización en análisis de datos para negocios internacionales & Big Data Tesis: Análisis del mercado internacional TIC para pymes con Machine Learning</p>
-                            </div>
+        <section class="contacto section" id="contacto">
+            <h2 class="section__title">Contacto</h2>
+            <div class="contacto__contenido card">
+                <h3 class="contacto__subtitulo">Envíame un mensaje</h3>
+                <div class="contacto__wrapper">
+                    <form class="contacto__form" action="https://formspree.io/f/TU_ID_UNICO" method="POST">
+                        <div class="contacto__grupo">
+                            <input type="text" id="nombre" name="nombre" class="contacto__input" placeholder=" " required>
+                            <label for="nombre" class="contacto__label">Nombre</label>
                         </div>
-                        
-                        <div class="cv__seccion">
-                            <h3 class="cv__subtitulo">Experiencia Profesional</h3>
-                            <div class="cv__item">
-                                <h4 class="cv__item-titulo">Analista de Facturación</h4>
-                                <p class="cv__item-detalle">Empresa Iron Mountain • 2022 - Presente</p>
-                                <p class="cv__item-descripcion">Desarrollo de soluciones de automatización que redujeron tiempos operativos en un 90%</p>
-                            </div>
+                        <div class="contacto__grupo">
+                            <input type="email" id="email" name="email" class="contacto__input" placeholder=" " required>
+                            <label for="email" class="contacto__label">Correo electrónico</label>
                         </div>
-                        
-                        <div class="cv__seccion">
-                            <h3 class="cv__subtitulo">Certificaciones</h3>
-                            <div class="cv__item">
-                                <h4 class="cv__item-titulo">Python for Data Science</h4>
-                                <p class="cv__item-detalle"> LinkedIn Learning • 2025</p>
-                            </div>
-
-                            <div class="cv__item">
-                                <h4 class="cv__item-titulo">Python Avanzado</h4>
-                                <p class="cv__item-detalle">LinkedIn Learning • 2025</p>
-                            </div>
-
-                            <div class="cv__item">
-                                <h4 class="cv__item-titulo">Python for Data Science</h4>
-                                <p class="cv__item-detalle"> LinkedIn Learning • 2025</p>
-                            </div>
-                            <!-- Puedes añadir más certificaciones aquí -->
+                        <div class="contacto__grupo">
+                            <input type="text" id="asunto" name="asunto" class="contacto__input" placeholder=" " required>
+                            <label for="asunto" class="contacto__label">Asunto</label>
                         </div>
-                        
-                        <div class="cv__seccion">
-                            <h3 class="cv__subtitulo">Idiomas</h3>
-                            <div class="cv__item">
-                                <h4 class="cv__item-titulo">Español</h4>
-                                <p class="cv__item-detalle">Nativo</p>
-                            </div>
-                            <div class="cv__item">
-                                <h4 class="cv__item-titulo">Inglés</h4>
-                                <p class="cv__item-detalle">Nivel C1</p>
-                            </div>
-                            <!-- Puedes añadir más idiomas aquí -->
+                        <div class="contacto__grupo">
+                            <textarea id="mensaje" name="mensaje" class="contacto__textarea" placeholder=" " required></textarea>
+                            <label for="mensaje" class="contacto__label">Mensaje</label>
                         </div>
-                        
-                        <div class="cv__boton-container">
-                            <a href="#" class="cv__boton" download>Descargar CV Completo</a>
+                        <div class="contacto__boton-container gradient-button-container">
+                            <button type="submit" class="contacto__boton gradient-button">Enviar mensaje</button>
                         </div>
-                    </div>
+                    </form>
+                    <div class="contacto__info">
+                        </div>
                 </div>
             </div>
         </section>
-
-
-                <!-- Contacto  -->
-        <section class="contacto" id="contacto">
-            <div class="contacto__container">
-                <h2 class="contacto__titulo">Contacto</h2>
-                <div class="contacto__contenido">
-                    <h3 class="contacto__subtitulo">Envíame un mensaje</h3>
-                    
-                    <div class="contacto__wrapper">
-                        <form class="contacto__form">
-                            <div class="contacto__grupo">
-                                <input type="text" id="nombre" class="contacto__input" placeholder=" ">
-                                <label for="nombre" class="contacto__label">Nombre</label>
-                            </div>
-                            
-                            <div class="contacto__grupo">
-                                <input type="email" id="email" class="contacto__input" placeholder=" ">
-                                <label for="email" class="contacto__label">Correo electrónico</label>
-                            </div>
-                            
-                            <div class="contacto__grupo">
-                                <input type="text" id="asunto" class="contacto__input" placeholder=" ">
-                                <label for="asunto" class="contacto__label">Asunto</label>
-                            </div>
-                            
-                            <div class="contacto__grupo">
-                                <textarea id="mensaje" class="contacto__textarea" placeholder=" "></textarea>
-                                <label for="mensaje" class="contacto__label">Mensaje</label>
-                            </div>
-                            
-                            <div class="contacto__boton-container">
-                                <button type="submit" class="contacto__boton">Enviar mensaje</button>
-                            </div>
-                        </form>
-                
-                        <div class="contacto__info">
-                            <h3 class="contacto__subtitulo">Información de contacto</h3>
-                            
-                            <div class="contacto__item">
-                                <i class="ri-mail-line contacto__icono"></i>
-                                <span>garciaalejandro2552@gmail.com</span>
-                            </div>
-                            
-                            <div class="contacto__item">
-                                <i class="ri-phone-line contacto__icono"></i>
-                                <span>+57 321 000 0000</span>
-                            </div>
-                            
-                            <div class="contacto__item">
-                                <i class="ri-map-pin-line contacto__icono"></i>
-                                <span>Bogotá, Colombia</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
+    </main>
     
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
-    <script>
-        // Efecto spotlight mejorado
-        const spotlight = document.querySelector('.effect__spotlight');
-        
-        document.addEventListener('mousemove', (e) => {
-            spotlight.style.left = e.pageX + 'px';
-            spotlight.style.top = e.pageY + 'px';
-        });
-    </script>
+    <script src="./script.js"></script>
 </body>
 </html>
