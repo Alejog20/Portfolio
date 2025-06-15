@@ -392,6 +392,13 @@ body {
     /* Hereda el estilo de tarjeta de cristal que definiremos a continuación */
 }
 
+.hero-card-container.card {
+    max-width: 650px; /* Ancho máximo para legibilidad */
+    margin: 1.5rem 0;
+    padding: 0; /* Quitamos el padding para que el texto se centre perfecto */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+}
+
 /* El texto solo se preocupa por su propio estilo */
 .hero-card-text {
     text-align: right;
@@ -400,6 +407,13 @@ body {
     color: var(--color-text-body);
     padding: 1rem; /* Un pequeño padding interno */
 }
+
+.hero__buttons {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
 
 
 /* --- 2. Efecto Vidrio Líquido/Cristal para TODAS las Tarjetas --- */
@@ -419,7 +433,6 @@ body {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     overflow: hidden;
 
-    /* Estilos generales que ya tenías */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -1191,4 +1204,73 @@ body::before {
 @keyframes blinking-cursor {
     from, to { border-color: transparent; }
     50% { border-color: var(--color-accent); }
+}
+
+/* --- Estilos para la Nueva Sección de Música --- */
+.musica__embed-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem; /* Un padding más ajustado para el reproductor */
+}
+
+.musica__embed-container iframe {
+    /* Invierte los colores (blanco a negro, negro a blanco) y luego
+       rota los tintes para que los colores de las carátulas se parezcan más a los originales */
+    filter: invert(1) hue-rotate(180deg);
+    border-radius: 12px;
+}
+
+/* ==========================================================================
+   V-FINAL-FIXES: Correcciones sin Refactorizar
+   ========================================================================== */
+
+/* --- 1. SOLUCIÓN PARA TARJETA PRINCIPAL Y SU TEXTO --- */
+
+/* Forzamos al contenedor a tener una altura automática y a centrar el texto.
+   Esto ANULA cualquier 'max-height' o 'height' anterior y soluciona el desbordamiento. */
+.hero-card-container.card {
+    height: auto; /* La tarjeta adapta su altura al contenido */
+    max-height: none; /* Anulamos la restricción de altura */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem; /* Un padding unificado para que se vea bien */
+}
+
+/* Nos aseguramos de que el texto no tenga márgenes que interfieran */
+.hero-card-text {
+    margin: 0;
+    padding: 1rem;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* --- 2. SOLUCIÓN PARA BOTONES QUE NO FUNCIONAN --- */
+
+/* Hacemos que la capa de efectos de la tarjeta ignore el mouse,
+   permitiendo que los clics lleguen a los botones de abajo. */
+.card::before,
+.card::after {
+    pointer-events: none;
+}
+
+/* Damos a los enlaces de los proyectos una posición relativa y un z-index
+   para asegurar que estén por encima de cualquier otro elemento de la tarjeta. */
+.proyecto-card__enlace {
+    position: relative;
+    z-index: 10;
+}
+
+/* --- 3. MEJORA DE HOVER EN BOTONES --- */
+
+/* Hacemos la transición de todos los botones más lenta y suave */
+.gradient-button, .proyecto-card__enlace {
+    transition: all 0.6s ease;
+}
+
+/* Quitamos la animación de gradiente en hover para que no sea tan agresiva.
+   El cambio de color ahora será gobernado por la transición suave de arriba. */
+.gradient-button-container:hover {
+   animation: none; /* Desactivamos el parpadeo del gradiente al hacer hover */
 }
