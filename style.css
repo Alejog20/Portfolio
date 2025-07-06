@@ -113,89 +113,100 @@ p {
     text-shadow: 0 0 5px var(--color-accent), 0 0 15px var(--color-neon-secondary);
 }
 
-/* ==========================================================================
-   Card Base Style (Glassmorphism)
-   ========================================================================== */
 .card {
     position: relative;
-    /* Fondo multicapa inspirado en Liquid Glass de Apple */
+    overflow: hidden; /* ¡Crítico! Oculta el escáner cuando está fuera de la tarjeta. */
+
+    /* 1. ADVANCED BACKGROUND: Using optimal opacity values from the research [cite: 67] */
     background: linear-gradient(135deg, 
         rgba(255, 255, 255, 0.1) 0%, 
-        rgba(255, 255, 255, 0.05) 50%, 
-        rgba(255, 255, 255, 0.08) 100%);
-    backdrop-filter: blur(2px) saturate(150%) contrast(110%);
-    -webkit-backdrop-filter: blur(16px) saturate(150%) contrast(110%);
-    border-radius: var(--border-radius);
+        rgba(255, 255, 255, 0.05) 100%);
     
-    /* Sistema de bordes con gradiente avanzado */
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* 2. ADVANCED BACKDROP-FILTER: Using saturate(180%) is a key best practice [cite: 26] */
+    backdrop-filter: blur(2px) saturate(180%) contrast(110%);
+    -webkit-backdrop-filter: blur(2px) saturate(180%) contrast(110%);
     
-    /* Sistema de sombras multicapa 2024-2025 */
+    /* 3. MULTI-LAYER SHADOW SYSTEM: For primary, secondary, and ambient depth [cite: 7, 8] */
     box-shadow: 
-        0 4px 8px rgba(0, 0, 0, 0.1),
-        0 8px 16px rgba(0, 0, 0, 0.05),
-        0 16px 32px rgba(0, 0, 0, 0.025),
-        inset 0 1px 1px rgba(255, 255, 255, 0.3),
-        inset 0 -1px 1px rgba(0, 0, 0, 0.05);
-    
+        0 4px 8px rgba(0, 0, 0, 0.1), /* Sombra principal [cite: 20] */
+        0 8px 16px rgba(0, 0, 0, 0.08), /* Profundidad secundaria [cite: 21] */
+        0 16px 32px rgba(0, 0, 0, 0.05), /* Sombra ambiental [cite: 22] */
+        inset 0 1px 1px rgba(255, 255, 255, 0.3); /* Resalte interno [cite: 23] */
+
+    border-radius: var(--border-radius);
     overflow: hidden;
     padding: clamp(1.2rem, 2vw + 0.8rem, 2.2rem);
-    display: flex;
-    flex-direction: column;
     
-    /* Optimización de performance */
+    /* 4. PERFORMANCE: Forcing GPU acceleration is critical for smooth animation [cite: 152, 158] */
     transform: translateZ(0);
     will-change: auto;
+    
+    /* 5. BORDER: We remove the simple border to replace it with the advanced masked border below */
+    border: 1px solid transparent; 
 }
 
-/* Efecto de resalte especular realista */
+/* 6. SPECULAR HIGHLIGHT: Simulates a natural light reflection on the top half [cite: 128] */
 .card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 50%;
-    background: linear-gradient(180deg, 
-        rgba(255, 255, 255, 0.15) 0%, 
-        rgba(255, 255, 255, 0.05) 30%,
-        transparent 100%);
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-    pointer-events: none;
-    z-index: 1;
+ display: none;
 }
 
 
+
+/* Este es nuestro nuevo escáner holográfico */
 .card::after {
     content: '';
     position: absolute;
-    inset: -1px;
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.4), 
-        rgba(255, 255, 255, 0.1));
-    border-radius: inherit;
-    mask: linear-gradient(#fff 0 0) content-box, 
-          linear-gradient(#fff 0 0);
-    mask-composite: xor;
-    -webkit-mask-composite: xor;
+    left: 0;
+    top: -100%; /* Comienza fuera de la vista, por encima de la tarjeta */
+    width: 100%;
+    z-index: 1; /* Se coloca sobre el fondo pero debajo del texto */
     pointer-events: none;
-    z-index: -1;
+
+    /* Gradiente que crea la línea de luz (puedes cambiar el color en --color-accent-rgb) */
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(var(--color-accent-rgb), 0.1) 40%,
+        rgba(var(--color-accent-rgb), 0.5) 50%,
+        rgba(var(--color-accent-rgb), 0.1) 60%,
+        transparent 100%
+    );
+
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
+/* Cuando el usuario pasa el mouse, se activa la animación del escáner */
 .card:hover::after {
+    top: -100%; /* Reinicia la posición en cada hover */
     opacity: 1;
+    animation: scan-effect 2s ease-out; /* Puedes cambiar la duración para hacerlo más rápido o lento */
 }
 
-/* Animación sutil para interactividad */
-.card:hover {
-    transform: translateY(-2px) translateZ(0);
-    box-shadow: 
-        0 6px 12px rgba(0, 0, 0, 0.15),
-        0 12px 24px rgba(0, 0, 0, 0.08),
-        0 24px 48px rgba(0, 0, 0, 0.04),
-        inset 0 1px 1px rgba(255, 255, 255, 0.4),
-        inset 0 -1px 1px rgba(0, 0, 0, 0.03);
-    transition: all 0.3s ease;
+/* Animación que mueve el escáner de arriba hacia abajo */
+@keyframes scan-effect {
+    0% {
+        top: -100%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1; /* Aparece rápidamente */
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        top: 100%; /* Termina su recorrido abajo */
+        opacity: 0; /* Se desvanece */
+    }
+}
+
+/*
+ * SOLUCIÓN: Aquí puedes modificar las dimensiones del escáner.
+ */
+.card::after {
+    /* Para cambiar el GROSOR (altura) de la línea, modifica este valor: */
+    height: 80px; /* Prueba con '40px' para una línea más sutil. */
 }
 
 /* ==========================================================================
@@ -206,18 +217,22 @@ p {
     justify-content: center;
     align-items: center;
     padding: 1rem 2rem;
-    position: fixed;
-    top: 0;
+    position: fixed; /* [cite: 269] with 'fixed' instead of 'sticky' for your layout */
+    top: 0; /* [cite: 270] */
     left: 0;
     width: 100%;
-    z-index: 1000;
-    /* Proper glass effect for the navbar */
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.08) 0%, 
-        rgba(255, 255, 255, 0.04) 100%);
+    z-index: 1000; /* [cite: 271] */
+    
+    /* Best-practice background for navigation  */
+    background: rgba(20, 18, 40, 0.4); /* Using a darker base that matches your theme */
+
+    /* Best-practice filter for navigation  */
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    
+    /* Best-practice border for navigation [cite: 269] */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+    
     box-shadow: 
         0 4px 12px rgba(0, 0, 0, 0.1),
         inset 0 1px 1px rgba(255, 255, 255, 0.2);
@@ -991,101 +1006,63 @@ p {
     text-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
-/* Reproductor con glass liquid perfeccionado */
-/* Updated Music Player Container - Mobile Optimized */
+/* ==========================================================================
+   MEJORA: REPRODUCTOR DE MÚSICA ADAPTATIVO Y PROPORCIONAL
+   ========================================================================== */
+
+/* Contenedor principal con efecto de vidrio mejorado */
 .musica__embed-container {
     position: relative;
     width: 100%;
-    max-width: 660px;
-    margin: 0 auto;
+    max-width: 800px; /* Aumentamos el ancho máximo para una apariencia más grande */
+    margin: 2rem auto;
     border-radius: var(--border-radius);
-    padding: 8px;
-    
-    /* Simplified background for better mobile performance */
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.06) 0%, 
-        rgba(255, 255, 255, 0.02) 50%, 
-        rgba(255, 255, 255, 0.04) 100%);
-    
-    /* Simplified backdrop filter for mobile compatibility */
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    
-    /* Reduced shadow complexity for mobile performance */
-    box-shadow: 
-        0 8px 25px rgba(0, 0, 0, 0.3),
-        0 2px 8px rgba(0, 0, 0, 0.15),
-        inset 0 1px 2px rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 16px; /* Aumentamos el padding para un marco más pronunciado */
+
+    /* Glassmorphism de alta calidad */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(15px) saturate(160%);
+    -webkit-backdrop-filter: blur(15px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
-/* Updated iframe styling with mobile responsiveness */
+/* El iframe del reproductor con altura adaptable */
 .musica__embed-container iframe {
     width: 100%;
-    /* Responsive height instead of fixed */
-    height: clamp(300px, 50vw, 450px);
+    display: block;
     border: none;
-    border-radius: calc(var(--border-radius) - 4px);
-    position: relative;
-    z-index: 2;
-    
-    /* Simplified filters for mobile performance */
-    filter: brightness(0.9) contrast(1.05);
-    
-    /* Simplified shadows */
-    box-shadow: 
-        inset 0 1px 4px rgba(0, 0, 0, 0.2),
-        inset 0 -1px 4px rgba(0, 0, 0, 0.1);
+    border-radius: calc(var(--border-radius) - 8px); /* Se ajusta al padding del contenedor */
+
+    /*
+     * SOLUCIÓN: Usamos clamp() para una altura fluida y proporcional.
+     * Esto significa:
+     * - Altura mínima de 450px en pantallas pequeñas.
+     * - Altura ideal del 60% del ancho de la ventana (60vw).
+     * - Altura máxima de 600px en pantallas grandes.
+     */
+    height: clamp(450px, 60vw, 600px);
 }
 
-/* Mobile-specific optimizations */
+/* Ajustes para tabletas (hasta 768px) */
 @media (max-width: 768px) {
-    .musica__embed-container {
-        /* Further simplify effects on mobile */
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        padding: 6px;
-        
-        /* Simplified shadow for mobile */
-        box-shadow: 
-            0 4px 15px rgba(0, 0, 0, 0.25),
-            inset 0 1px 1px rgba(255, 255, 255, 0.1);
-    }
-    
     .musica__embed-container iframe {
-        /* Smaller height on mobile for better UX */
-        height: clamp(250px, 45vw, 350px);
-        
-        /* Remove intensive effects on mobile */
-        filter: brightness(0.95);
-        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
-    }
-    
-    /* Disable heavy effects on very small screens */
-    .musica__embed-container::before {
-        display: none;
-    }
-    
-    .musica__embed-container::after {
-        opacity: 0.5;
+        /* Reducimos la altura en tabletas para que no ocupe toda la pantalla */
+        height: clamp(400px, 55vw, 500px);
     }
 }
 
+/* Ajustes para móviles (hasta 480px) */
 @media (max-width: 480px) {
     .musica__embed-container {
-        /* Minimal effects on small mobile screens */
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        padding: 4px;
+        padding: 8px; /* Reducimos el marco en pantallas pequeñas */
     }
-    
+
     .musica__embed-container iframe {
-        height: clamp(220px, 40vw, 280px);
-        filter: none; /* Remove all filters on small screens */
-        box-shadow: none; /* Remove shadows for better performance */
+        /* Reducimos aún más para una mejor experiencia en móviles */
+        height: 380px;
     }
 }
-
 /* --- Contact Form --- */
 .contacto__contenido {
     max-width: 800px;
@@ -1539,7 +1516,9 @@ p {
 }
 
 /* 3. CRÍTICO: Ocultar flechas del carrusel en el área del hero/robot */
-.hero .carousel-nav,
+.hero .carousel-nav {
+    display: none !important;
+}
 .hero__robot-container .carousel-nav {
     display: none !important;
     opacity: 0 !important;
@@ -2026,4 +2005,21 @@ p {
         transition: none;
         transform: none;
     }
+}
+
+
+/* ==========================================================================
+   SOLUCIÓN DEFINITIVA PARA LA FLECHA REBELDE
+   ========================================================================== */
+/*
+  Ocultamos con máxima prioridad cualquier flecha de carrusel
+  que intente aparecer dentro de la sección .hero.
+*/
+.hero .carousel-nav,
+.hero .carousel-nav--prev,
+.hero .carousel-nav--next {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
 }

@@ -663,3 +663,20 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('🗑️ Flechas del hero eliminadas del DOM');
     }, 1000);
 });
+
+
+/* MÓDULO DE LIMPIEZA FINAL */
+document.addEventListener('DOMContentLoaded', () => {
+    // Esperamos un segundo para asegurarnos de que todos los scripts han corrido
+    setTimeout(() => {
+        // Seleccionamos CUALQUIER flecha de carrusel dentro del hero
+        const rogueArrows = document.querySelectorAll('.hero .carousel-nav');
+        
+        if (rogueArrows.length > 0) {
+            console.log(`[Limpieza] Encontradas y eliminadas ${rogueArrows.length} flechas rebeldes.`);
+            rogueArrows.forEach(arrow => {
+                arrow.remove(); // ¡Eliminada del DOM para siempre!
+            });
+        }
+    }, 1000);
+});
