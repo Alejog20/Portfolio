@@ -561,14 +561,23 @@ p {
 /* --- Proyectos --- */
 .proyectos__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); /* Aumentado de 340px a 380px */
     gap: 2.5rem;
 }
 
+.proyecto-card {
+    position: relative;
+    overflow: visible; /* CAMBIADO: de hidden a visible para que el botón sea visible */
+}
+
 .proyecto-card__contenido {
-    flex-grow: 1; /* Allows the card to fill vertical space */
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    min-height: 450px;
+    position: relative;
+    padding-bottom: 80px; /* AUMENTADO: de 70px a 80px para más espacio */
 }
 
 .proyecto-card__titulo {
@@ -579,33 +588,51 @@ p {
     margin-bottom: 1rem;
 }
 
-/* Párrafos en tarjetas de proyectos */
 .proyecto-card__descripcion {
     text-align: justify;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
     flex-grow: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6; /* REDUCIDO: de 7 a 6 líneas para dar más espacio al botón */
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    padding: 0 10px; /* AÑADIDO: padding lateral para mejor legibilidad */
 }
+
 .proyecto-card__enlace {
-    /* UNIFIED BUTTON STYLE */
-    margin-top: auto; /* Pushes itself to the bottom of the flex container */
-    text-decoration: none;
+    position: absolute;
+    bottom: 20px;
+    left: 20px; /* CAMBIADO: simplificado */
+    right: 20px; /* CAMBIADO: simplificado */
+    width: auto; /* CAMBIADO: de calc() a auto */
+    margin: 0; /* CAMBIADO: simplificado */
+    text-align: center;
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    z-index: 100;
     color: var(--color-text-body);
     font-family: var(--font-display);
     border: 2px solid var(--glass-border);
-    padding: 0.7rem 1.5rem;
-    border-radius: 50px;
-    text-align: center;
+    text-decoration: none;
     text-transform: uppercase;
     font-weight: 700;
-    transition: all var(--transition-speed) ease;
+    background: var(--color-background);
+    display: block;
+    pointer-events: auto; /* AÑADIDO: asegura que sea clickeable */
+    transition: all 0.3s ease; /* AÑADIDO: transición suave */
 }
+
 
 .proyecto-card__enlace:hover {
     background-color: var(--color-neon-primary);
     border-color: var(--color-neon-primary);
-    color: var(--color-background);
-    text-shadow: none;
+    color: #E5E4E2; /* Color plateado base */
+    text-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.8),
+        0 0 10px rgba(229, 228, 226, 0.5); /* Efecto cromado con brillo */
     box-shadow: var(--neon-glow-primary);
+    letter-spacing: 1.5px; /* Ligero espaciado para efecto futurista */
 }
 
 
@@ -1004,7 +1031,7 @@ html {
 /* --- 4. Adjust Card Padding for Better Scaling --- */
 /* Using 'rem' for padding ensures the cards scale proportionally with the font size. */
 .card {
-    padding: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+    padding: clamp(1.2rem, 2vw + 0.8rem, 2.2rem); /* Ligeramente reducido para más espacio de contenido */
 }
 
 /* ==========================================================================
