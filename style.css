@@ -557,82 +557,152 @@ p {
     margin-bottom: 0;
 }
 
-
-/* --- Proyectos --- */
+/* Projects Section*/
 .proyectos__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); /* Aumentado de 340px a 380px */
-    gap: 2.5rem;
+    /* Start with single column - like stacking books vertically */
+    grid-template-columns: 1fr;
+    gap: 3rem; /* Increased spacing between cards for better visual breathing room */
+    align-items: stretch; /* Ensures all cards in a row have equal height */
 }
 
+/* Tablet layout - maintains single column for optimal readability */
+@media (min-width: 768px) {
+    .proyectos__grid {
+        gap: 3.5rem; /* Even more generous spacing on larger screens */
+    }
+}
+
+/* Desktop layout - two columns provide perfect balance of showcase space and overview */
+@media (min-width: 1200px) {
+    .proyectos__grid {
+        grid-template-columns: repeat(2, 1fr); /* Two wide columns instead of three cramped ones */
+        gap: 4rem; /* Maximum breathing room for professional presentation */
+    }
+}
+
+/* Force exactly 3 columns on laptop screens and larger */
+@media (min-width: 1024px) {
+    .proyectos__grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+}
+
+/* Cards now maintain consistent heights automatically */
 .proyecto-card {
     position: relative;
-    overflow: visible; /* CAMBIADO: de hidden a visible para que el botón sea visible */
+    overflow: visible;
+    height: 100%; /* This ensures all cards in a row have the same height */
+    display: flex;
+    flex-direction: column;
+    min-height: 500px; /* Slightly smaller but more consistent */
 }
 
 .proyecto-card__contenido {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     height: 100%;
-    min-height: 450px;
-    position: relative;
-    padding-bottom: 80px; /* AUMENTADO: de 70px a 80px para más espacio */
+    padding: 2rem; /* Fixed padding instead of responsive - provides consistent spacing */
+    gap: 1.5rem; /* This creates automatic spacing between all child elements */
 }
 
 .proyecto-card__titulo {
     font-family: var(--font-display);
     color: var(--color-text-title);
-    font-size: 1.6rem;
+    font-size: 1.6rem; /* Slightly smaller for better consistency */
+    line-height: 1.2;
     text-shadow: 0 0 8px var(--color-neon-secondary);
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
+    display: flex;
+    align-items: flex-start;
 }
 
 .proyecto-card__descripcion {
     text-align: justify;
-    margin-bottom: 0;
-    flex-grow: 1;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 6; /* REDUCIDO: de 7 a 6 líneas para dar más espacio al botón */
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-    padding: 0 10px; /* AÑADIDO: padding lateral para mejor legibilidad */
+    flex-grow: 1; /* Takes up available space between title and button */
+    margin-bottom: 0; /* Using gap instead of individual margins */
+    font-size: 1rem; /* Slightly larger for better readability */
+    line-height: 1.6; /* More generous line spacing for easier reading */
+    /* Remove all the line-clamp properties to show full content */
+    display: block;
+    overflow: visible;
 }
 
+/* COMPLETELY NEW BUTTON APPROACH - No more absolute positioning */
 .proyecto-card__enlace {
-    position: absolute;
-    bottom: 20px;
-    left: 20px; /* CAMBIADO: simplificado */
-    right: 20px; /* CAMBIADO: simplificado */
-    width: auto; /* CAMBIADO: de calc() a auto */
-    margin: 0; /* CAMBIADO: simplificado */
+    /* KEY CHANGE: position is now relative instead of absolute */
+    position: relative;
+    
+    /* These properties make the button behave like a normal element in the flow */
+    align-self: stretch; /* Takes full width of its container */
+    margin-top: auto; /* This pushes the button to the bottom automatically */
+    
+    /* Visual styling remains similar */
     text-align: center;
-    padding: 0.7rem 1.5rem;
+    padding: 1rem 2rem;
     border-radius: 50px;
-    z-index: 100;
     color: var(--color-text-body);
     font-family: var(--font-display);
+    font-size: 1rem;
     border: 2px solid var(--glass-border);
     text-decoration: none;
     text-transform: uppercase;
     font-weight: 700;
+    letter-spacing: 1px;
     background: var(--color-background);
-    display: block;
-    pointer-events: auto; /* AÑADIDO: asegura que sea clickeable */
-    transition: all 0.3s ease; /* AÑADIDO: transición suave */
+    
+    /* Interaction properties */
+    transition: all 0.3s ease;
+    cursor: pointer;
+    z-index: 10;
+    pointer-events: auto;
 }
 
-
+/* Keep your existing hover effect */
 .proyecto-card__enlace:hover {
     background-color: var(--color-neon-primary);
     border-color: var(--color-neon-primary);
-    color: #E5E4E2; /* Color plateado base */
-    text-shadow: 
-        0 0 5px rgba(255, 255, 255, 0.8),
-        0 0 10px rgba(229, 228, 226, 0.5); /* Efecto cromado con brillo */
+    color: var(--color-text-title);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
     box-shadow: var(--neon-glow-primary);
-    letter-spacing: 1.5px; /* Ligero espaciado para efecto futurista */
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.proyecto-card::before,
+.proyecto-card::after {
+    pointer-events: none; /* AÑADIDO: evita bloqueo de clicks */
+}
+
+
+/* Responsive refinements for different screen sizes */
+@media (max-width: 1023px) {
+    .proyectos__grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .proyectos__grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 1.5rem;
+    }
+    
+    .proyecto-card__titulo {
+        font-size: 1.3rem;
+        min-height: auto; /* Remove fixed height on mobile */
+    }
+    
+    .proyecto-card__descripcion {
+        -webkit-line-clamp: 6; /* Allow more text on mobile */
+    }
+}
+
+@media (min-width: 1024px) {
+    .proyecto-card {
+        min-height: 450px; /* Restore larger height on big screens */
+    }
 }
 
 
