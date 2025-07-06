@@ -479,14 +479,21 @@
             <h2 class="section__title">Música que me mueve</h2>
             <div class="musica__embed-container">
                 <iframe 
-                    allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
+                    allow="autoplay; encrypted-media; fullscreen; clipboard-write" 
                     frameborder="0" 
-                    height="450" 
-                    style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" 
-                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
+                    style="width:100%;overflow:hidden;border-radius:10px;" 
+                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                    loading="lazy"
+                    title="Apple Music Playlist - EDM Collection"
                     src="https://embed.music.apple.com/co/playlist/edm2/pl.u-DdANN9oC0e2m2Ka">
                 </iframe>
-                <div class="musica__glass-highlight"></div>
+                
+                <!-- Fallback message for devices where embed doesn't work -->
+                <noscript>
+                    <div style="text-align: center; padding: 2rem; color: var(--color-text-body);">
+                        <p>Para escuchar mi playlist, <a href="https://music.apple.com/co/playlist/edm2/pl.u-DdANN9oC0e2m2Ka" target="_blank" style="color: var(--color-neon-primary);">abre Apple Music</a></p>
+                    </div>
+                </noscript>
             </div>
         </section>
 
