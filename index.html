@@ -8,7 +8,9 @@
     <meta name="description" content="Portafolio de Alejandro García, desarrollador especializado en Python, análisis de datos y automatización de procesos para mejorar la eficiencia empresarial.">
     <meta property="og:title" content="Alejandro García - Desarrollador Python">
     <meta property="og:description" content="Especialista en transformar ideas en soluciones digitales eficientes.">
-    <meta property="og:image" content="assets/img-sm.png"> <meta property="og:url" content="https://www.tu-sitio-web.com"> <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <meta property="og:image" content="assets/img-sm.png">
+    <meta property="og:url" content="https://www.tu-sitio-web.com">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="./style.css"> 
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
@@ -35,14 +37,14 @@
     <main class="main">
         <section class="hero" id="hero">
             <div class="hero__robot-container">
-                <spline-viewer class="hero__robot-3d" url="https://prod.spline.design/ovm70akBh7nmtl9R/scene.splinecode"></spline-viewer>
+                <spline-viewer class="hero__robot-3d" url="https://prod.spline.design/iEpgX0ZDoR5b6lWb/scene.splinecode"></spline-viewer>
             </div>
             <div class="hero__content">
                 <h1 class="hero__title">Haz que tu idea cobre vida en la web...</h1>
-                    <div class= "hero-card-container card">
-                        <p class="hero-card-text">Ayudo a compañías a convertir sus ideas en proyectos efectivos que generan un impacto real, optimizando costos, reduciendo tiempos y mejorando la eficiencia operativa</p>
-                    </div>                
-                    <div class="hero__buttons">
+                <div class="hero-card-container card">
+                    <p class="hero-card-text">Ayudo a compañías a convertir ideas en proyectos efectivos que generan un impacto real, optimizando costos, reduciendo tiempos y mejorando la eficiencia operativa</p>
+                </div>                
+                <div class="hero__buttons">
                     <div class="hero__button-container gradient-button-container">
                         <a href="#proyectos" class="hero__button gradient-button">Ver Proyectos</a>
                     </div>
@@ -57,67 +59,278 @@
             <h2 class="section__title">Sobre Mi</h2>
             <img class="sobre-mi__imagen" src="./assets/img-sm.png" alt="Retrato de Alejandro García">
             <div class="sobre-mi__tarjeta card">
-            <p>
-                Lo que me mueve es transformar ideas en soluciones digitales con impacto. Como desarrollador full stack, me especializo en automatizar procesos y analizar datos para que las empresas sean más eficientes, precisas y ágiles, logrando reducir costos operativos de forma significativa.
-            </p>
-            <p>
-                Con herramientas como Python, Java y Power BI, he construido sistemas que han optimizado operaciones financieras y flujos de trabajo reales. Pero mi verdadera pasión es crear tecnología que le haga la vida más fácil a las personas. Gracias a mi background en Negocios Internacionales, no solo desarrollo software, sino que construyo soluciones estratégicas que hablan el idioma del negocio y la tecnología.
-            </p>
-            <p>
-                Cuando no estoy programando, mi energía se nutre del cine, la fotografía y la música. Creo firmemente en el poder de la tecnología usada de forma creativa y humana, y ese es el propósito que imprimo en cada proyecto que construyo.
-            </p>
+                <p>
+                    Lo que me mueve es transformar ideas en soluciones digitales con impacto. Como desarrollador full stack, me especializo en automatizar procesos y analizar datos para que las empresas sean más eficientes, precisas y ágiles, logrando reducir costos operativos de forma significativa.
+                </p>
+                <p>
+                    Con herramientas como Python, Java y Power BI, he construido sistemas que han optimizado operaciones financieras y flujos de trabajo reales. Pero mi verdadera pasión es crear tecnología que le haga la vida más fácil a las personas. Gracias a mi background en Negocios Internacionales, no solo desarrollo software, sino que construyo soluciones estratégicas que hablan el idioma del negocio y la tecnología.
+                </p>
+                <p>
+                    Cuando no estoy programando, mi energía se nutre del cine, la fotografía y la música. Creo firmemente en el poder de la tecnología usada de forma creativa y humana, y ese es el propósito que imprimo en cada proyecto que construyo.
+                </p>
             </div>
         </section>
         
         <section class="proyectos section" id="proyectos">
             <h2 class="section__title">Proyectos Destacados</h2>
             <div class="proyectos__grid">
+
                 <article class="proyecto-card card">
-                    <div class="proyecto-card__contenido">
-                        <i class="ri-bank-card-line proyecto-card__icono"></i>
-                        <h3 class="proyecto-card__titulo">Scraper del website de Amazon</h3>
-                        <p class="proyecto-card__descripcion">Este es un script de web scraping en Python diseñado para extraer datos de productos de Amazon de manera resiliente y eficiente. El proyecto demuestra el uso de múltiples estrategias de evasión, manejo de sesiones y extracción de datos robusta</p>
-                        <a href="https://github.com/Alejog20/Ethical_amazon_scraper" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                    <div class="proyecto-card__carousel">
+                        <div class="carousel-slide active">
+                            <div class="proyecto-card__contenido">
+                                <!-- CAMBIO: Icono y título ahora están dentro de un contenedor -->
+                                <div class="proyecto-card__header">
+                                    <i class="ri-amazon-line proyecto-card__icono"></i>
+                                    <h3 class="proyecto-card__titulo">Scraper del website de Amazon</h3>
+                                </div>
+                                <p class="proyecto-card__descripcion">Este es un script de web scraping en Python diseñado para extraer datos de productos de Amazon de manera resiliente y eficiente. El proyecto demuestra el uso de múltiples estrategias de evasión, manejo de sesiones y extracción de datos robusta.</p>
+                                <a href="https://github.com/Alejog20/Ethical_amazon_scraper" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">Scraper del website de Amazon</h3>
+                                <img src="assets/screenshots/amazon-scraper/terminal-output.webp" alt="Terminal showing scraping results" class="screenshot-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">Scraper del website de Amazon</h3>
+                                <img src="assets/screenshots/amazon-scraper/code-structure.webp" alt="Python code structure and main functions" class="screenshot-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">Scraper del website de Amazon</h3>
+                                <img src="assets/screenshots/amazon-scraper/data-export.webp" alt="Exported data in CSV format" class="screenshot-image">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav carousel-nav--prev" aria-label="Previous slide">‹</button>
+                    <button class="carousel-nav carousel-nav--next" aria-label="Next slide">›</button>
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-slide="0"></span>
+                        <span class="indicator" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                        <span class="indicator" data-slide="3"></span>
                     </div>
                 </article>
+
                 <article class="proyecto-card card">
-                    <div class="proyecto-card__contenido">
-                        <i class="ri-file-pdf-2-line proyecto-card__icono"></i>
-                        <h3 class="proyecto-card__titulo">Generador de PDFs de facturación</h3>
-                        <p class="proyecto-card__descripcion">A través de este programa podemos generar facilmente facturas para nuestro negocio. El script toma las lineas de un formato de MS Excel con información de facturación para posteriormente generar PDFs de cada linea de facturación, con sus cargos y detalles</p>
-                        <a href="https://github.com/Alejog20/Invoice_generator_from_xlsx" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                    <div class="proyecto-card__carousel">
+                        <div class="carousel-slide active">
+                            <div class="proyecto-card__contenido">
+                                <!-- CAMBIO: Icono y título ahora están dentro de un contenedor -->
+                                <div class="proyecto-card__header">
+                                    <i class="ri-file-pdf-2-line proyecto-card__icono"></i>
+                                    <h3 class="proyecto-card__titulo">Generador de PDFs para facturación</h3>
+                                </div>
+                                <p class="proyecto-card__descripcion">A través de este programa podemos generar facilmente facturas para nuestro negocio. El script toma las lineas de un formato de MS Excel con información de facturación para posteriormente generar PDFs de cada linea de facturación, con sus cargos y detalles.</p>
+                                <a href="https://github.com/Alejog20/Invoice_generator_from_xlsx" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">Generador de PDFs para facturación</h3>
+                                <img src="assets/screenshots/pdf-generator/excel-input.webp" alt="Excel input file with invoice data" class="screenshot-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">Generador de PDFs para facturación</h3>
+                                <img src="assets/screenshots/pdf-generator/generated-pdf.webp" alt="Generated PDF invoice example" class="screenshot-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">Generador de PDFs para facturación</h3>
+                                <img src="assets/screenshots/pdf-generator/code-overview.webp" alt="Python script code overview" class="screenshot-image">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav carousel-nav--prev" aria-label="Previous slide">‹</button>
+                    <button class="carousel-nav carousel-nav--next" aria-label="Next slide">›</button>
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-slide="0"></span>
+                        <span class="indicator" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                        <span class="indicator" data-slide="3"></span>
                     </div>
                 </article>
+
                 <article class="proyecto-card card">
-                    <div class="proyecto-card__contenido">
-                        <i class="ri-shopping-cart-line proyecto-card__icono"></i>
-                        <h3 class="proyecto-card__titulo">E-commerce Samay</h3>
-                        <p class="proyecto-card__descripcion">E-commerce desarrollado como proyecto final del Bootcamp Generation Full Stack Java-  Este ecommerce cuenta con un enfoque social, diseñado para que comunidades indigenas puedan vender porductos por canales digitales. Contiene funciones para login, administradores, validaciones con backend Java, conexion con base de datos SQL, frontend con VanillaJS</p>
-                        <a href="https://github.com/jorgeramirez2018/Proyecto-Samay" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                    <div class="proyecto-card__carousel">
+                        <div class="carousel-slide active">
+                            <div class="proyecto-card__contenido">
+                                <!-- CAMBIO: Icono y título ahora están dentro de un contenedor -->
+                                <div class="proyecto-card__header">
+                                    <i class="ri-shopping-cart-line proyecto-card__icono"></i>
+                                    <h3 class="proyecto-card__titulo">E-commerce Samay</h3>
+                                </div>
+                                <p class="proyecto-card__descripcion">E-commerce desarrollado como proyecto final del Bootcamp Generation Full Stack Java- Este ecommerce cuenta con un enfoque social, diseñado para que comunidades indigenas puedan vender porductos por canales digitales. Contiene funciones para login, administradores, validaciones con backend Java, conexion con base de datos SQL, frontend con VanillaJS.</p>
+                                <a href="https://github.com/jorgeramirez2018/Proyecto-Samay" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">E-commerce Samay</h3>
+                                <img src="assets/screenshots/ecommerce-samay/homepage.webp" alt="Samay homepage with product showcase" class="screenshot-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">E-commerce Samay</h3>
+                                <img src="assets/screenshots/ecommerce-samay/product-details.webp" alt="Product detail page with indigenous crafts" class="screenshot-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">E-commerce Samay</h3>
+                                <img src="assets/screenshots/ecommerce-samay/admin-panel.webp" alt="Admin panel for product management" class="screenshot-image">
+                            </div>
+                        </div>
+                         <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">E-commerce Samay</h3>
+                                <img src="assets/screenshots/ecommerce-samay/shopping-cart.webp" alt="Shopping cart and checkout process" class="screenshot-image">
+                            </div>
+                        </div>
+                    </div>
+                     <button class="carousel-nav carousel-nav--prev" aria-label="Previous slide">‹</button>
+                    <button class="carousel-nav carousel-nav--next" aria-label="Next slide">›</button>
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-slide="0"></span>
+                        <span class="indicator" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                        <span class="indicator" data-slide="3"></span>
+                        <span class="indicator" data-slide="4"></span>
                     </div>
                 </article>
+
                 <article class="proyecto-card card">
-                    <div class="proyecto-card__contenido">
-                        <i class="ri-bank-card-line proyecto-card__icono"></i>
-                        <h3 class="proyecto-card__titulo">Análisis de gastos - Extractos Bancolombia</h3>
-                        <p class="proyecto-card__descripcion">Sistema de gestión automático de gastos e ingresos, adaptado para usar la versión .xlsx de los extractos bancarios de Bancolombia. Proporciona gráficos, estadísticas e información útil. Utiliza Python, Pandas y Streamlit </p>
-                        <a href="https://github.com/Alejog20/Finance_tracker" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                    <div class="proyecto-card__carousel">
+                        <div class="carousel-slide active">
+                            <div class="proyecto-card__contenido">
+                                <!-- CAMBIO: Icono y título ahora están dentro de un contenedor -->
+                                <div class="proyecto-card__header">
+                                    <i class="ri-bank-card-line proyecto-card__icono"></i>
+                                    <h3 class="proyecto-card__titulo">Análisis extractos Bancolombia</h3>
+                                </div>
+                                <p class="proyecto-card__descripcion">Sistema de gestión automático de gastos e ingresos, adaptado para usar la versión .xlsx de los extractos bancarios de Bancolombia. Proporciona gráficos, estadísticas e información útil. Utiliza Python, Pandas y Streamlit.</p>
+                                <a href="https://github.com/Alejog20/Finance_tracker" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">Análisis extractos Bancolombia</h3>
+                                <img src="assets/screenshots/finance-tracker/dashboard.webp" alt="Streamlit dashboard with financial charts" class="screenshot-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">Análisis extractos Bancolombia</h3>
+                                <img src="assets/screenshots/finance-tracker/expense-breakdown.webp" alt="Expense category breakdown analysis" class="screenshot-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">Análisis extractos Bancolombia</h3>
+                                <img src="assets/screenshots/finance-tracker/monthly-trends.webp" alt="Monthly spending trends visualization" class="screenshot-image">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav carousel-nav--prev" aria-label="Previous slide">‹</button>
+                    <button class="carousel-nav carousel-nav--next" aria-label="Next slide">›</button>
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-slide="0"></span>
+                        <span class="indicator" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                        <span class="indicator" data-slide="3"></span>
                     </div>
                 </article>
+
                 <article class="proyecto-card card">
-                    <div class="proyecto-card__contenido">
-                        <i class="ri-router-line proyecto-card__icono"></i>
-                        <h3 class="proyecto-card__titulo">Sistema de análisis de tráfico de red local</h3>
-                        <p class="proyecto-card__descripcion">Este proyecto es ideal para  analizar vía consola los puertos que actualmente estan encendidos en nuestra máquina, así como aquellos que están en uso, paquetes y otras métricas.</p>
-                        <a href="https://github.com/Alejog20/Finance_tracker" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                    <div class="proyecto-card__carousel">
+                        <div class="carousel-slide active">
+                            <div class="proyecto-card__contenido">
+                                <!-- CAMBIO: Icono y título ahora están dentro de un contenedor -->
+                                <div class="proyecto-card__header">
+                                    <i class="ri-router-line proyecto-card__icono"></i>
+                                    <h3 class="proyecto-card__titulo">Tráfico de red local</h3>
+                                </div>
+                                <p class="proyecto-card__descripcion">Este proyecto es ideal para analizar vía consola los puertos que actualmente estan encendidos en nuestra máquina, así como aquellos que están en uso, paquetes y otras métricas. Utiliza Python y la consola para obtener información relevante.</p>
+                                <a href="https://github.com/Alejog20/Network_traffic_analysis" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">Tráfico de red local</h3>
+                                <img src="assets/screenshots/network-analysis/console-output.webp" alt="Console showing network port analysis" class="screenshot-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">Tráfico de red local</h3>
+                                <img src="assets/screenshots/network-analysis/port-scan-results.webp" alt="Port scanning results and metrics" class="screenshot-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">Tráfico de red local</h3>
+                                <img src="assets/screenshots/network-analysis/network-metrics.webp" alt="Network traffic metrics display" class="screenshot-image">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav carousel-nav--prev" aria-label="Previous slide">‹</button>
+                    <button class="carousel-nav carousel-nav--next" aria-label="Next slide">›</button>
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-slide="0"></span>
+                        <span class="indicator" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                        <span class="indicator" data-slide="3"></span>
                     </div>
                 </article>
+
                 <article class="proyecto-card card">
-                    <div class="proyecto-card__contenido">
-                        <i class="ri-reddit-line proyecto-card__icono"></i>
-                        <h3 class="proyecto-card__titulo">Consulta a la Reddit API</h3>
-                        <p class="proyecto-card__descripcion">El script es un archivo Python, que accede a la API de Reddit y busca posts y metricas basados en el input del usuario, útil para extraer información de temas y discusiones en específico para posteriormente hacer análisis de opinión. El bot respeta las reglas de la API de Reddit.</p>
-                        <a href="https://github.com/Alejog20/Reddit_API_Data_extraction" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                    <div class="proyecto-card__carousel">
+                        <div class="carousel-slide active">
+                             <div class="proyecto-card__contenido">
+                                <!-- CAMBIO: Icono y título ahora están dentro de un contenedor -->
+                                <div class="proyecto-card__header">
+                                    <i class="ri-reddit-line proyecto-card__icono"></i>
+                                    <h3 class="proyecto-card__titulo">Extracción de datos con Reddit API</h3>
+                                </div>
+                                <p class="proyecto-card__descripcion">El script es un archivo Python, que accede a la API de Reddit y busca posts y metricas basados en el input del usuario, útil para extraer información de temas y discusiones en específico para posteriormente hacer análisis de opinión. El bot respeta las reglas de la API de Reddit.</p>
+                                <a href="https://github.com/Alejog20/Reddit_API_Data_extraction" class="proyecto-card__enlace" target="_blank">Ver proyecto</a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">Extracción de datos con Reddit API</h3>
+                                <img src="assets/screenshots/reddit-api/api-response.webp" alt="Reddit API response data structure" class="screenshot-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">Extracción de datos con Reddit API</h3>
+                                <img src="assets/screenshots/reddit-api/data-extraction.webp" alt="Extracted posts and metrics analysis" class="screenshot-image">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="proyecto-screenshot">
+                                <h3 class="proyecto-card__titulo">Extracción de datos con Reddit API</h3>
+                                <img src="assets/screenshots/reddit-api/sentiment-analysis.webp" alt="Sentiment analysis results visualization" class="screenshot-image">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav carousel-nav--prev" aria-label="Previous slide">‹</button>
+                    <button class="carousel-nav carousel-nav--next" aria-label="Next slide">›</button>
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-slide="0"></span>
+                        <span class="indicator" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                        <span class="indicator" data-slide="3"></span>
                     </div>
                 </article>
             </div>
@@ -129,12 +342,12 @@
                 <div class="habilidad-card card">
                     <i class="ri-server-line habilidad-card__icono"></i>
                     <h3 class="habilidad-card__titulo">Desarrollo Backend</h3>
-                    <p class="habilidad-card__descripcion">Python, Java, SpringBoot, Pandas, NumPy, Selenium, Requests, BeautifulSoup4, Openpyxl, Git, GitHub, Bash </p>
+                    <p class="habilidad-card__descripcion">Python, Java, SpringBoot, Pandas, NumPy, Selenium, Requests, BeautifulSoup4, Openpyxl, Git, GitHub, Bash</p>
                 </div>
                 <div class="habilidad-card card">
-                <i class="ri-layout-line habilidad-card__icono"></i>
+                    <i class="ri-layout-line habilidad-card__icono"></i>
                     <h3 class="habilidad-card__titulo">Desarrollo Frontend</h3>
-                    <p class="habilidad-card__descripcion">Vanilla JS, HTML5, CSS, Bootstrap, Tailwind, React, NextJS </p>
+                    <p class="habilidad-card__descripcion">Vanilla JS, HTML5, CSS, Bootstrap, Tailwind, React</p>
                 </div>
                 <div class="habilidad-card card">
                     <i class="ri-bar-chart-2-line habilidad-card__icono"></i>
@@ -146,9 +359,74 @@
 
         <section class="cv section" id="cv">
             <h2 class="section__title">Curriculum Vitae</h2>
-            <div class="cv__tarjeta card">
-                <div class="cv__boton-container gradient-button-container">
-                    <a href="./assets/New CV.pdf" class="cv__boton gradient-button" download>Descargar CV Completo</a>
+            <div class="cv__container card">
+                <!-- Columna izquierda: Foto y contacto -->
+                <div class="cv__columna-izquierda">
+                    <img class="cv__foto" src="./assets/img-sm.png" alt="Alejandro García - Desarrollador Full Stack Java">
+                    <div class="cv__contacto">
+                        <h3 class="cv__nombre">Alejandro García</h3>
+                        <p class="cv__titulo-profesional">Desarrollador Full Stack Java</p>
+                        <div class="cv__datos-contacto">
+                            <p><i class="ri-phone-line"></i> 301 549 6655</p>
+                            <p><i class="ri-mail-line"></i> garciaalejandro2552@gmail.com</p>
+                            <p><i class="ri-map-pin-line"></i> Colombia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Columna derecha: Información detallada -->
+                <div class="cv__columna-derecha">
+                    <div class="cv__seccion">
+                        <h4 class="cv__subtitulo">Perfil Profesional</h4>
+                        <p class="cv__texto">Desarrollador Full Stack Java especializado en automatización de procesos y análisis de datos financieros. <strong>Experiencia comprobada optimizando eficiencia empresarial</strong> mediante soluciones tecnológicas escalables, con reducción de tiempos del <strong>90%</strong> y ahorro de <strong>45 horas mensuales</strong>.</p>
+                    </div>
+                    
+                    <div class="cv__seccion">
+                        <h4 class="cv__subtitulo">Experiencia Destacada</h4>
+                        <div class="cv__experiencia">
+                            <h5 class="cv__puesto">Analista de Facturación & Desarrollador</h5>
+                            <p class="cv__empresa">Iron Mountain Inc. • Sept 2022 - Presente</p>
+                            <ul class="cv__logros">
+                                <li>Desarrollé automatizaciones con Python que redujeron tiempos de reporting en 90%</li>
+                                <li>Creé dashboards dinámicos en Looker Studio y Power BI para KPIs financieros</li>
+                                <li>Lideré 3 proyectos que aumentaron satisfacción del cliente en 25%</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="cv__seccion">
+                        <h4 class="cv__subtitulo">Habilidades Clave</h4>
+                        <div class="cv__habilidades-grid">
+                            <div class="cv__categoria-habilidad">
+                                <span class="cv__categoria-titulo">Lenguajes</span>
+                                <span class="cv__habilidades-lista">Java, Python, JavaScript, HTML5, CSS3, SQL</span>
+                            </div>
+                            <div class="cv__categoria-habilidad">
+                                <span class="cv__categoria-titulo">Frameworks</span>
+                                <span class="cv__habilidades-lista">React, FastAPI, Bootstrap, Pandas, NumPy</span>
+                            </div>
+                            <div class="cv__categoria-habilidad">
+                                <span class="cv__categoria-titulo">Herramientas</span>
+                                <span class="cv__habilidades-lista">Git, Power BI, Looker Studio, MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cv__seccion">
+                        <h4 class="cv__subtitulo">Educación</h4>
+                        <div class="cv__educacion">
+                            <p><strong>Negocios Internacionales</strong> - Universidad Santo Tomás (2025)</p>
+                            <p><strong>Full Stack Python</strong> - Universidad de Caldas (2022)</p>
+                            <p><strong>Bootcamp Generation</strong> - Desarrollo Full Stack Java (2025)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Botón de descarga centrado -->
+                <div class="cv__boton-descarga">
+                    <div class="cv__boton-container gradient-button-container">
+                        <a href="./assets/New CV.pdf" class="cv__boton gradient-button" download>Descargar CV Completo</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -156,12 +434,17 @@
         <section class="musica section" id="musica">
             <h2 class="section__title">Música que me mueve</h2>
             <div class="musica__embed-container">
-            <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src=iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/co/playlist/edm2/pl.u-DdANN9oC0e2m2Ka"></iframe>
-            </iframe>                
-            <div class="musica__glass-highlight"></div>
+                <iframe 
+                    allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
+                    frameborder="0" 
+                    height="450" 
+                    style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" 
+                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
+                    src="https://embed.music.apple.com/co/playlist/edm2/pl.u-DdANN9oC0e2m2Ka">
+                </iframe>
+                <div class="musica__glass-highlight"></div>
             </div>
         </section>
-
 
         <section class="contacto section" id="contacto">
             <h2 class="section__title">Contacto</h2>
@@ -189,8 +472,7 @@
                             <button type="submit" class="contacto__boton gradient-button">Enviar mensaje</button>
                         </div>
                     </form>
-                    <div class="contacto__info">
-                        </div>
+                    <div class="contacto__info"></div>
                 </div>
             </div>
         </section>
