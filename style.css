@@ -1,185 +1,46 @@
 /* ==========================================================================
-   STELLARIS DESIGN SYSTEM - V2.0
-   Author: Coding Partner
-   Description: A futuristic, neon, liquid-glass design system.
+   STELLARIS DESIGN SYSTEM - VERSIÓN FINAL CORREGIDA
    ========================================================================== */
 
 /* --- Google Fonts Import --- */
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800&family=Roboto+Mono&family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&family=Turret+Road:wght@800&family=Syne:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800&family=Roboto+Mono&family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap');
 
 /* ==========================================================================
    CSS Variables & Core Setup
    ========================================================================== */
 :root {
-    /* Default Theme: "Nebula Purpura" (Your Original Vibe) */
-    --color-background: #0A0A14;
-    --color-text-body: #C0C5E0;
-    --color-text-title: #FFFFFF;
-    --color-neon-primary: #D473EC; /* Púrpura Nebulosa */
-    --color-neon-secondary: #FF40A7; /* Rosa Neón */
-    --color-accent: #A3D9FF; /* Accent Ice */
-
-    --font-display: 'Exo 2', sans-serif;
-    --font-body: 'Roboto Mono', monospace;
-
-        /* --- Universal Settings --- */
-    --glass-background: rgba(255, 255, 255, 0.05);           /* Menos saturado, más aireado */
-    --glass-border: rgba(255, 255, 255, 0.12);                /* Inspirado en los paneles translúcidos de macOS */
-    --glass-blur: 16px;                                       /* Blur más fuerte, más realismo */
-    --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);           /* Sombra sutil y flotante */
-    --glass-inner-glow: inset 0 0 0.75px rgba(255, 255, 255, 0.4); /* Sutil realce interior */
-    --neon-glow-primary: 0 0 12px rgba(173, 255, 255, 0.4);    /* Más suave, menos saturado */
-    --neon-glow-secondary: 0 0 12px rgba(255, 204, 255, 0.3);  /* Paleta más suave y balanceada */
-    --transition-speed: 0.3s ease-in-out;
-    --section-spacing: 6rem;                                 /* Más compacto, más moderno */
-    --border-radius: 20px; 
-    backdrop-filter: blur(var(--glass-blur));   
-}
-
-
-@keyframes twinkle-stars {
-    0%, 100% {
-        box-shadow: /* Re-paste the original box-shadow from .background::after */
-            -5vw 20vh 1px rgba(255,255,255, 0.8), 8vw 45vh 2px rgba(255,255,255, 1), 15vw 90vh 1px rgba(255,255,255, 0.8),
-            25vw 10vh 2px rgba(255,255,255, 1), 33vw 33vh 1px rgba(255,255,255, 0.8), 42vw 82vh 2px rgba(255,255,255, 1),
-            56vw 6vh 1px rgba(255,255,255, 0.8), 63vw 50vh 2px rgba(255,255,255, 1), 71vw 89vh 1px rgba(255,255,255, 0.8),
-            88vw 13vh 2px rgba(255,255,255, 1), 95vw 62vh 1px rgba(255,255,255, 0.8), 2vw 70vh 2px rgba(255,255,255, 1),
-            -15vw 80vh 1px rgba(255,255,255, 0.8), 28vw 55vh 2px rgba(255,255,255, 1), 45vw 19vh 1px rgba(255,255,255, 0.8),
-            65vw 95vh 2px rgba(255,255,255, 1), 83vw 23vh 1px rgba(255,255,255, 0.8), 92vw 72vh 2px rgba(255,255,255, 1);
-    }
-    50% {
-        box-shadow: /* Make some stars dimmer or brighter */
-            -5vw 20vh 1px rgba(255,255,255, 0.4), 8vw 45vh 2px rgba(255,255,255, 0.7), 15vw 90vh 1px rgba(255,255,255, 0.4),
-            25vw 10vh 2px rgba(255,255,255, 0.7), 33vw 33vh 1px rgba(255,255,255, 0.4), 42vw 82vh 2px rgba(255,255,255, 0.7),
-            56vw 6vh 1px rgba(255,255,255, 0.4), 63vw 50vh 2px rgba(255,255,255, 0.7), 71vw 89vh 1px rgba(255,255,255, 0.4),
-            88vw 13vh 2px rgba(255,255,255, 0.7), 95vw 62vh 1px rgba(255,255,255, 0.4), 2vw 70vh 2px rgba(255,255,255, 0.7),
-            -15vw 80vh 1px rgba(255,255,255, 0.4), 28vw 55vh 2px rgba(255,255,255, 0.7), 45vw 19vh 1px rgba(255,255,255, 0.4),
-            65vw 95vh 2px rgba(255,255,255, 0.7), 83vw 23vh 1px rgba(255,255,255, 0.4), 92vw 72vh 2px rgba(255,255,255, 0.7);
-    }
-}
-
-/* ==========================================================================
-   Theme Variations
-   ========================================================================== */
-
-/* Theme 1: Cyber-Seafoam */
-body.theme-seafoam {
-    --color-background: #02161A;
-    --color-text-body: #B0D9D5;
-    --color-text-title: #FFFFFF;
-    --color-neon-primary: #33FFD1; /* Seafoam Green */
-    --color-neon-secondary: #00E5FF; /* Cyan */
-    --color-accent: #FFC300;
-    --glass-background: rgba(10, 30, 30, 0.4);
-    --glass-border: rgba(51, 255, 209, 0.2);
-    --font-display: 'Orbitron', sans-serif;
-    --font-body: 'Rajdhani', sans-serif;
-}
-
-/* Theme 2: Solar Flare */
-body.theme-solar {
-    --color-background: #1C0A00;
-    --color-text-body: #EADFC9;
-    --color-text-title: #FFFFFF;
-    --color-neon-primary: #FFD700; /* Gold */
-    --color-neon-secondary: #FF4500; /* OrangeRed */
-    --color-accent: #00FFFF;
-    --glass-background: rgba(98, 98, 97, 0.4);
-    --glass-border: rgba(255, 215, 0, 0.2);
-    --font-display: 'Turret Road', cursive;
-    --font-body: 'Syne', sans-serif;
-}
-
-/* Theme 3: Void Runner */
-body.theme-void {
-    --color-background: #000000;
-    --color-text-body: #A0A0A0;
-    --color-text-title: #FFFFFF;
-    --color-neon-primary: #FFFFFF; /* White */
-    --color-neon-secondary: #FF0000; /* Red */
-    --color-accent: #4B0082; /* Indigo */
-    --glass-background: rgba(20, 20, 20, 0.3);
-    --glass-border: rgba(255, 255, 255, 0.15);
-    --font-display: 'Rajdhani', sans-serif;
-    --font-body: 'Roboto Mono', monospace;
-}
-
-/* Theme 5: Cosmic Lilac */
-body.theme-lilac {
-    --color-background: #191221;
-    --color-text-body: #D9D2E9;
-    --color-text-title: #FFFFFF;
-    --color-neon-primary: #02161A; /* Lilac */
-    --color-neon-secondary: #02161A; /* Deep Purple */
-    --color-accent: #E5E4E2; /* Platinum */
-    --glass-background: rgba(40, 30, 50, 0.4);
-    --glass-border: rgba(197, 165, 255, 0.2);
-    --font-display: 'Orbitron', sans-serif;
-    --font-body: 'Syne', sans-serif;
-}
-
-/* Theme 6: Supernova Pink */
-body.theme-supernova {
-    --color-background: #070007;
-    --color-text-body: #FAD0F4;
-    --color-text-title: #FFFFFF;
-    --color-neon-primary: #66248d; /* Magenta */
-    --color-neon-secondary: #4B0082; /* Vibrant Pink */
-    --color-accent: #FFC300;
-    --glass-background:#00FFFFFF;
-    --glass-border: rgba(51, 255, 209, 0.2);;
-    --font-display: 'Turret Road', cursive;
-    --font-body: 'Rajdhani', sans-serif;
-}
-
-/* Theme 7: Andromeda Violet */
-body.theme-andromeda {
+    /* Theme: Andromeda Violet */
     --color-background: #070007;
     --color-text-body: #C4C3E0;
     --color-text-title: #FFFFFF;
     --color-neon-primary: #4B0082; /* Violet */
     --color-neon-secondary: #DCDCDC; /* Ethereal Pink */
     --color-accent: #E5E4E2; /* Cyan */
+    --color-neon-primary-rgb: 75, 0, 130;
+    --color-neon-secondary-rgb: 220, 220, 220;
+    --color-accent-rgb: 229, 228, 226;
     --glass-background: rgba(20, 18, 40, 0.4);
     --glass-border: rgba(127, 0, 255, 0.2);
     --font-display: 'Exo 2', sans-serif;
     --font-body: 'Roboto Mono', monospace;
+    --border-radius: 20px;
+    --transition-speed: 0.3s ease-in-out;
+    --section-spacing: 6rem;
 }
-
-/* Theme 8: Orion Nebula */
-body.theme-orion {
-    --color-background: #100C18;
-    --color-text-body: #DDCDE5;
-    --color-text-title: #FFFFFF;
-    --color-neon-primary: #B39DDB; /* Light Violet */
-    --color-neon-secondary: #F48FB1; /* Light Pink */
-    --color-accent: #A5D6A7; /* Light Green */
-    --glass-background: rgba(30, 25, 40, 0.5);
-    --glass-border: rgba(179, 157, 219, 0.25);
-    --font-display: 'Syne', sans-serif;
-    --font-body: 'Rajdhani', sans-serif;
-}
-
-/* Theme 9: Platinum Comet */
-body.theme-platinum {
-    --color-background: #0E1116;
-    --color-text-body: #EAEAEA;
-    --color-text-title: #FFFFFF;
-    --color-neon-primary: #DCDCDC; /* Platinum/Silver */
-    --color-neon-secondary: #9370DB; /* Medium Purple */
-    --color-accent: #32CD32; /* Lime Green */
-    --glass-background: rgba(30, 35, 40, 0.4);
-    --glass-border: rgba(220, 220, 220, 0.2);
-    --font-display: 'Rajdhani', sans-serif;
-    --font-body: 'Syne', sans-serif;
-}
-
 
 /* ==========================================================================
-   Global Resets & Animated Background
+   Global Resets & Background
    ========================================================================== */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: clamp(14px, 1.2vw, 16px);
+}
 
 body {
     font-family: var(--font-body);
@@ -189,48 +50,37 @@ body {
     overflow-x: hidden;
     position: relative;
     z-index: 1;
-    transition: background-color var(--transition-speed);
 }
 
-/* --- 1. Contenedor del Fondo --- */
 .background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* El color de fondo base solo se verá si la imagen no carga */
-    background-color: #0A0A14; 
     z-index: -3;
+    overflow: hidden;
 }
 
-/* --- 2. Tu Imagen de Fondo --- */
 .background__image {
-    display: block; /* Aseguramos que la imagen sea visible */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+}
+
+#starfield-canvas {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* La imagen cubre toda la pantalla */
-    z-index: -2; /* Se posiciona detrás del lienzo de estrellas */
+    z-index: -1;
+    pointer-events: none;
 }
 
-/* --- 3. El Lienzo para las Estrellas --- */
-#starfield {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    z-index: -1; /* El lienzo va encima de la imagen, pero detrás del contenido */
-}
-
-/* Nota: Para añadir más estrellas, simplemente añade más líneas 'Xvw Yvh Zpx #COLOR,'
-   a la propiedad box-shadow de la capa que prefieras. */
 /* ==========================================================================
-   Layout & Structure
+   Layout & General Styles
    ========================================================================== */
 .main {
     position: relative;
@@ -239,8 +89,8 @@ body {
 }
 
 p {
-    text-align: justify; /* Justificar todos los párrafos */
-    hyphens: auto; /* Ayuda con la justificación en palabras largas */
+    text-align: justify;
+    hyphens: auto;
 }
 
 .section {
@@ -255,13 +105,47 @@ p {
 .section__title {
     font-family: var(--font-display);
     color: var(--color-text-title);
-    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-size: clamp(2rem, 1vw + 1.5rem, 2.8rem);
     text-transform: uppercase;
     letter-spacing: 5px;
-    text-align: center; /* Ya estaba centrado, pero lo reforzamos */
+    text-align: center;
     margin-bottom: 4rem;
-    position: relative;
     text-shadow: 0 0 5px var(--color-accent), 0 0 15px var(--color-neon-secondary);
+}
+
+/* ==========================================================================
+   Card Base Style (Glassmorphism)
+   ========================================================================== */
+.card {
+    position: relative;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.05), 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    overflow: hidden;
+    padding: clamp(1.2rem, 2vw + 0.8rem, 2.2rem);
+    display: flex;
+    flex-direction: column;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: var(--mouse-y);
+    left: var(--mouse-x);
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(163, 217, 255, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.card:hover::before {
+    opacity: 1;
 }
 
 /* ==========================================================================
@@ -277,8 +161,8 @@ p {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(10, 10, 25, 0.5); /* Kept consistent for legibility */
-    backdrop-filter: blur(var(--glass-blur));
+    background: rgba(10, 10, 25, 0.5);
+    backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--glass-border);
 }
 
@@ -305,202 +189,337 @@ p {
 }
 
 /* ==========================================================================
-   Hero Section - APPROACH C: ABSOLUTE POSITIONING
+   Hero Section
    ========================================================================== */
 .hero {
-    position: relative; /* Establish a positioning context */
+    position: relative;
     min-height: 100vh;
     width: 90%;
     max-width: 1400px;
     margin: 0 auto;
     padding-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .hero__robot-container {
-    position: absolute;
-    left: -30%; /* Position from the left edge of .hero */
-    top: 50%;
-    transform: translateY(-50%); /* Vertically center */
-    width: 50%; /* Define a width */
-    height: 90vh;
+    flex: 1 1 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 50vh;
 }
 
 .hero__robot-3d {
-    width: 140%;
-    height: 140%;
-    max-width: none;
-    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 .hero__content {
-    position: absolute;
-    right: 0; /* Position from the right edge of .hero */
-    top: 50%;
-    transform: translateY(-50%); /* Vertically center */
-    width: 100%; /* Define a width */
+    flex: 1 1 60%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* Align items to the right */
-    text-align: right; /* Align text to the right */
+    align-items: flex-end;
+    text-align: right;
     z-index: 1;
 }
 
-/* Keep .hero__title, .hero__card, .hero__buttons as they are */
-
 .hero__title {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-size: clamp(2.5rem, 1.5vw + 1.5rem, 4.5rem);
     color: var(--color-text-title);
     text-transform: uppercase;
     line-height: 1.1;
     margin-bottom: 1.5rem;
+    max-width: 950px;
     text-shadow: 0 0 8px var(--color-accent), 0 0 20px var(--color-neon-primary);
 }
 
-.hero__card {
-    /* --- MANTENEMOS TUS REQUERIMIENTOS --- */
-    text-align: right;
-    margin-top: 5rem; 
-    margin-bottom: 10rem;
-    max-width: 1000px; 
-    max-height: 100px; /* Se respeta la altura máxima */
-  
-    display: flex; 
-    align-items: center;   
-    /* 3. Alineamos el bloque de texto a la derecha */
-    justify-content: flex-end;
-
-    /* 4. OPTIMIZADO: Reducimos el espacio entre líneas y el padding */
-    font-size: 0.95rem;  /* Reducido ligeramente para asegurar el ajuste */
-    line-height: 1.3;    /* Reducido para juntar más las líneas */
-    padding: 2rem 2rem;  /* Reducido el padding vertical para dar más espacio al texto */
-}
-
-.hero__buttons {
-    display: flex;
-    gap: 1.5rem;
-}
-/* ==========================================================================
-   V-FINAL STYLING - Typewriter, Hero Card Fix & Crystal Cards
-   ========================================================================== */
-
-/* --- 1. Corrección de la Tarjeta de la Sección Principal --- */
-
-/* El contenedor de la tarjeta ahora controla el tamaño y la alineación */
-.hero-card-container {
-    max-width: 700px; /* Ancho máximo para buena legibilidad */
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center; /* Centra el texto verticalmente */
-    justify-content: center; /* Centra el texto horizontalmente */
-    /* Hereda el estilo de tarjeta de cristal que definiremos a continuación */
-}
-
 .hero-card-container.card {
-    max-width: 650px; /* Ancho máximo para legibilidad */
+    max-width: 650px;
     margin: 1.5rem 0;
-    padding: 0; /* Quitamos el padding para que el texto se centre perfecto */
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+    padding: 1.5rem;
 }
 
-/* El texto solo se preocupa por su propio estilo */
 .hero-card-text {
     text-align: right;
     font-size: 1.1rem;
     line-height: 1.6;
-    color: var(--color-text-body);
-    padding: 1rem; /* Un pequeño padding interno */
 }
 
 .hero__buttons {
     display: flex;
     gap: 1.5rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
+/* ==========================================================================
+   PROJECTS SECTION (FINAL VERSION 2.0)
+   ========================================================================== */
 
+/* --- Grid Layout --- */
+.proyectos__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
 
-/* --- 2. Efecto Vidrio Líquido/Cristal para TODAS las Tarjetas --- */
-.card {
-    position: relative;
-    /* Fondo casi transparente con un gradiente sutil para el reflejo */
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
-    /* Efecto de desenfoque de fondo, la clave del glassmorphism */
-    backdrop-filter: blur(px) saturate(150%);
-    -webkit-backdrop-filter: blur(16px) saturate(150%);
-    
-    border-radius: var(--border-radius);
-    /* Borde muy sutil que simula el borde de un cristal */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    
-    /* Sombra exterior para dar profundidad */
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    overflow: hidden;
-
-    width: 100%;
+/* --- Main Project Card Structure --- */
+.proyecto-card {
     display: flex;
     flex-direction: column;
-    padding: clamp(1.5rem, 2vw + 1rem, 2.5rem);
-    transition: transform 0.4s ease;
+    height: 420px;
+    padding: 0; /* Override global .card padding */
 }
 
-/* Pseudo-elemento para el reflejo de luz que sigue al mouse */
-.card::before {
-    content: '';
+/* --- Carousel System --- */
+.proyecto-card__carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
     position: absolute;
-    top: var(--mouse-y);
-    left: var(--mouse-x);
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(163, 217, 255, 0.1) 0%, transparent 70%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s;
+    display: flex;
+    flex-direction: column;
 }
 
-.card:hover::before {
+.carousel-slide.active {
     opacity: 1;
+    visibility: visible;
+    z-index: 10;
 }
 
+/* --- Content Slide Styling --- */
+.proyecto-card__contenido {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.5rem;
+    padding-bottom: 3rem; /* FIX: Adds space at the bottom for indicators */
+}
 
-/* --- 3. Estilos para el Efecto de Teclado (Typewriter) --- */
-.hero__title.typing-effect {
-    /* El borde simula el cursor parpadeante */
-    border-right: 0.15em solid var(--color-accent); 
-    white-space: nowrap;
+.proyecto-card__header {
+    display: flex;
+    align-items: center; /* Vertically aligns icon with the title text */
+    gap: 0.75rem; /* The space between the icon and title */
+    margin-bottom: 1.2rem; /* FIX: Adds space between header and description */
+}
+
+.proyecto-card__icono {
+    font-size: 1.8rem;
+    color: var(--color-neon-primary);
+    text-shadow: 0 0 6px var(--color-neon-primary);
+    flex-shrink: 0;
+}
+
+.proyecto-card__titulo {
+    font-family: var(--font-display);
+    color: var(--color-text-title);
+    font-size: 1.25rem;
+    line-height: 1.2;
+    text-shadow: 0 0 6px var(--color-neon-secondary);
+}
+
+.proyecto-card__descripcion {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    flex-grow: 1;
     overflow: hidden;
-    animation: blinking-cursor 0.75s step-end infinite;
+    margin-bottom: 1rem;
 }
 
-.hero__title.typing-done {
-    border-right: none;
-    white-space: normal;
-    overflow: visible;
+.proyecto-card__enlace {
+    margin-top: auto;
+    text-align: center;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    color: var(--color-text-body);
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    border: 2px solid var(--glass-border);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: transparent;
+    transition: all 0.3s ease;
+    z-index: 12;
+    position: relative;
 }
 
-@keyframes blinking-cursor {
-    from, to { border-color: transparent; }
-    50% { border-color: var(--color-accent); }
+.proyecto-card__enlace:hover {
+    background-color: var(--color-neon-primary);
+    border-color: var(--color-neon-primary);
+    color: var(--color-background);
+    box-shadow: 0 0 8px var(--color-neon-primary);
 }
+
+
+/* --- Screenshot Slide Styling --- */
+.proyecto-screenshot {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+    height: 100%;
+}
+
+.proyecto-screenshot .proyecto-card__titulo {
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.screenshot-image {
+    width: 100%;
+    flex-grow: 1;
+    object-fit: contain;
+    border-radius: 12px;
+    min-height: 0;
+}
+
+/* --- Carousel Navigation Styling --- */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-body);
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    z-index: 15;
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.proyecto-card:hover .carousel-nav {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.carousel-nav:hover {
+    background: var(--color-neon-primary);
+    color: var(--color-background);
+    box-shadow: 0 0 8px var(--color-neon-primary);
+}
+
+.carousel-nav--prev { left: 10px; }
+.carousel-nav--next { right: 10px; }
+
+/* --- Carousel Indicator Styling --- */
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 15;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 5px 8px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.indicator {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: var(--color-accent);
+    box-shadow: 0 0 8px var(--color-accent);
+    transform: scale(1.1);
+}
+
 /* ==========================================================================
-   Buttons - REFINED
+   Other Sections (RESTORED)
    ========================================================================== */
+
+/* --- Sobre Mí --- */
+.sobre-mi__imagen {
+    display: block;
+    margin: 0 auto 2.5rem auto;
+    width: 100%;
+    max-width: 250px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 3px solid var(--color-neon-primary);
+    box-shadow: 0 0 12px var(--color-neon-primary);
+    object-fit: cover;
+}
+
+.sobre-mi__tarjeta p:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
+
+/* --- Habilidades --- */
+.habilidades__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.habilidad-card {
+    text-align: center;
+}
+
+.habilidad-card__icono {
+    font-size: 4rem;
+    color: var(--color-neon-primary);
+    text-shadow: 0 0 12px var(--color-neon-primary);
+    margin-bottom: 1.5rem;
+}
+
+.habilidad-card__titulo {
+    font-family: var(--font-display);
+    color: var(--color-text-title);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+/* --- CV & Buttons --- */
+.cv__tarjeta {
+    text-align: center;
+    padding: 2rem;
+}
+
 .gradient-button-container {
     border-radius: 50px;
     padding: 2px;
     position: relative;
     background: linear-gradient(120deg, var(--color-neon-primary), var(--color-neon-secondary), var(--color-accent), var(--color-neon-primary));
     background-size: 300% 300%;
-    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: inline-block;
 }
 
 .gradient-button-container:hover {
     transform: scale(1.05);
-    box-shadow: var(--neon-glow-primary), var(--neon-glow-secondary);
+    box-shadow: 0 0 12px var(--color-neon-primary);
     animation: gradient-flow 3s ease-in-out infinite;
 }
 
@@ -523,7 +542,7 @@ p {
     text-align: center;
     border: none;
     cursor: pointer;
-    transition: background var(--transition-speed) ease, text-shadow var(--transition-speed) ease;
+    transition: background 0.4s ease;
 }
 
 .gradient-button-container:hover .gradient-button {
@@ -531,583 +550,62 @@ p {
     text-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
-/* ==========================================================================
-   Specific Sections
-   ========================================================================== */
-
-/* --- Sobre Mí --- */
-.sobre-mi__imagen {
-    display: block;
-    margin: 0 auto 2.5rem auto;
-    width: 100%;
-    max-width: 250px;
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    border: 3px solid var(--color-neon-primary);
-    box-shadow: var(--neon-glow-primary);
-    object-fit: cover;
-}
-
-.sobre-mi__tarjeta p {
-    text-align: justify;
-    margin-bottom: 1.5rem;
-}
-
-.sobre-mi__tarjeta p:last-child {
-    margin-bottom: 0;
-}
-
-/* Projects Section*/
-.proyectos__grid {
-    display: grid;
-    /* Start with single column - like stacking books vertically */
-    grid-template-columns: 1fr;
-    gap: 3rem; /* Increased spacing between cards for better visual breathing room */
-    align-items: stretch; /* Ensures all cards in a row have equal height */
-}
-
-/* Tablet layout - maintains single column for optimal readability */
-@media (min-width: 768px) {
-    .proyectos__grid {
-        gap: 3.5rem; /* Even more generous spacing on larger screens */
-    }
-}
-
-/* Desktop layout - two columns provide perfect balance of showcase space and overview */
-@media (min-width: 1200px) {
-    .proyectos__grid {
-        grid-template-columns: repeat(2, 1fr); /* Two wide columns instead of three cramped ones */
-        gap: 4rem; /* Maximum breathing room for professional presentation */
-    }
-}
-
-/* Cards now maintain consistent heights automatically */
-/* Base card height for all screens */
-.proyecto-card {
-    position: relative;
-    overflow: visible;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    min-height: 300px; /* Base height for mobile and tablet */
-}
-
-/* Optimized height for desktop screens where cards are wider */
-@media (min-width: 1200px) {
-    .proyecto-card {
-        min-height: 300px; /* Reduced height for wide two-column layout */
-    }
-}
-
-
-/* Force exactly 3 columns on laptop screens and larger */
-@media (min-width: 1024px) {
-    .proyectos__grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2.5rem;
-    }
-}
-
-
-.proyecto-card__contenido {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 2rem; /* Fixed padding instead of responsive - provides consistent spacing */
-    gap: 1.5rem; /* This creates automatic spacing between all child elements */
-}
-
-.proyecto-card__titulo {
-    font-family: var(--font-display);
-    color: var(--color-text-title);
-    font-size: 1.6rem; /* Slightly smaller for better consistency */
-    line-height: 1.2;
-    text-shadow: 0 0 8px var(--color-neon-secondary);
-    margin-bottom: 0rem;
-    display: flex;
-    align-items: flex-start;
-}
-
-.proyecto-card__descripcion {
-    text-align: justify;
-    flex-grow: 1; /* Takes up available space between title and button */
-    margin-bottom: 0; /* Using gap instead of individual margins */
-    font-size: 1rem; /* Slightly larger for better readability */
-    line-height: 1.6; /* More generous line spacing for easier reading */
-    /* Remove all the line-clamp properties to show full content */
-    display: block;
-    overflow: visible;
-}
-
-/* COMPLETELY NEW BUTTON APPROACH - No more absolute positioning */
-.proyecto-card__enlace {
-    /* KEY CHANGE: position is now relative instead of absolute */
-    position: relative;
-    
-    /* These properties make the button behave like a normal element in the flow */
-    align-self: stretch; /* Takes full width of its container */
-    margin-top: auto; /* This pushes the button to the bottom automatically */
-    
-    /* Visual styling remains similar */
-    text-align: center;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    color: var(--color-text-body);
-    font-family: var(--font-display);
-    font-size: 1rem;
-    border: 2px solid var(--glass-border);
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 1px;
-    background: var(--color-background);
-    
-    /* Interaction properties */
-    transition: all 0.3s ease;
-    cursor: pointer;
-    z-index: 10;
-    pointer-events: auto;
-}
-
-/* Keep your existing hover effect */
-.proyecto-card__enlace:hover {
-    background-color: var(--color-neon-primary);
-    border-color: var(--color-neon-primary);
-    color: var(--color-text-title);
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-    box-shadow: var(--neon-glow-primary);
-    transform: translateY(-2px); /* Subtle lift effect */
-}
-
-.proyecto-card::before,
-.proyecto-card::after {
-    pointer-events: none; /* AÑADIDO: evita bloqueo de clicks */
-}
-
-
-/* Responsive refinements for different screen sizes */
-@media (max-width: 1023px) {
-    .proyectos__grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .proyectos__grid {
-        grid-template-columns: 1fr; /* Single column on mobile */
-        gap: 1.5rem;
-    }
-    
-    .proyecto-card__titulo {
-        font-size: 1.3rem;
-        min-height: auto; /* Remove fixed height on mobile */
-    }
-    
-    .proyecto-card__descripcion {
-        -webkit-line-clamp: 6; /* Allow more text on mobile */
-    }
-}
-
-
-/* ==========================================================================
-   PROJECT CARD CAROUSEL SYSTEM
-   ========================================================================== */
-
-/* --- Card Sizing & Layout --- */
-.proyecto-card {
-    position: relative; /* Essential for positioning the nav arrows */
-    overflow: hidden;   /* Keeps everything contained neatly */
-    display: flex;      /* Aligns content properly */
-    flex-direction: column;
-    /* We set a fixed height to make the grid uniform and tidy */
-    height: 450px; 
-}
-
-/* --- Carousel Container --- */
-.proyecto-card__carousel {
+/* --- Music Section (RESTORED & FIXED) --- */
+.musica__embed-container {
     position: relative;
     width: 100%;
-    height: 100%;
-    flex-grow: 1; /* Allows the carousel to fill the card */
+    max-width: 660px;
+    margin: 0 auto;
+    border-radius: var(--border-radius);
+    padding: 0;
 }
 
-/* --- Individual Slides --- */
-.carousel-slide {
+.musica__embed-container::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: calc(var(--border-radius) + 5px);
+    background: linear-gradient(135deg, rgba(10, 10, 20, 0.7) 0%, rgba(20, 20, 40, 0.8) 50%, rgba(10, 10, 25, 0.7) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 1px 1px rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: -1;
+}
+
+.musica__embed-container iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+    border-radius: var(--border-radius);
+    position: relative;
+    z-index: 2;
+    filter: contrast(1.1) brightness(0.9);
+}
+
+.musica__glass-highlight {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0; /* Hidden by default */
-    visibility: hidden;
-    transition: opacity 0.4s ease-in-out, visibility 0.4s;
-    display: flex;
-    flex-direction: column;
-}
-
-.carousel-slide.active {
-    opacity: 1; /* The active slide is visible */
-    visibility: visible;
-    z-index: 10;
-}
-
-/* --- Slide Content Styling --- */
-/* This ensures your original description slide still works perfectly */
-.proyecto-card__contenido {
-    height: 100%;
-    padding: 1.5rem;
-    gap: 0.8rem;
-}
-
-/* New styles for the screenshot slides */
-.proyecto-screenshot {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 1.5rem;
-    gap: 1rem;
-    background: var(--glass-background); /* Consistent glass background */
-}
-
-/* Ensure title in screenshot slides is styled correctly */
-.proyecto-screenshot .proyecto-card__titulo {
-    flex-shrink: 0; /* Prevents title from shrinking */
-    text-align: center;
-}
-
-.screenshot-image {
-    width: 100%;
-    height: 100%;
-    flex-grow: 1; /* Image takes the remaining space */
-    object-fit: contain; /* 'contain' fits the whole image without cropping */
-    border-radius: 12px;
-    border: 1px solid var(--glass-border);
-}
-
-/* --- Navigation Arrows --- */
-.carousel-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
-    border: 1px solid var(--glass-border);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-text-body);
-    cursor: pointer;
-    font-size: 24px;
-    transition: all 0.3s ease;
-    z-index: 15; /* Above the slides */
-    backdrop-filter: blur(8px);
-    opacity: 0; /* Hidden by default, appear on hover */
+    right: 0;
+    height: 40%;
     pointer-events: none;
-}
-
-.proyecto-card:hover .carousel-nav {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.carousel-nav:hover {
-    background: var(--color-neon-primary);
-    color: var(--color-background);
-    box-shadow: var(--neon-glow-primary);
-}
-
-.carousel-nav--prev { left: 15px; }
-.carousel-nav--next { right: 15px; }
-
-/* --- Dot Indicators --- */
-.carousel-indicators {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-    z-index: 15;
-    background: rgba(0, 0, 0, 0.2);
-    padding: 6px 10px;
-    border-radius: 20px;
-    backdrop-filter: blur(5px);
-}
-
-.indicator {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.indicator.active {
-    background: var(--color-accent);
-    box-shadow: 0 0 8px var(--color-accent);
-    transform: scale(1.2);
-}
-/* New carousel system - proper job */
-.proyecto-card {
-    position: relative;
-    overflow: hidden;
-    /* CRITICAL: Set max-height instead of min-height for 30% reduction */
-    max-height: 420px; /* Was effectively 600px before, now 30% less */
-    height: 420px; /* Fixed height for consistency */
-    display: flex;
-    flex-direction: column;
-}
-
-/* Remove any min-height constraints */
-@media (min-width: 1200px) {
-    .proyecto-card {
-        min-height: unset; /* Remove the min-height that was forcing cards tall */
-        max-height: 420px;
-        height: 420px;
-    }
-}
-
-/* Carousel container - takes full card space */
-.proyecto-card__carousel {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-/* Individual slides */
-.carousel-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.4s ease-in-out;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Active slide is visible */
-.carousel-slide.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Content container for main info slide */
-.proyecto-card__contenido {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 1.5rem; /* Reduced padding for more content space */
-    gap: 0.8rem; /* Tighter spacing */
-}
-
-/* Adjust text sizes for reduced height */
-.proyecto-card__icono {
-    font-size: 3rem; /* Smaller icon */
-    color: var(--color-neon-primary);
-    text-shadow: var(--neon-glow-primary);
-    margin-bottom: 0;
-}
-
-.proyecto-card__titulo {
-    font-size: 1.3rem; /* Smaller title */
-    line-height: 1.1;
-    margin-bottom: 0;
-}
-
-.proyecto-card__descripcion {
-    font-size: 0.9rem; /* Smaller description */
-    line-height: 1.4;
-    flex-grow: 1;
-    overflow-y: auto; /* Allow scrolling if needed */
-    margin-bottom: 0;
-}
-
-/* Screenshot slides styling */
-.proyecto-screenshot {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    gap: 0.5rem;
-}
-
-.screenshot-image {
-    width: 100%;
-    height: calc(100% - 40px); /* Leave room for caption */
-    object-fit: cover;
-    border-radius: 12px;
-    border: 1px solid var(--glass-border);
-}
-
-.screenshot-caption {
-    text-align: center;
-    font-size: 0.85rem;
-    color: var(--color-text-body);
-    margin: 0;
-    padding: 0.25rem;
-}
-
-/* Navigation arrows - glassmorphism style */
-.carousel-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--color-background);
-    border: 2px solid var(--glass-border);
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-text-body);
-    cursor: pointer;
-    font-size: 18px;
-    transition: all 0.3s ease;
-    z-index: 20;
-    backdrop-filter: blur(8px);
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* Show arrows on card hover */
-.proyecto-card:hover .carousel-nav {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.carousel-nav:hover {
-    background: var(--color-neon-primary);
-    color: var(--color-text-title);
-    box-shadow: var(--neon-glow-primary);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-nav--prev {
-    left: 10px;
-}
-
-.carousel-nav--next {
-    right: 10px;
-}
-
-/* Dot indicators */
-.carousel-indicators {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 6px;
-    z-index: 15;
-}
-
-.indicator {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.indicator.active {
-    background: var(--color-neon-primary);
-    box-shadow: 0 0 6px var(--color-neon-primary);
-    width: 24px;
-    border-radius: 4px;
-}
-
-/* Project link button stays at bottom */
-.proyecto-card__enlace {
-    align-self: stretch;
-    margin-top: auto;
-    text-align: center;
-    padding: 0.8rem 1.5rem;
-    border-radius: 50px;
-    color: var(--color-text-body);
-    font-family: var(--font-display);
-    font-size: 0.9rem;
-    border: 2px solid var(--glass-border);
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 1px;
-    background: var(--color-background);
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 10;
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-    .proyecto-card {
-        max-height: 380px; /* Even more compact on mobile */
-        height: 380px;
-    }
-    
-    .carousel-nav {
-        width: 32px;
-        height: 32px;
-        font-size: 16px;
-    }
-    
-    /* Always show arrows on mobile since no hover */
-    .carousel-nav {
-        opacity: 0.8;
-        pointer-events: auto;
-    }
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 0%, transparent 100%);
+    z-index: 4;
+    opacity: 0.5;
 }
 
 
-
-/* --- Habilidades --- */
-.habilidades__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 2.5rem;
-}
-
-.habilidad-card {
-    text-align: center;
-}
-
-.habilidad-card__icono {
-    font-size: 4rem;
-    color: var(--color-neon-primary);
-    text-shadow: var(--neon-glow-primary);
-    margin-bottom: 1.5rem;
-}
-
-.habilidad-card__titulo {
-    font-family: var(--font-display);
-    color: var(--color-text-title);
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-}
-
-
-/* --- CV Section --- */
-.cv__tarjeta {
-    text-align: center;
-    padding: 4rem 2.5rem;
-}
-
-/* --- Contacto --- */
+/* --- Contact Form --- */
 .contacto__contenido {
     max-width: 800px;
     margin: 0 auto;
 }
+
 .contacto__subtitulo {
     font-family: var(--font-display);
     text-align: center;
@@ -1115,14 +613,17 @@ p {
     color: var(--color-text-title);
     margin-bottom: 2.5rem;
 }
+
 .contacto__form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
+
 .contacto__grupo {
     position: relative;
 }
+
 .contacto__input,
 .contacto__textarea {
     width: 100%;
@@ -1133,26 +634,30 @@ p {
     color: var(--color-text-body);
     font-family: var(--font-body);
     font-size: 1rem;
-    transition: all var(--transition-speed) ease;
+    transition: all var(--transition-speed);
 }
+
 .contacto__input:focus,
 .contacto__textarea:focus {
     outline: none;
     border-color: var(--color-neon-primary);
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.5), var(--neon-glow-primary);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 0 0 8px var(--color-neon-primary);
 }
+
 .contacto__textarea {
     min-height: 150px;
     resize: vertical;
 }
+
 .contacto__label {
     position: absolute;
     top: 1rem;
     left: 1rem;
     color: var(--color-text-body);
     pointer-events: none;
-    transition: all var(--transition-speed) ease;
+    transition: all var(--transition-speed);
 }
+
 .contacto__input:focus + .contacto__label,
 .contacto__input:not(:placeholder-shown) + .contacto__label,
 .contacto__textarea:focus + .contacto__label,
@@ -1166,36 +671,7 @@ p {
 }
 
 .contacto__boton-container {
-    align-self: center;
-    margin: 1.5rem auto 0; 
-    display: block; 
-    text-align: center;
-    width: 100%;
-    max-width: 300px; /* Define un ancho máximo para el botón */
-    border-radius: 50px;
-    padding: 2px;
-    position: relative;
-    background: linear-gradient(120deg, var(--color-neon-primary), var(--color-neon-secondary), var(--color-accent), var(--color-neon-primary));
-    background-size: 300% 300%;
-    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-}
-.contacto__boton {
-    display: block;
-    width: 100%;
-    background: var(--color-background);
-    color: var(--color-text-title);
-    text-decoration: none;
-    border-radius: 50px;
-    padding: 0.8rem 1.8rem;
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    text-align: center;
-    border: none;
-    cursor: pointer;
-    transition: background var(--transition-speed) ease, text-shadow var(--transition-speed) ease;
+    margin: 1.5rem auto 0;
 }
 
 /* ==========================================================================
@@ -1203,26 +679,23 @@ p {
    ========================================================================== */
 @media (max-width: 992px) {
     .hero {
-        grid-template-columns: 1fr; /* Single column on tablets */
+        flex-direction: column;
         text-align: center;
         padding-top: 8rem;
-        gap: 1rem;
+        gap: 2rem;
     }
-    .hero__robot-container {
-        order: 1; /* Robot first */
-        height: 40vh;
-        min-height: 350px;
-    }
+
     .hero__content {
-        order: 2; /* Content second */
         align-items: center;
         text-align: center;
+        order: 2;
     }
-    .hero__title {
-        font-size: clamp(2rem, 10vw, 3rem);
-    }
-    .hero__card {
-        text-align: center;
+    
+    .hero__robot-container {
+        order: 1;
+        height: 40vh;
+        min-height: 300px;
+        width: 100%;
     }
 }
 
@@ -1230,12 +703,7 @@ p {
     :root {
         --section-spacing: 5rem;
     }
-    .header {
-        justify-content: center;
-    }
     .header__nav {
-       /* For a real project, you'd add a hamburger menu here.
-          For now, we just ensure it doesn't break the layout. */
        display: none;
     }
 
@@ -1248,1009 +716,16 @@ p {
     .gradient-button-container {
         width: 100%;
     }
-    
-}
-/* ==========================================================================
-   V2.3 ADDITIONS - Interactive Effects & New Themes
-   ========================================================================== */
-
-/* --- 1. Interactive Mouse Spotlight Effect --- */
-.effect__spotlight {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: radial-gradient(
-        circle at var(--mouse-x) var(--mouse-y),
-        rgba(255, 255, 255, 0.06) 0%, /* Brightest point */
-        rgba(255, 255, 255, 0.0) 20%  /* Fades out over 20% of the radius */
-    );
-    pointer-events: none; /* Ensures the layer doesn't block mouse clicks */
-    z-index: 3; /* Position it above the content but below the header */
-    transition: background 0.2s ease-out; /* Smooths the movement slightly */
 }
 
-/* --- 2. Enhanced Star Twinkling Logic --- */
-/* This new keyframe creates a more dramatic "shine and fade" effect */
-@keyframes shine-and-fade {
-    0%, 100% { opacity: 0.2; transform: scale(0.8); }
-    50% { opacity: 1; transform: scale(1.2); }
-}
-
-/* We create a SECOND layer of stars using another pseudo-element.
-   This adds depth and variation to the twinkling effect. */
-body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 200vw;
-    height: 200vh;
-    background: transparent;
-    z-index: -2;
-    /* Apply the new animation with a different duration */
-    animation: shine-and-fade 10s ease-in-out infinite;
-}
-
-/* --- 3. Five NEW Unique Themes --- */
-
-/* Theme 10: "Antimatter" - High-tech and clean */
-body.theme-antimatter {
-    --color-background: #010409;
-    --color-text-body: #B0B8C4;
-    --color-text-title: #FFFFFF;
-    --color-neon-primary: #33A3FF; /* Electric Blue */
-    --color-neon-secondary: #E5E7EB; /* Stark White/Grey */
-    --color-accent: #33FFD1;
-    --glass-background: rgba(10, 20, 30, 0.4);
-    --glass-border: rgba(51, 163, 255, 0.2);
-    --font-display: 'Orbitron', sans-serif;
-    --font-body: 'Roboto Mono', monospace;
-}
-
-/* Theme 11: "Quasar" - Intense and energetic */
-body.theme-quasar {
-    --color-background: #110C24;
-    --color-text-body: #D3CCF0;
-    --color-text-title: #FFFFFF;
-    --color-neon-primary: #FF5722; /* Fiery Orange */
-    --color-neon-secondary: #00BCD4; /* Vibrant Cyan */
-    --color-accent: #FFEB3B; /* Yellow */
-    --glass-background: rgba(25, 20, 45, 0.5);
-    --glass-border: rgba(255, 87, 34, 0.25);
-    --font-display: 'Exo 2', sans-serif;
-    --font-body: 'Syne', sans-serif;
-}
-
-/* Theme 12: "Cryosleep" - Cold and futuristic */
-body.theme-cryosleep {
-    --color-background: #0E1C24;
-    --color-text-body: #A8C4D4;
-    --color-text-title: #FFFFFF;
-    --color-neon-primary: #FFFFFF;
-    --color-neon-secondary: #74E3C8; /* Muted Mint Green */
-    --color-accent: #A3D9FF;
-    --glass-background: rgba(25, 40, 50, 0.4);
-    --glass-border: rgba(200, 220, 230, 0.2);
-    --font-display: 'Rajdhani', sans-serif;
-    --font-body: 'Syne', sans-serif;
-}
-
-/* Theme 13: "Cyberspace" - Classic hacker vibe */
-body.theme-cyberspace {
-    --color-background: #000000;
-    --color-text-body: #C0C0C0;
-    --color-text-title: #39FF14;
-    --color-neon-primary: #39FF14; /* Matrix Green */
-    --color-neon-secondary: #444444; /* Dark Grey */
-    --color-accent: #39FF14;
-    --glass-background: rgba(10, 25, 10, 0.3);
-    --glass-border: rgba(57, 255, 20, 0.2);
-    --font-display: 'Roboto Mono', monospace;
-    --font-body: 'Roboto Mono', monospace;
-}
-
-/* Theme 14: "Stardust" - Ethereal and magical */
-body.theme-stardust {
-    --color-background: #191A2F;
-    --color-text-body: #D3D4E5;
-    --color-text-title: #FFFFFF;
-    --color-neon-primary: #FDBFDE; /* Pastel Pink */
-    --color-neon-secondary: #C8B6FF; /* Lavender */
-    --color-accent: #FFD700; /* Gold */
-    --glass-background: rgba(30, 32, 55, 0.5);
-    --glass-border: rgba(253, 191, 222, 0.25);
-    --font-display: 'Syne', sans-serif;
-    --font-body: 'Rajdhani', sans-serif;
-}
-
-/* ==========================================================================
-   V2.2 ADDITIONS - Layout, Effects & Responsive Fixes
-   ========================================================================== */
-
-/* --- 1. Activate Twinkling Stars --- */
-/* This rule targets the existing starfield and adds the twinkle animation to it. */
-.background::after {
-    animation: move-stars 200s linear infinite, 
-               twinkle-stars 5s ease-in-out infinite;
-}
-
-
-/* --- 3. Adjust Hero Content Width for Desktop --- */
-/* We are overriding the width of the hero content to give it more space. */
-.hero__content {
-    /* Make the content area wider, taking up about 60% of the hero section. */
-    width: 60%;
-}
-
-/* We also need to move the robot further left to make room for the wider text. */
-.hero__robot-container {
-    /* Pushing it more to the left prevents overlap with the new, wider text area.
-       Feel free to adjust this value as needed. */
-    left: -40%;
-}
-
-
-/* --- 4. Responsive Fixes for Hero Section --- */
-/* This media query specifically targets tablet and mobile screens to fix the hero layout. */
-@media (max-width: 992px) {
-    /* We reset the hero to behave like a normal section on smaller screens. */
-    .hero {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        padding-top: 8rem;
-        gap: 2rem;
-        /* Removing absolute positioning context for mobile */
-        position: relative; 
-    }
-
-    /* We take the robot and content out of absolute positioning so they can stack. */
-    .hero__robot-container,
-    .hero__content {
-        position: static; /* VERY IMPORTANT: This resets the absolute positioning. */
-        transform: none;  /* Reset any transform properties. */
-        width: 100%;      /* Allow them to take up the full width of the column. */
-        text-align: center;
-    }
-
-    /* We need to specifically reset the alignment for the content block. */
-    .hero__content {
-        order: 2; /* Content comes after the robot */
-        align-items: center;
-    }
-    
-    .hero__robot-container {
-        order: 1; /* Robot comes first */
-        height: 40vh;
-        min-height: 350px;
-    }
-
-    .hero__title {
-        font-size: clamp(2rem, 10vw, 3rem);
-    }
-    
-    /* Ensure the card text is centered on mobile. */
-    .hero__card {
-        text-align: center;
-    }
-}
-
-
-/* ==========================================================================
-   V2.4 ADDITIONS - Fluid Typography & Proportions
-   ========================================================================== */
-
-/* --- 1. Root Font Size Scaling --- */
-/* This makes the base font size fluid, scaling smoothly between 14px on mobile
-   and 16px on large desktops. Everything using 'rem' units will scale with it. */
-html {
-    font-size: clamp(14px, 1.2vw, 16px);
-}
-
-/* --- 2. Refine Hero Title Scaling --- */
-/* The original '6vw' was too aggressive. This new formula scales more gently,
-   preventing the title from becoming excessively large on wide screens. */
-.hero__title {
-    font-size: clamp(2.5rem, 1.5vw + 1.5rem, 4.5rem);
-    /* We also add a max-width to prevent it from getting too wide */
-    max-width: 950px;
-}
-
-/* --- 3. Refine General Section Title Scaling --- */
-.section__title {
-    font-size: clamp(2rem, 1vw + 1.5rem, 2.8rem);
-}
-
-/* --- 4. Adjust Card Padding for Better Scaling --- */
-/* Using 'rem' for padding ensures the cards scale proportionally with the font size. */
-.card {
-    padding: clamp(1.2rem, 2vw + 0.8rem, 2.2rem); /* Ligeramente reducido para más espacio de contenido */
-}
-
-/* ==========================================================================
-   V2.5 ADDITIONS - Effects, Background & Mobile Polish
-   ========================================================================== */
-
-/* --- 1. Estilos para el Efecto de Teclado (Typewriter) --- */
-.hero__title.typing-effect {
-    /* Crea el cursor parpadeante usando un borde derecho */
-    border-right: 0.15em solid var(--color-accent); 
-    white-space: nowrap; /* Evita que el texto se rompa en varias líneas mientras se escribe */
-    overflow: hidden; /* Oculta el resto del texto que aún no se ha escrito */
-    animation: 
-        blinking-cursor 0.75s step-end infinite;
-}
-
-/* El título final ya no necesita el cursor parpadeante */
-.hero__title.typing-done {
-    border-right: none;
-    white-space: normal;
-    overflow: visible;
-}
-
-/* Animación para el parpadeo del cursor */
-@keyframes blinking-cursor {
-    from, to { border-color: transparent; }
-    50% { border-color: var(--color-accent); }
-}
-
-/* --- 2. Eliminar Definitivamente la Sombra Lateral --- */
-/* Esta regla fuerza la desaparición del pseudo-elemento que causaba el brillo */
-body::before {
-    display: none !important;
-}
-
-/* --- 1. Fondo con Imagen y Canvas para Estrellas --- */
-.background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden; /* Evita que elementos se desborden */
-    background-color: var(--color-background);
-    z-index: -3;
-}
-
-.background__image {
-    display: block; /* Hacemos visible tu imagen de fondo */
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.3; /* La hacemos sutil para que las estrellas destaquen */
-}
-
-#starfield-canvas {
-    position: absolute; /* El lienzo se superpone a la imagen de fondo */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    z-index: -1;
-    pointer-events: none; 
-}
-
-@keyframes twinkle-stars {
-    /* Mantener el mismo contenido pero asegurar que no cree elementos adicionales */
-    0%, 100% {
-        box-shadow: /* Mantener tu configuración original */
-            -5vw 20vh 1px rgba(255,255,255, 0.8), 8vw 45vh 2px rgba(255,255,255, 1), 
-            /* resto del código original */;
-        transform: translateZ(0); /* Mejorar rendimiento */
-    }
-    50% {
-        box-shadow: /* Mantener tu configuración original */
-            -5vw 20vh 1px rgba(255,255,255, 0.4), 8vw 45vh 2px rgba(255,255,255, 0.7),
-            /* resto del código original */;
-        transform: translateZ(0); /* Mejorar rendimiento */
-    }
-}
-
-
-
-/* --- 4. Mejoras Responsivas para Smartphones --- */
-
-/* Usamos un breakpoint más específico para móviles pequeños */
 @media (max-width: 576px) {
-    .hero {
-        /* Ajustamos el padding para dar más espacio al contenido */
-        padding-top: 5rem;
-        gap: 0; /* Reducimos el espacio entre robot y texto */
+    .proyecto-card {
+        height: auto;
+        min-height: 400px;
     }
 
-    .hero__robot-container {
-        /* Hacemos el contenedor del robot mucho más pequeño */
-        height: 20vh; 
-        min-height: 180px;
-        /* Lo movemos un poco hacia arriba */
-        position: absolute;
-        top: 4rem;
+    .carousel-nav {
+        opacity: 0.7;
+        pointer-events: auto;
     }
-    
-    .hero__robot-3d {
-        align-items: left;
-        width: 80%;
-        height: 70%;
-        flex-wrap: wrap;
-    }
-
-    .hero__content {
-        /* Nos aseguramos de que el contenido no se solape con el robot */
-        flex-direction: column;
-        position: relative;
-        top: 10rem; 
-    }
-    
-    .hero__buttons {
-        /* Ajustamos los botones para que no se sientan tan grandes */
-        transform: scale(0.9);
-    }
-}
-
-
-
-/* ==========================================================================
-   V-FINAL-PLUS: Button Fix, Typewriter & Final Glass Effect
-   ========================================================================== */
-
-/* --- 1. SOLUCIÓN A BOTONES QUE NO FUNCIONAN --- */
-/* Esta es la corrección clave: le decimos a las capas de efectos de las
-   tarjetas que no intercepten los clics ni los hovers del mouse. */
-.card::before,
-.card::after {
-    pointer-events: none; 
-}
-
-/* --- 2. AJUSTE FINAL DE TARJETA PRINCIPAL --- */
-/* Contenedor de la tarjeta principal */
-.hero-card-container {
-    max-width: 700px;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center; 
-    justify-content: center;
-    padding: 0; /* Quitamos el padding para que el texto se centre mejor */
-    /* Hereda el estilo de tarjeta de cristal que definimos a continuación */
-}
-
-/* Estilo del texto dentro de la tarjeta principal */
-.hero-card-text {
-    text-align: right;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: var(--color-text-body);
-    padding: 1.5rem; /* El padding ahora está solo en el texto */
-    margin: 0; /* Aseguramos que el párrafo no tenga márgenes propios */
-}
-
-/* --- 3. EFECTO DE VIDRIO LÍQUIDO DE ALTA FIDELIDAD --- */
-/* Esta regla sobreescribe el estilo .card anterior para un look más limpio */
-.card {
-    position: relative;
-    /* Fondo con transparencia casi total para máximo reflejo del fondo */
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(0px) saturate(120%);
-    -webkit-backdrop-filter: blur(1px) saturate(120%);
-    border-radius: var(--border-radius);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 8px 32px 0 rgba(2, 2, 10, 0.37);
-    overflow: hidden;
-}
-
-/* --- 4. ESTILOS PARA EL EFECTO DE TECLADO --- */
-.hero__title.typing-effect {
-    border-right: 0.15em solid var(--color-accent); 
-    white-space: nowrap;
-    overflow: hidden;
-    animation: blinking-cursor 0.75s step-end infinite;
-}
-
-.hero__title.typing-done {
-    border-right: none;
-    white-space: normal;
-    overflow: visible;
-}
-
-@keyframes blinking-cursor {
-    from, to { border-color: transparent; }
-    50% { border-color: var(--color-accent); }
-}
-
-/* ==========================================================================
-   V-FINAL-PLUS: Button Fix, Typewriter & Final Glass Effect
-   ========================================================================== */
-
-/* --- 1. SOLUCIÓN A BOTONES QUE NO FUNCIONAN --- */
-/* Esta es la corrección clave: le decimos a las capas de efectos de las
-   tarjetas que no intercepten los clics ni los hovers del mouse. */
-.card::before,
-.card::after {
-    pointer-events: none; 
-}
-
-/* --- 2. AJUSTE FINAL DE TARJETA PRINCIPAL --- */
-/* Contenedor de la tarjeta principal */
-.hero-card-container.card {
-    max-width: 700px;
-    margin: 2rem 0;
-    display: flex;
-    align-items: center; 
-    justify-content: center;
-    padding: 0; /* Quitamos el padding del contenedor para que el texto se centre mejor */
-    /* Hereda el nuevo estilo de tarjeta de cristal que definimos a continuación */
-}
-
-/* Estilo del texto dentro de la tarjeta principal */
-.hero-card-text {
-    text-align: right;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: var(--color-text-body);
-    padding: 1.5rem; /* El padding ahora está solo en el texto */
-    margin: 0; 
-}
-
-/* --- 3. EFECTO DE VIDRIO LÍQUIDO DE ALTA FIDELIDAD --- */
-/* Esta regla sobreescribe el estilo .card anterior para un look más limpio */
-.card {
-    position: relative;
-    /* Fondo con transparencia casi total para máximo reflejo del fondo */
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(1px) saturate(120%);
-    -webkit-backdrop-filter: blur(12px) saturate(120%);
-    border-radius: var(--border-radius);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    /* Sombra interior para dar grosor y una exterior para profundidad */
-    box-shadow: 
-        inset 0 1px 1px 0 rgba(255, 255, 255, 0.05),
-        0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    overflow: hidden;
-}
-
-/* --- 4. ESTILOS PARA EL EFECTO DE TECLADO --- */
-.hero__title.typing-effect {
-    border-right: 0.15em solid var(--color-accent); 
-    white-space: nowrap;
-    overflow: hidden;
-    animation: blinking-cursor 0.75s step-end infinite;
-}
-
-.hero__title.typing-done {
-    border-right: none;
-    white-space: normal;
-    overflow: visible;
-}
-
-@keyframes blinking-cursor {
-    from, to { border-color: transparent; }
-    50% { border-color: var(--color-accent); }
-}
-
-/* --- Estilos para la Nueva Sección de Música --- */
-.musica__embed-container {
-  position: relative;
-  width: 100%;
-  max-width: 660px;  /* <- CAMBIAR ESTO */
-  margin: 0 auto;
-  padding: 0;
-  border-radius: var(--border-radius);
-  background: transparent;
-  overflow: visible;
-  z-index: 5;
-}
-
-.musica__embed-container iframe {
-  width: 100%;
-  height: 450px;  /* <- CAMBIAR ESTO */
-  border: none;
-  border-radius: var(--border-radius);
-  /* otras propiedades... */
-}
-
-/* ==========================================================================
-   V-FINAL-FIXES: Correcciones sin Refactorizar
-   ========================================================================== */
-
-/* --- 1. SOLUCIÓN PARA TARJETA PRINCIPAL Y SU TEXTO --- */
-
-/* Forzamos al contenedor a tener una altura automática y a centrar el texto.
-   Esto ANULA cualquier 'max-height' o 'height' anterior y soluciona el desbordamiento. */
-.hero-card-container.card {
-    height: auto; /* La tarjeta adapta su altura al contenido */
-    max-height: none; /* Anulamos la restricción de altura */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem; /* Un padding unificado para que se vea bien */
-}
-
-/* Nos aseguramos de que el texto no tenga márgenes que interfieran */
-.hero-card-text {
-    margin: 0;
-    padding: 1rem;
-    line-height: 1.6;
-    font-size: 1.1rem;
-}
-
-
-.card::before,
-.card::after {
-    pointer-events: none;
-}
-
-/* Damos a los enlaces de los proyectos una posición relativa y un z-index
-   para asegurar que estén por encima de cualquier otro elemento de la tarjeta. */
-.proyecto-card__enlace {
-    position: relative;
-    z-index: 10;
-}
-
-/* --- 3. MEJORA DE HOVER EN BOTONES --- */
-
-/* Hacemos la transición de todos los botones más lenta y suave */
-.gradient-button, .proyecto-card__enlace {
-    transition: all 0.6s ease;
-}
-
-/* Quitamos la animación de gradiente en hover para que no sea tan agresiva.
-   El cambio de color ahora será gobernado por la transición suave de arriba. */
-.gradient-button-container:hover {
-   animation: none; /* Desactivamos el parpadeo del gradiente al hacer hover */
-}
-
-/* ==========================================================================
-   Apple Music Player Styling - MEJORADO
-   ========================================================================== */
-
-/* Contenedor principal para la sección de música */
-.musica__section {
-    width: 90%;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem 0;
-}
-
-/* Título de la sección con el mismo estilo que otros títulos */
-.musica__title {
-    font-family: var(--font-display);
-    color: var(--color-text-title);
-    font-size: clamp(2rem, 5vw, 2.8rem);
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    text-align: center;
-    margin-bottom: 3rem;
-    position: relative;
-    text-shadow: 0 0 5px var(--color-accent), 0 0 15px var(--color-neon-secondary);
-}
-
-/* Contenedor mejorado para el embed de Apple Music */
-.musica__embed-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0;
-    position: relative;
-    z-index: 5;
-}
-
-/* Mejoras para el iframe de Apple Music */
-.musica__embed-container iframe {
-    /* Eliminamos los filtros que causaban problemas */
-    filter: none;
-    /* Aplicamos bordes redondeados para que coincida con el estilo */
-    border-radius: var(--border-radius);
-    /* Añadimos ancho responsive */
-    width: 100%;
-    /* Altura mínima para asegurar que todo sea visible */
-    min-height: 450px;
-    /* Añadimos efecto glassmorphic similar a tus cards */
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    /* Ajustamos el color de fondo para que coincida mejor con el tema */
-    background: transparent;
-    /* Transición suave al cargar */
-    transition: all 0.4s ease;
-}
-
-/* ==========================================================================
-   Apple Music Player - Enhanced Liquid Glass
-   ========================================================================== */
-
-/* Contenedor principal con efecto liquid glass mejorado */
-.musica__embed-container {
-  position: relative;
-  width: 100%;
-  max-width: 8000px;
-  margin: 0 auto;
-  overflow: visible;
-  border-radius: var(--border-radius);
-  background: transparent;
-  box-shadow: 
-    0 8px 32px 0 rgba(0, 0, 0, 0.25),
-    inset 0 1px 1px rgba(255, 255, 255, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: 5;
-}
-
-/* Efecto de brillo en los bordes para el efecto líquido */
-.musica__embed-container::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    border-radius: calc(var(--border-radius) + 5px);
-    background: linear-gradient(135deg, 
-                rgba(10, 10, 20, 0.7) 0%, 
-                rgba(20, 20, 40, 0.8) 50%, 
-                rgba(10, 10, 25, 0.7) 100%);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.4),
-        inset 0 0 1px 1px rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    z-index: -1;
-    pointer-events: none; /* IMPORTANTE: Evita que bloquee interacciones */
-}
-
-/* Mejora del iframe para que sea más transparente */
-.musica__embed-container iframe {
-  width: 100%;
-  height: 100%;  /* Cambia altura fija por 100% */
-  min-height: 450px;  /* Altura mínima para evitar que sea muy pequeño */
-  border: none;
-  border-radius: var(--border-radius);
-  position: relative;
-  z-index: 2;
-  filter: contrast(1.1) brightness(0.9);
-  background-color: transparent;
-}
-
-/* Efectos de hover */
-.musica__embed-container:hover {
-  transform: translateY(-3px);
-  box-shadow: 
-    0 12px 40px 0 rgba(0, 0, 0, 0.35),
-    inset 0 1px 1px rgba(255, 255, 255, 0.1);
-}
-
-.musica__embed-container:hover::before {
-  opacity: 1;
-}
-
-/* Ajustes responsivos mejorados */
-@media (max-width: 768px) {
-  .musica__embed-container {
-    max-width: 95%;
-  }
-  
-  .musica__embed-container iframe {
-    height: 500px;
-  }
-}
-
-@media (max-width: 480px) {
-  .musica__embed-container {
-    border-radius: 16px;
-  }
-  
-  .musica__embed-container iframe {
-    height: 570px;
-    border-radius: 16px;
-  }
-  
-  /* Aumentar contraste visual en pantallas pequeñas */
-  .musica__embed-container::before {
-    opacity: 0.8;
-  }
-}
-
-/* Soluciones específicas para problemas de visualización en iOS */
-@supports (-webkit-touch-callout: none) {
-  .musica__embed-container iframe {
-    /* Ajustes para dispositivos Apple */
-    min-height: 580px;
-  }
-}
-
-/* ==========================================================================
-   Apple Music Player - Advanced Liquid Glass Effect
-   ========================================================================== */
-
-/* Contenedor principal mejorado */
-.musica__embed-container {
-  position: relative;
-  width: 100%;
-  max-width: 660px;
-  margin: 0 auto;
-  padding: 0;
-  border-radius: var(--border-radius);
-  background: transparent;
-  overflow: visible;
-  z-index: 5;
-}
-
-/* Capa base con efecto de vidrio líquido */
-.musica__embed-container::before {
-  content: '';
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border-radius: calc(var(--border-radius) + 4px);
-  background: linear-gradient(135deg, 
-              rgba(255, 255, 255, 0.03) 0%, 
-              rgba(var(--color-neon-primary-rgb, 75, 0, 130), 0.05) 50%, 
-              rgba(var(--color-neon-secondary-rgb, 220, 220, 220), 0.03) 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.3),
-    inset 0 0 1px 1px rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  z-index: -1;
-  overflow: hidden;
-  transform: translateZ(0); /* Mejora rendimiento en algunos navegadores */
-}
-
-/* Efecto de brillo en los bordes */
-.musica__embed-container::after {
-    pointer-events: none; /* IMPORTANTE: Asegura que no bloquee interacciones */
-}
-/* El iframe necesita tener un fondo transparente */
-.musica__embed-container iframe {
-  width: 100%;
-  height: 450px;
-  border: none;
-  border-radius: var(--border-radius);
-  /* Usamos una máscara específica para recortar solo la parte del reproductor que queremos visible */
-  -webkit-mask-image: linear-gradient(to bottom,
-                      transparent 0%,
-                      black 5%,
-                      black 95%,
-                      transparent 100%);
-  mask-image: linear-gradient(to bottom,
-              transparent 0%,
-              black 5%,
-              black 95%,
-              transparent 100%);
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 2;}
-
-/* Variables RGB para gradientes y efectos */
-:root {
-  --color-neon-primary-rgb: 75, 0, 130; /* Valores RGB para el Violet */
-  --color-neon-secondary-rgb: 220, 220, 220; /* Valores RGB para Ethereal Pink */
-  --color-accent-rgb: 229, 228, 226; /* Valores RGB para Cyan */
-}
-
-/* Efecto de reflejo de luz que se mueve con el cursor */
-.musica__embed-container:hover::before {
-  background: linear-gradient(135deg, 
-              rgba(255, 255, 255, 0.05) 0%, 
-              rgba(var(--color-neon-primary-rgb, 75, 0, 130), 0.08) 50%, 
-              rgba(var(--color-neon-secondary-rgb, 220, 220, 220), 0.05) 100%);
-}
-
-/* Eliminar cualquier overlay que pueda estar causando problemas */
-.musica__dark-overlay,
-.musica__glass-overlay,
-.musica__glass-highlight {
-    pointer-events: none !important; /* CRÍTICO: Nunca deben bloquear interacciones */
-}
-
-/* Animación sutil de brillo en los bordes */
-@keyframes glass-shine {
-  0%, 100% {
-    opacity: 0.3;
-    background-position: -100% 100%;
-  }
-  50% {
-    opacity: 0.5;
-    background-position: 200% 100%;
-  }
-}
-
-.musica__embed-container::after {
-  animation: glass-shine 8s linear infinite;
-  background-size: 200% 200%;
-}
-
-/* Ajustes responsivos mejorados */
-@media (max-width: 768px) {
-  .musica__embed-container iframe {
-    height: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .musica__embed-container iframe {
-    height: 100%;
-  }
-}
-
-/* Añadimos una capa adicional para simular reflejos de vidrio */
-.musica__glass-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  border-radius: var(--border-radius);
-  background: linear-gradient(135deg, 
-              rgba(255, 255, 255, 0.05) 0%, 
-              transparent 50%);
-  z-index: 5;
-  mix-blend-mode: overlay;
-}
-
-/* ==========================================================================
-   Apple Music Player - Dark Liquid Glass Effect
-   ========================================================================== */
-
-/* Contenedor principal con efecto vidrio oscuro */
-.musica__embed-container {
-  position: relative;
-  width: 100%;
-  max-width: 660px;
-  margin: 0 auto;
-  padding: 0;
-  border-radius: var(--border-radius);
-  background: transparent;
-  overflow: visible;
-  z-index: 5;
-}
-
-/* Panel de vidrio oscuro líquido */
-.musica__embed-container::before {
-  content: '';
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  border-radius: calc(var(--border-radius) + 5px);
-  background: linear-gradient(135deg, 
-              rgba(10, 10, 20, 0.7) 0%, 
-              rgba(20, 20, 40, 0.8) 50%, 
-              rgba(10, 10, 25, 0.7) 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.4),
-    inset 0 0 1px 1px rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: -1;
-}
-
-/* Efecto de brillo en los bordes */
-.musica__embed-container::after {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  right: -1px;
-  bottom: -1px;
-  background: linear-gradient(135deg,
-              rgba(var(--color-neon-primary-rgb, 75, 0, 130), 0.15) 0%,
-              transparent 50%,
-              rgba(var(--color-accent-rgb, 229, 228, 226), 0.1) 100%);
-  border-radius: var(--border-radius);
-  pointer-events: none;
-  z-index: 10;
-}
-
-/* Iframe con configuración para oscurecer solo partes específicas */
-.musica__embed-container iframe {
-  width: 100%;
-  height: 450px;
-  border: none;
-  border-radius: var(--border-radius);
-  background: transparent;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 2;
-  /* Filtro que oscurece el blanco pero preserva colores vivos */
-  filter: contrast(1.1) brightness(0.9);
-}
-
-/* Overlay para dar efecto de vidrio oscuro, pero preservando colores */
-.musica__dark-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none; /* Permite interactuar con el reproductor */
-  border-radius: var(--border-radius);
-  background: transparent;
-  /* Modo de mezcla que oscurece pero preserva colores vivos */
-  mix-blend-mode: color-burn;
-  opacity: 0.7;
-  z-index: 3;
-}
-
-/* Efecto de reflejo de vidrio */
-.musica__glass-highlight {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 40%;
-  pointer-events: none;
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
-  background: linear-gradient(to bottom,
-              rgba(255, 255, 255, 0.07) 0%,
-              transparent 100%);
-  z-index: 4;
-  opacity: 0.5;
-}
-
-/* Animación sutil de reflejo */
-@keyframes glass-pulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 0.7; }
-}
-
-.musica__glass-highlight {
-  animation: glass-pulse 8s ease-in-out infinite;
-}
-
-/* Efecto hover para dar vida al componente */
-.musica__embed-container:hover::before {
-  background: linear-gradient(135deg, 
-              rgba(15, 15, 30, 0.75) 0%, 
-              rgba(25, 25, 50, 0.85) 50%, 
-              rgba(15, 15, 35, 0.75) 100%);
-  box-shadow: 
-    0 15px 35px rgba(0, 0, 0, 0.5),
-    inset 0 0 1px 1px rgba(255, 255, 255, 0.1);
-}
-
-/* Variables RGB para efectos de color */
-:root {
-  --color-neon-primary-rgb: 75, 0, 130; /* Valores para Violet */
-  --color-neon-secondary-rgb: 220, 220, 220; /* Valores para Ethereal Pink */
-  --color-accent-rgb: 229, 228, 226; /* Valores para Cyan */
-}
-
-/* Ajustes responsivos mejorados */
-@media (max-width: 768px) {
-  .musica__embed-container iframe {
-    height: 500px;
-  }
-}
-
-@media (max-width: 480px) {
-  .musica__embed-container iframe {
-    height: 570px;
-  }
-  
-  /* Optimizaciones para móviles */
-  .musica__embed-container::before {
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    border-radius: calc(var(--border-radius) - 2px);
-  }
-}
-
-/* Soporte específico para iOS */
-@supports (-webkit-touch-callout: none) {
-  .musica__embed-container iframe {
-    min-height: 580px;
-  }
 }
