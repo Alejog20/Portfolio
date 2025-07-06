@@ -199,7 +199,7 @@ p {
 }
 
 /* ==========================================================================
-   Header & Navigation
+   Header & Navigation - ENHANCED NEON SYSTEM
    ========================================================================== */
 .header {
     display: flex;
@@ -211,9 +211,16 @@ p {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(10, 10, 25, 0.5);
-    backdrop-filter: blur(4px);
-    border-bottom: 1px solid var(--glass-border);
+    /* Proper glass effect for the navbar */
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.04) 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.1),
+        inset 0 1px 1px rgba(255, 255, 255, 0.2);
 }
 
 .header__nav {
@@ -229,13 +236,58 @@ p {
     color: var(--color-text-body);
     text-decoration: none;
     text-transform: uppercase;
-    padding: 0.5rem;
-    transition: color var(--transition-speed), text-shadow var(--transition-speed);
+    padding: 0.8rem 1.2rem;
+    position: relative;
+    transition: all var(--transition-speed);
+    overflow: hidden;
+}
+
+/* Brilliant neon effect on hover - silver meets violet, mate! */
+.header__link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(229, 228, 226, 0.4), /* Silver accent */
+        rgba(75, 0, 130, 0.3), /* Violet primary */
+        transparent
+    );
+    transition: left 0.6s ease;
+    z-index: -1;
 }
 
 .header__link:hover {
     color: var(--color-text-title);
-    text-shadow: 0 0 4px var(--color-text-title), 0 0 10px var(--color-neon-primary);
+    /* Proper lush neon glow combining silver and violet */
+    text-shadow: 
+        0 0 5px rgba(229, 228, 226, 0.8),  /* Silver glow */
+        0 0 10px rgba(220, 220, 220, 0.6), /* Ethereal pink */
+        0 0 20px rgba(75, 0, 130, 0.4),    /* Violet accent */
+        0 0 30px rgba(75, 0, 130, 0.2);    /* Outer violet glow */
+    transform: translateY(-1px);
+}
+
+.header__link:hover::before {
+    left: 100%;
+}
+
+/* Active section indicator - absolutely pukka neon effect! */
+.header__link.active {
+    color: var(--color-text-title);
+    text-shadow: 
+        0 0 8px rgba(229, 228, 226, 1),    /* Bright silver core */
+        0 0 15px rgba(220, 220, 220, 0.8), /* Pink mid-glow */
+        0 0 25px rgba(75, 0, 130, 0.6),    /* Violet outer */
+        0 0 35px rgba(75, 0, 130, 0.3);    /* Extended glow */
+    /* Subtle bottom border for active state */
+    border-bottom: 2px solid var(--color-accent);
+    background: linear-gradient(135deg,
+        rgba(75, 0, 130, 0.1) 0%,
+        rgba(229, 228, 226, 0.05) 100%);
 }
 
 /* ==========================================================================
