@@ -174,20 +174,45 @@ document.addEventListener('DOMContentLoaded', () => {
      * MÓDULO 5: CAROUSEL DE PROYECTOS
      * Controla la navegación de slides dentro de cada tarjeta de proyecto.
      */
+/**
+ * MÓDULO 5 CORREGIDO: CAROUSEL DE PROYECTOS
+ * Solo crea flechas dentro de las tarjetas de proyecto
+ */
     function setupProjectCarousels() {
-        const projectCards = document.querySelectorAll('.proyecto-card');
+        // IMPORTANTE: Solo seleccionar carouseles dentro de la sección de proyectos
+        const projectCards = document.querySelectorAll('.proyectos .proyecto-card');
+
 
         projectCards.forEach(card => {
             const slides = card.querySelectorAll('.carousel-slide');
             const indicators = card.querySelectorAll('.indicator');
-            const nextBtn = card.querySelector('.carousel-nav--next');
-            const prevBtn = card.querySelector('.carousel-nav--prev');
+            
+            // Buscar botones existentes en HTML O crearlos si no existen
+            let nextBtn = card.querySelector('.carousel-nav--next');
+            let prevBtn = card.querySelector('.carousel-nav--prev');
+            
+            // Si no existen en HTML, crearlos (pero SOLO dentro de la tarjeta)
+            if (!nextBtn) {
+                nextBtn = document.createElement('button');
+                nextBtn.className = 'carousel-nav carousel-nav--next';
+                nextBtn.innerHTML = '›';
+                nextBtn.setAttribute('aria-label', 'Next slide');
+                card.appendChild(nextBtn);
+            }
+            
+            if (!prevBtn) {
+                prevBtn = document.createElement('button');
+                prevBtn.className = 'carousel-nav carousel-nav--prev';
+                prevBtn.innerHTML = '‹';
+                prevBtn.setAttribute('aria-label', 'Previous slide');
+                card.appendChild(prevBtn);
+            }
+
             let currentIndex = 0;
 
-            if (slides.length <= 1) return; // Don't setup carousel if only one slide
+            if (slides.length <= 1) return; // No setup carousel if only one slide
 
             function showSlide(index) {
-                // Ensure index is within bounds
                 if (index >= slides.length) {
                     currentIndex = 0;
                 } else if (index < 0) {
@@ -196,7 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentIndex = index;
                 }
 
-                // Update slides
                 slides.forEach((slide, i) => {
                     slide.classList.remove('active');
                     if (i === currentIndex) {
@@ -204,7 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
 
-                // Update indicators
                 indicators.forEach((indicator, i) => {
                     indicator.classList.remove('active');
                     if (i === currentIndex) {
@@ -213,16 +236,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            nextBtn.addEventListener('click', () => {
+            // Event listeners para las flechas
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevenir propagación
                 showSlide(currentIndex + 1);
             });
 
-            prevBtn.addEventListener('click', () => {
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevenir propagación
                 showSlide(currentIndex - 1);
             });
             
             indicators.forEach(indicator => {
                 indicator.addEventListener('click', (e) => {
+                    e.stopPropagation();
                     const slideIndex = parseInt(e.target.getAttribute('data-slide'));
                     showSlide(slideIndex);
                 });
@@ -621,4 +648,18 @@ document.addEventListener('DOMContentLoaded', () => {
     setupRobotInteractionHint();    
 
     console.log("🚀 Todos los módulos inicializados correctamente");
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Eliminar flechas del hero de forma agresiva
+    setTimeout(() => {
+        const heroArrows = document.querySelectorAll('.hero .carousel-nav, .hero .carousel-nav--prev, .hero .carousel-nav--next');
+        heroArrows.forEach(arrow => {
+            if (arrow) {
+                arrow.remove(); // Eliminar completamente del DOM
+            }
+        });
+        console.log('🗑️ Flechas del hero eliminadas del DOM');
+    }, 1000);
 });
