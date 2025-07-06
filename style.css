@@ -940,109 +940,99 @@ p {
 }
 
 /* Reproductor con glass liquid perfeccionado */
+/* Updated Music Player Container - Mobile Optimized */
 .musica__embed-container {
     position: relative;
     width: 100%;
     max-width: 660px;
     margin: 0 auto;
     border-radius: var(--border-radius);
-    padding: 8px; /* Padding para crear el marco de vidrio */
+    padding: 8px;
     
-    /* Fondo del marco exterior con efecto más profundo */
+    /* Simplified background for better mobile performance */
     background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.06) 0%, 
         rgba(255, 255, 255, 0.02) 50%, 
-        rgba(255, 255, 255, 0.05) 100%);
-    backdrop-filter: blur(25px) saturate(120%) brightness(90%);
-    -webkit-backdrop-filter: blur(25px) saturate(120%) brightness(90%);
+        rgba(255, 255, 255, 0.04) 100%);
     
-    /* Sistema de sombras más elaborado para crear profundidad */
+    /* Simplified backdrop filter for mobile compatibility */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    
+    /* Reduced shadow complexity for mobile performance */
     box-shadow: 
-        0 12px 40px rgba(0, 0, 0, 0.4),
-        0 4px 12px rgba(0, 0, 0, 0.2),
-        0 1px 3px rgba(0, 0, 0, 0.15),
-        inset 0 2px 4px rgba(255, 255, 255, 0.1),
-        inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        0 2px 8px rgba(0, 0, 0, 0.15),
+        inset 0 1px 2px rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* Marco exterior con gradiente de borde */
-.musica__embed-container::before {
-    content: '';
-    position: absolute;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
-    border-radius: calc(var(--border-radius) + 4px);
-    background: linear-gradient(135deg, 
-        rgba(75, 0, 130, 0.3) 0%, 
-        rgba(220, 220, 220, 0.15) 25%,
-        rgba(229, 228, 226, 0.2) 50%,
-        rgba(75, 0, 130, 0.25) 75%,
-        rgba(220, 220, 220, 0.1) 100%);
-    backdrop-filter: blur(8px);
-    z-index: -2;
-    opacity: 0.8;
-}
-
-/* Efecto de refracción de luz superior más sutil */
-.musica__embed-container::after {
-    content: '';
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    right: 8px;
-    height: 25%;
-    background: linear-gradient(180deg, 
-        rgba(255, 255, 255, 0.15) 0%, 
-        rgba(255, 255, 255, 0.08) 40%,
-        transparent 100%);
-    border-radius: calc(var(--border-radius) - 4px) calc(var(--border-radius) - 4px) 0 0;
-    pointer-events: none;
-    z-index: 4;
-}
-
-/* iframe con reducción de brillo y encapsulamiento */
+/* Updated iframe styling with mobile responsiveness */
 .musica__embed-container iframe {
     width: 100%;
-    height: 450px;
+    /* Responsive height instead of fixed */
+    height: clamp(300px, 50vw, 450px);
     border: none;
     border-radius: calc(var(--border-radius) - 4px);
     position: relative;
     z-index: 2;
     
-    /* Reducción de brillo y mejora de contraste */
-    filter: brightness(0.85) contrast(1.15) saturate(1.1);
+    /* Simplified filters for mobile performance */
+    filter: brightness(0.9) contrast(1.05);
     
-    /* Sombra interna para efecto encapsulado */
+    /* Simplified shadows */
     box-shadow: 
-        inset 0 2px 8px rgba(0, 0, 0, 0.3),
-        inset 0 -2px 8px rgba(0, 0, 0, 0.2);
+        inset 0 1px 4px rgba(0, 0, 0, 0.2),
+        inset 0 -1px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Eliminamos el glass-highlight anterior ya que lo reemplazamos con ::after */
-.musica__glass-highlight {
-    display: none;
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+    .musica__embed-container {
+        /* Further simplify effects on mobile */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 6px;
+        
+        /* Simplified shadow for mobile */
+        box-shadow: 
+            0 4px 15px rgba(0, 0, 0, 0.25),
+            inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    }
+    
+    .musica__embed-container iframe {
+        /* Smaller height on mobile for better UX */
+        height: clamp(250px, 45vw, 350px);
+        
+        /* Remove intensive effects on mobile */
+        filter: brightness(0.95);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Disable heavy effects on very small screens */
+    .musica__embed-container::before {
+        display: none;
+    }
+    
+    .musica__embed-container::after {
+        opacity: 0.5;
+    }
 }
 
-/* Efecto hover para interactividad sutil */
-.musica__embed-container:hover {
-    transform: translateY(-2px);
-    box-shadow: 
-        0 16px 50px rgba(0, 0, 0, 0.5),
-        0 6px 16px rgba(0, 0, 0, 0.25),
-        0 2px 6px rgba(0, 0, 0, 0.2),
-        inset 0 2px 4px rgba(255, 255, 255, 0.15),
-        inset 0 -2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s ease;
+@media (max-width: 480px) {
+    .musica__embed-container {
+        /* Minimal effects on small mobile screens */
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        padding: 4px;
+    }
+    
+    .musica__embed-container iframe {
+        height: clamp(220px, 40vw, 280px);
+        filter: none; /* Remove all filters on small screens */
+        box-shadow: none; /* Remove shadows for better performance */
+    }
 }
-
-.musica__embed-container:hover::before {
-    opacity: 1;
-    transition: opacity 0.4s ease;
-}
-
 
 /* --- Contact Form --- */
 .contacto__contenido {
