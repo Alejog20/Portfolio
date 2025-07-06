@@ -628,7 +628,6 @@ p {
     font-size: 1rem;
 }
 
-
 /* Estilos para habilidades en columna izquierda */
 .cv__habilidades-seccion {
     width: 100%;
@@ -720,12 +719,12 @@ p {
 }
 
 .cv__icono-red:nth-child(2):hover { /* GitHub */
-    background: #333;
+    background: #070007;
     box-shadow: 0 0 15px #666;
 }
 
 .cv__icono-red:nth-child(3):hover { /* Twitter/X */
-    background: #1DA1F2;
+    background: #070007;
     box-shadow: 0 0 15px #1DA1F2;
 }
 
@@ -733,6 +732,8 @@ p {
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     box-shadow: 0 0 15px #e6683c;
 }
+
+
 
 /* Columna derecha: Contenido detallado */
 .cv__columna-derecha {
@@ -1117,15 +1118,106 @@ p {
     margin: 1.5rem auto 0;
 }
 
-/* ==========================================================================
-   Responsive Design
+/*/* ==========================================================================
+   RESPONSIVE DESIGN OPTIMIZADO PARA ROBOT SPLINE
    ========================================================================== */
-@media (max-width: 992px) {
+
+/* --- Configuración base (Desktop - 1200px+) --- */
+.hero__robot-container {
+    flex: 1 1 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh; /* Altura máxima en desktop */
+    max-height: 600px; /* Limitamos la altura máxima */
+}
+
+.hero__robot-3d {
+    width: 100%;
+    height: 100%;
+    /* Aseguramos que el robot mantenga proporciones */
+    max-width: 500px; /* Limitamos el ancho máximo en desktop */
+}
+
+/* --- Large Desktop (1400px+) --- */
+@media (min-width: 1400px) {
+    .hero__robot-container {
+        height: 100vh; /* Reducimos ligeramente en pantallas muy grandes */
+        max-height: 650px;
+    }
+    
+    .hero__robot-3d {
+        max-width: 550px; /* Permitimos un poco más de ancho */
+    }
+}
+
+/* --- Standard Desktop (1200px - 1399px) --- */
+@media (max-width: 1399px) and (min-width: 1200px) {
+    .hero__robot-container {
+        height: 80vh;
+        max-height: 550px;
+    }
+    
+    .hero__robot-3d {
+        max-width: 480px;
+    }
+}
+
+/* --- Small Desktop / Large Tablet Landscape (992px - 1199px) --- */
+@media (max-width: 1199px) and (min-width: 992px) {
+    .hero {
+        gap: 2rem;
+    }
+    
+    .hero__robot-container {
+        height: 70vh; /* Empezamos a reducir más notablemente */
+        max-height: 480px;
+        min-height: 350px; /* Establecemos un mínimo */
+    }
+    
+    .hero__robot-3d {
+        max-width: 420px;
+    }
+}
+
+/* --- Tablet Portrait / Small Laptop (768px - 991px) --- */
+/* ESTE ES EL RANGO CRÍTICO PARA TABLETS */
+@media (max-width: 991px) and (min-width: 768px) {
     .hero {
         flex-direction: column;
         text-align: center;
-        padding-top: 8rem;
-        gap: 2rem;
+        padding-top: 6rem; /* Reducimos el padding superior */
+        gap: 1.5rem;
+    }
+
+    .hero__content {
+        align-items: center;
+        text-align: center;
+        order: 2; /* El contenido va después del robot */
+    }
+    
+    .hero__robot-container {
+        order: 1; /* El robot va primero */
+        height: 50vh; /* CLAVE: Reducimos significativamente la altura */
+        max-height: 400px; /* Limitamos la altura máxima */
+        min-height: 280px; /* Pero mantenemos un mínimo funcional */
+        width: 100%;
+        flex: none; /* Removemos el flex para control total */
+    }
+    
+    .hero__robot-3d {
+        max-width: 350px; /* Limitamos el ancho en tablets */
+        width: 80%; /* Usamos porcentaje para mejor control */
+    }
+}
+
+/* --- Large Mobile / Small Tablet (576px - 767px) --- */
+@media (max-width: 767px) and (min-width: 576px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 5rem;
+        gap: 1.5rem;
     }
 
     .hero__content {
@@ -1136,18 +1228,52 @@ p {
     
     .hero__robot-container {
         order: 1;
-        height: 40vh;
-        min-height: 300px;
+        height: 45vh; /* Más pequeño en tablets pequeñas */
+        max-height: 350px;
+        min-height: 250px;
         width: 100%;
+    }
+    
+    .hero__robot-3d {
+        max-width: 300px;
+        width: 85%;
     }
 }
 
-@media (max-width: 768px) {
+/* --- Mobile (575px y menos) --- */
+@media (max-width: 575px) {
     :root {
         --section-spacing: 5rem;
     }
+    
     .header__nav {
        display: none;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 4rem; /* Menos padding en móviles */
+        gap: 1rem;
+    }
+
+    .hero__content {
+        align-items: center;
+        text-align: center;
+        order: 2;
+    }
+    
+    .hero__robot-container {
+        order: 1;
+        height: 40vh; /* El más pequeño para móviles */
+        max-height: 300px;
+        min-height: 220px;
+        width: 100%;
+    }
+    
+    .hero__robot-3d {
+        max-width: 280px; /* Muy controlado en móviles */
+        width: 90%;
     }
 
     .hero__buttons {
@@ -1156,11 +1282,12 @@ p {
         width: 100%;
         max-width: 300px;
     }
+    
     .gradient-button-container {
         width: 100%;
     }
 
-        /* Mejora para el botón de contacto */
+    /* Mejora para el botón de contacto */
     .contacto__boton-container {
         width: 100%;
         max-width: 300px;
@@ -1174,14 +1301,42 @@ p {
     }
 }
 
-@media (max-width: 576px) {
-    .proyecto-card {
-        height: auto;
-        min-height: 400px;
+/* --- Extra Small Mobile (400px y menos) --- */
+@media (max-width: 400px) {
+    .hero__robot-container {
+        height: 35vh; /* Para pantallas muy pequeñas */
+        max-height: 250px;
+        min-height: 200px;
     }
+    
+    .hero__robot-3d {
+        max-width: 240px;
+        width: 95%;
+    }
+}
 
-    .carousel-nav {
-        opacity: 0.7;
-        pointer-events: auto;
+/* --- Optimizaciones adicionales para el robot Spline --- */
+.hero__robot-3d {
+    /* Aseguramos que el robot se renderice correctamente */
+    object-fit: contain;
+    object-position: center;
+    
+    /* Mejoramos la performance */
+    transform: translateZ(0);
+    will-change: auto;
+    
+    /* Transiciones suaves cuando cambia el tamaño */
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* --- Landscape específico para tablets --- */
+@media (max-width: 1024px) and (orientation: landscape) and (max-height: 768px) {
+    .hero__robot-container {
+        height: 60vh; /* Ajuste específico para landscape en tablets */
+        max-height: 350px;
+    }
+    
+    .hero__robot-3d {
+        max-width: 320px;
     }
 }
