@@ -1333,267 +1333,120 @@ p {
 
 
 /* ==========================================================================
-   ENHANCED ROBOT INTERACTION AND WATERMARK ELIMINATION SYSTEM
+   RELIABLE ROBOT INTERACTION SYSTEM - SIMPLIFIED APPROACH
    ========================================================================== */
 
-/* Multi-layered Spline watermark hiding approach */
-.hero__robot-3d spline-viewer::part(logo),
-.hero__robot-3d spline-viewer::part(watermark),
-.hero__robot-3d spline-viewer::part(brand) {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
+/* Remove any conflicting styles from previous attempts */
+.hero__robot-3d::before,
+.hero__robot-3d::after {
+    display: none;
 }
 
-/* Ensure robot container provides proper positioning context */
-.hero__robot-container {
-    position: relative;
-    overflow: hidden; /* Prevent any watermark overflow */
-}
-
-/* Primary watermark elimination overlay */
-.hero__robot-3d {
-    position: relative;
-}
-
-.hero__robot-3d::before {
-    content: '';
+/* Watermark cover overlay - simple and effective */
+.spline-watermark-cover {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background: linear-gradient(to top, 
-        var(--color-background) 0%, 
-        var(--color-background) 40%,
-        rgba(7, 0, 7, 0.95) 70%,
-        transparent 100%);
+    bottom: 10px;
+    left: 10px;
+    width: 110px;
+    height: 30px;
+    background-color: var(--color-background);
+    border-radius: 6px;
+    z-index: 20;
     pointer-events: none;
-    z-index: 12;
+    opacity: 1;
 }
 
-/* Secondary watermark killer overlay (created by JavaScript) */
-.watermark-killer-overlay {
-    position: absolute !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    height: 100px !important;
-    background: linear-gradient(to top, 
-        var(--color-background) 0%, 
-        var(--color-background) 30%,
-        rgba(7, 0, 7, 0.98) 60%,
-        rgba(7, 0, 7, 0.7) 80%,
-        transparent 100%) !important;
-    pointer-events: none !important;
-    z-index: 15 !important;
-}
-
-/* Enhanced interaction hint with guaranteed visibility */
+/* Enhanced interaction hint styling */
 .robot-interaction-hint {
-    position: absolute;
-    bottom: 25px; /* Positioned above watermark area */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 20; /* Higher than watermark overlays */
+    /* Position and dimensions will be set by JavaScript */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
-    /* Enhanced glassmorphism for better visibility */
+    /* Visual styling */
     background: linear-gradient(135deg, 
         rgba(255, 255, 255, 0.12) 0%, 
-        rgba(255, 255, 255, 0.06) 50%, 
-        rgba(255, 255, 255, 0.08) 100%);
-    backdrop-filter: blur(16px) brightness(1.1);
-    -webkit-backdrop-filter: blur(16px) brightness(1.1);
+        rgba(255, 255, 255, 0.06) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 30px;
-    padding: 10px 18px;
+    border-radius: 6px;
     
-    /* Enhanced typography for better readability */
+    /* Typography */
     font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--color-text-title); /* Changed to title color for better contrast */
-    text-align: center;
-    letter-spacing: 0.5px;
-    
-    /* Enhanced shadow system for prominence */
-    box-shadow: 
-        0 6px 20px rgba(0, 0, 0, 0.25),
-        0 0 0 1px rgba(255, 255, 255, 0.1),
-        inset 0 1px 1px rgba(255, 255, 255, 0.3);
-    
-    /* Smooth entrance animation with enhanced visibility */
-    opacity: 0;
-    animation: hintFadeInEnhanced 2.5s ease-out 1s forwards, 
-               breathingGlowEnhanced 4s ease-in-out 4s infinite;
-    
-    /* Ensure it stays above everything */
-    isolation: isolate;
-}
-
-/* Enhanced icon styling with better visibility */
-.robot-interaction-hint .hint-icon {
-    display: inline-block;
-    margin-right: 10px;
-    font-size: 1.1rem;
-    color: var(--color-accent); /* Changed to accent color for better visibility */
-    text-shadow: 0 0 6px var(--color-accent);
-    animation: iconRotateEnhanced 5s linear infinite;
-}
-
-/* Enhanced hint text styling */
-.robot-interaction-hint .hint-text {
+    font-size: 0.7rem;
     font-weight: 600;
-    text-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+    color: var(--color-text-title);
+    text-align: center;
+    
+    /* Subtle shadow for definition */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    
+    /* Smooth transitions */
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.3s ease;
+    
+    /* Ensure proper text layout */
+    white-space: nowrap;
+    overflow: hidden;
 }
 
-/* Enhanced animations for better attention-grabbing */
-@keyframes hintFadeInEnhanced {
-    0% {
-        opacity: 0;
-        transform: translateX(-50%) translateY(15px) scale(0.9);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0) scale(1);
-    }
+/* Icon styling within the hint */
+.robot-interaction-hint .hint-icon {
+    margin-right: 4px;
+    font-size: 0.75rem;
+    color: var(--color-accent);
+    flex-shrink: 0;
 }
 
-@keyframes breathingGlowEnhanced {
-    0%, 100% {
-        box-shadow: 
-            0 6px 20px rgba(0, 0, 0, 0.25),
-            0 0 0 1px rgba(255, 255, 255, 0.1),
-            inset 0 1px 1px rgba(255, 255, 255, 0.3);
-        transform: translateX(-50%) scale(1);
-    }
-    50% {
-        box-shadow: 
-            0 8px 25px rgba(0, 0, 0, 0.3),
-            0 0 15px rgba(229, 228, 226, 0.4),
-            0 0 0 1px rgba(255, 255, 255, 0.2),
-            inset 0 1px 1px rgba(255, 255, 255, 0.4);
-        transform: translateX(-50%) scale(1.02);
-    }
+/* Text styling within the hint */
+.robot-interaction-hint .hint-text {
+    flex: 1;
+    min-width: 0;
 }
 
-@keyframes iconRotateEnhanced {
-    0% { transform: rotate(0deg); }
-    20% { transform: rotate(-8deg); }
-    40% { transform: rotate(8deg); }
-    60% { transform: rotate(-5deg); }
-    80% { transform: rotate(5deg); }
-    100% { transform: rotate(0deg); }
-}
-
-/* Enhanced hover effects for interactivity */
+/* Hover effect for interactivity */
 .robot-interaction-hint:hover {
     background: linear-gradient(135deg, 
         rgba(255, 255, 255, 0.18) 0%, 
-        rgba(255, 255, 255, 0.10) 50%, 
-        rgba(255, 255, 255, 0.12) 100%);
-    
-    box-shadow: 
-        0 8px 25px rgba(0, 0, 0, 0.3),
-        0 0 20px rgba(229, 228, 226, 0.5),
-        0 0 0 1px rgba(255, 255, 255, 0.3),
-        inset 0 1px 1px rgba(255, 255, 255, 0.4);
-    
-    transform: translateX(-50%) translateY(-3px) scale(1.05);
-    transition: all 0.3s ease;
+        rgba(255, 255, 255, 0.10) 100%);
+    transform: scale(1.02);
 }
 
-/* Hide hint after user interaction */
-.robot-interaction-hint.hint-hidden {
-    opacity: 0;
-    transform: translateX(-50%) translateY(15px) scale(0.9);
-    transition: all 0.8s ease;
-    pointer-events: none;
-}
-
-/* Responsive enhancements for different screen sizes */
+/* Mobile responsive adjustments */
 @media (max-width: 768px) {
-    .robot-interaction-hint {
-        bottom: 20px;
-        font-size: 0.85rem;
-        padding: 8px 15px;
-        border-radius: 25px;
-        
-        /* Simplified effects for mobile performance */
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+    .spline-watermark-cover {
+        width: 100px;
+        height: 25px;
+        bottom: 8px;
+        left: 8px;
     }
     
     .robot-interaction-hint .hint-icon {
-        font-size: 1rem;
-        margin-right: 8px;
-    }
-    
-    /* Enhanced watermark coverage for mobile */
-    .watermark-killer-overlay {
-        height: 120px !important;
+        font-size: 0.7rem;
+        margin-right: 3px;
     }
 }
 
 @media (max-width: 480px) {
-    .robot-interaction-hint {
-        bottom: 15px;
-        font-size: 0.8rem;
-        padding: 7px 12px;
-        border-radius: 20px;
-        
-        /* Further simplified for small screens */
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        animation: hintFadeInEnhanced 2.5s ease-out 1s forwards; /* Remove breathing on small screens */
+    .spline-watermark-cover {
+        width: 90px;
+        height: 22px;
+        bottom: 6px;
+        left: 6px;
     }
     
     .robot-interaction-hint .hint-icon {
-        font-size: 0.9rem;
-        margin-right: 6px;
+        font-size: 0.65rem;
+        margin-right: 2px;
     }
 }
 
-@media (max-width: 400px) {
-    .robot-interaction-hint {
-        bottom: 12px;
-        font-size: 0.75rem;
-        padding: 6px 10px;
-        max-width: 90%;
-    }
-}
-
-/* High-DPI display optimizations */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .robot-interaction-hint {
-        border-width: 0.5px; /* Thinner borders on retina displays */
-    }
-}
-
-/* Accessibility enhancements */
+/* Accessibility support */
 @media (prefers-reduced-motion: reduce) {
     .robot-interaction-hint {
-        animation: none;
-        opacity: 1;
-    }
-    
-    .robot-interaction-hint .hint-icon {
-        animation: none;
-    }
-    
-    .robot-interaction-hint:hover {
-        transform: translateX(-50%);
-    }
-}
-
-/* Dark mode specific adjustments */
-@media (prefers-color-scheme: dark) {
-    .robot-interaction-hint {
-        background: linear-gradient(135deg, 
-            rgba(255, 255, 255, 0.08) 0%, 
-            rgba(255, 255, 255, 0.04) 50%, 
-            rgba(255, 255, 255, 0.06) 100%);
+        transition: opacity 0.2s ease;
     }
 }

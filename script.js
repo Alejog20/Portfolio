@@ -104,6 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
+
+    
     /**
      * MÓDULO 4: MANEJO DEL FORMULARIO DE CONTACTO
      * Captura el envío del formulario, lo envía al backend y da feedback al usuario.
@@ -230,453 +233,392 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-/**
- * MÓDULO 6: ROBOT INTERACTION HINT
- * Manages the custom interaction hint for the 3D robot, hiding Spline watermark
- * and providing user guidance for the interactive experience.
- /**
- * MÓDULO 6: ROBOT INTERACTION HINT - ENHANCED VERSION
- * Advanced watermark detection and hiding with dynamic positioning
- */
-function setupRobotInteractionHint() {
-    console.log("Módulo de interacción con robot iniciado - Versión Avanzada.");
-    
-    const robotContainer = document.querySelector('.hero__robot-container');
-    const splineViewer = document.querySelector('.hero__robot-3d');
-    const interactionHint = document.getElementById('robotHint');
-    
-    // Early return if elements aren't found
-    if (!robotContainer || !splineViewer) {
-        console.warn("Advertencia: No se encontraron los elementos del robot en esta página.");
-        return;
-    }
-    
-    if (!interactionHint) {
-        console.warn("Advertencia: Elemento hint no encontrado. Verifica que agregaste el HTML del hint.");
-        return;
-    }
-    
-    // State management variables
-    let hasInteracted = false;
-    let hintHideTimeout;
-    let isSplineLoaded = false;
-    let watermarkDetectionAttempts = 0;
-    let mutationObserver = null;
-    
     /**
-     * Advanced Spline loading detection with multiple fallback methods
+     * MÓDULO 6: SIMPLE SPLINE WATERMARK HIDING
+     * Uses container cropping to hide watermark without interfering with 3D rendering
      */
-    function waitForSplineLoad() {
-        const maxAttempts = 50; // 10 seconds total
+   /**
+     * MÓDULO 6: MEJORADO SPLINE WATERMARK HIDING CON TAMAÑO PRESERVADO
+     * Usa transform scale para mantener el tamaño original del robot mientras oculta la marca de agua
+     */
+    function setupImprovedWatermarkHiding() {
+        console.log("🎯 Iniciando ocultación mejorada de marca de agua...");
         
-        // Multiple detection methods for Spline loading
-        const detectionMethods = [
-            () => splineViewer.shadowRoot,
-            () => splineViewer.contentDocument,
-            () => splineViewer.querySelector('canvas'),
-            () => splineViewer.children.length > 0,
-            () => getComputedStyle(splineViewer).height !== '0px'
-        ];
+        const robotContainer = document.querySelector('.hero__robot-container');
+        const splineViewer = document.querySelector('.hero__robot-3d');
         
-        const isLoaded = detectionMethods.some(method => {
-            try {
-                return method();
-            } catch (e) {
-                return false;
-            }
-        });
-        
-        if (isLoaded || watermarkDetectionAttempts > maxAttempts) {
-            isSplineLoaded = true;
-            initializeWatermarkHiding();
-            initializeInteractionTracking();
-            console.log("🤖 Spline cargado completamente. Iniciando detección de watermark.");
-        } else {
-            watermarkDetectionAttempts++;
-            setTimeout(waitForSplineLoad, 200);
+        if (!robotContainer || !splineViewer) {
+            console.warn("⚠️ Contenedores del robot no encontrados");
+            return;
         }
-    }
-    
-    /**
-     * Comprehensive watermark detection and hiding system
-     */
-    function initializeWatermarkHiding() {
-        // Method 1: Direct shadow DOM access
-        hideWatermarkDirectAccess();
-        
-        // Method 2: CSS injection with multiple selectors
-        injectWatermarkHidingCSS();
-        
-        // Method 3: Dynamic overlay positioning
-        createDynamicWatermarkOverlay();
-        
-        // Method 4: Mutation observer for dynamic changes
-        setupWatermarkMutationObserver();
-        
-        // Method 5: Aggressive periodic checking
-        startPeriodicWatermarkCheck();
-    }
-    
-    /**
-     * Method 1: Direct shadow DOM watermark removal
-     */
-    function hideWatermarkDirectAccess() {
-        try {
-            if (splineViewer.shadowRoot) {
-                const possibleSelectors = [
-                    '[class*="logo"]',
-                    '[class*="watermark"]',
-                    '[class*="brand"]',
-                    '[id*="logo"]',
-                    '[id*="watermark"]',
-                    'a[href*="spline"]',
-                    'div[style*="position: absolute"][style*="bottom"]',
-                    '[data-testid*="logo"]'
-                ];
-                
-                possibleSelectors.forEach(selector => {
-                    const elements = splineViewer.shadowRoot.querySelectorAll(selector);
-                    elements.forEach(el => {
-                        if (el.textContent.toLowerCase().includes('spline') || 
-                            el.textContent.toLowerCase().includes('built with')) {
-                            el.style.display = 'none !important';
-                            el.style.visibility = 'hidden !important';
-                            el.style.opacity = '0 !important';
-                            console.log("✅ Watermark encontrado y ocultado via shadow DOM:", selector);
-                        }
-                    });
-                });
-            }
-        } catch (error) {
-            console.log("⚠️ Acceso directo al shadow DOM no disponible:", error.message);
-        }
-    }
-    
-    /**
-     * Method 2: Advanced CSS injection for watermark hiding
-     */
-    function injectWatermarkHidingCSS() {
-        const style = document.createElement('style');
-        style.id = 'spline-watermark-eliminator';
-        style.textContent = `
-            /* Hide various Spline watermark possibilities */
-            .hero__robot-3d spline-viewer::part(logo),
-            .hero__robot-3d spline-viewer::part(watermark),
-            .hero__robot-3d spline-viewer::part(brand) {
-                display: none !important;
-                visibility: hidden !important;
-                opacity: 0 !important;
-            }
+
+        // Esperar a que Spline se cargue antes de aplicar las mejoras
+        setTimeout(() => {
+            applyImprovedWatermarkHiding();
+        }, 2000);
+
+        function applyImprovedWatermarkHiding() {
+            console.log("✨ Aplicando ocultación mejorada con tamaño preservado...");
             
-            /* Aggressive watermark overlay */
-            .hero__robot-3d {
+            // 🔧 AQUÍ PUEDES AJUSTAR LOS VALORES PARA CONTROLAR EL CORTE:
+            const SCALE_FACTOR = 1.22;      // Aumenta para ocultar más marca de agua (1.1 a 1.3 recomendado)
+            const TRANSLATE_Y = 5;        // Ajusta para posicionar el robot (-4 a -12 rango típico)
+            
+            // Calcular cuánto se está cortando para mostrar en consola
+            const effectiveCut = ((SCALE_FACTOR - 1) * 100) + Math.abs(TRANSLATE_Y);
+            console.log(`📏 Cortando ${effectiveCut.toFixed(1)}% de la parte inferior para ocultar marca de agua`);
+            
+            // Aplicar estilos mejorados que preservan el tamaño mientras ocultan la marca de agua
+            robotContainer.style.cssText += `
+                overflow: hidden !important;
                 position: relative !important;
-            }
+                /* Mantener ancho y alto originales para preservar el tamaño */
+                width: 100% !important;
+                height: 100% !important;
+            `;
             
-            .hero__robot-3d::before {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                height: 80px;
-                background: linear-gradient(to top, 
-                    var(--color-background) 0%, 
-                    var(--color-background) 40%,
-                    rgba(7, 0, 7, 0.95) 70%,
-                    transparent 100%);
-                pointer-events: none;
-                z-index: 12;
-            }
-            
-            /* Additional overlay for stubborn watermarks */
-            .watermark-killer-overlay {
+            // Escalar y posicionar el visor para ocultar marca de agua manteniendo el tamaño del robot
+            splineViewer.style.cssText += `
+                width: 100% !important;
+                height: 100% !important;
                 position: absolute !important;
-                bottom: 0 !important;
+                top: 0 !important;
                 left: 0 !important;
-                right: 0 !important;
-                height: 100px !important;
-                background: linear-gradient(to top, 
-                    var(--color-background) 0%, 
-                    var(--color-background) 30%,
-                    rgba(7, 0, 7, 0.98) 60%,
-                    rgba(7, 0, 7, 0.7) 80%,
-                    transparent 100%) !important;
-                pointer-events: none !important;
-                z-index: 15 !important;
+                /* Usar transform scale para agrandar el visor, empujando la marca de agua fuera de vista */
+                transform: scale(${SCALE_FACTOR}) translateY(${TRANSLATE_Y}%) !important;
+                transform-origin: center center !important;
+            `;
+            
+            // Agregar CSS comprensivo para ocultar cualquier marca de agua de Spline
+            const watermarkHidingStyle = document.createElement('style');
+            watermarkHidingStyle.id = 'improved-watermark-hiding';
+            watermarkHidingStyle.textContent = `
+                /* Ocultar todos los posibles elementos de marca de agua de Spline */
+                .hero__robot-3d a[href*="spline"],
+                .hero__robot-3d [class*="logo"],
+                .hero__robot-3d [id*="logo"],
+                .hero__robot-3d [class*="watermark"],
+                .hero__robot-3d [class*="branding"] {
+                    display: none !important;
+                    opacity: 0 !important;
+                    visibility: hidden !important;
+                    pointer-events: none !important;
+                }
+                
+                /* Asegurar que el contenedor mantenga buenas proporciones */
+                .hero__robot-container {
+                    min-height: 400px !important;
+                    max-height: 650px !important;
+                }
+                
+                /* Asegurar que el robot siga siendo interactivo y se renderice correctamente */
+                .hero__robot-3d {
+                    pointer-events: auto !important;
+                    user-select: none !important;
+                    -webkit-user-select: none !important;
+                }
+                
+                /* Ocultar cualquier elemento posicionado en la parte inferior que pueda ser marca de agua */
+                .hero__robot-3d *[style*="bottom"],
+                .hero__robot-3d *[style*="position: absolute"]:last-child {
+                    display: none !important;
+                }
+            `;
+            
+            if (!document.getElementById('improved-watermark-hiding')) {
+                document.head.appendChild(watermarkHidingStyle);
+                console.log("🎨 Estilos mejorados de ocultación aplicados");
             }
-        `;
-        
-        if (!document.getElementById('spline-watermark-eliminator')) {
-            document.head.appendChild(style);
-            console.log("💉 CSS avanzado para ocultar watermark inyectado.");
+            
+            console.log("✅ Ocultación mejorada completada - robot mantiene tamaño original");
         }
     }
-    
+
+
     /**
-     * Method 3: Dynamic overlay that adapts to watermark position
+     * MÓDULO 7: FLECHAS DE INTERACCIÓN DEL ROBOT
+     * Crea indicadores de flecha permanentes que muestran a los usuarios que pueden rotar el robot
      */
-    function createDynamicWatermarkOverlay() {
-        // Remove existing overlay if present
-        const existingOverlay = robotContainer.querySelector('.watermark-killer-overlay');
-        if (existingOverlay) {
-            existingOverlay.remove();
+    function setupRobotInteractionArrows() {
+        console.log("🏹 Configurando flechas de interacción del robot...");
+        
+        const robotContainer = document.querySelector('.hero__robot-container');
+        
+        if (!robotContainer) {
+            console.warn("⚠️ Contenedor del robot no encontrado para las flechas");
+            return;
         }
-        
-        // Create new dynamic overlay
-        const overlay = document.createElement('div');
-        overlay.className = 'watermark-killer-overlay';
-        overlay.style.cssText = `
-            position: absolute !important;
-            bottom: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            height: 100px !important;
-            background: linear-gradient(to top, 
-                var(--color-background) 0%, 
-                var(--color-background) 30%,
-                rgba(7, 0, 7, 0.98) 60%,
-                rgba(7, 0, 7, 0.7) 80%,
-                transparent 100%) !important;
-            pointer-events: none !important;
-            z-index: 15 !important;
-        `;
-        
-        robotContainer.appendChild(overlay);
-        console.log("🎯 Overlay dinámico anti-watermark creado.");
-    }
-    
-    /**
-     * Method 4: Mutation observer to catch dynamic watermark appearances
-     */
-    function setupWatermarkMutationObserver() {
-        if (mutationObserver) {
-            mutationObserver.disconnect();
+
+        // Esperar a que el robot esté completamente cargado antes de agregar las flechas
+        setTimeout(() => {
+            createInteractionArrows();
+        }, 3000);
+
+        function createInteractionArrows() {
+            // Crear flecha izquierda
+            const leftArrow = document.createElement('div');
+            leftArrow.className = 'robot-interaction-arrow robot-interaction-arrow--left';
+            leftArrow.innerHTML = '&#8249;'; // Símbolo de flecha izquierda
+            
+            // Crear flecha derecha  
+            const rightArrow = document.createElement('div');
+            rightArrow.className = 'robot-interaction-arrow robot-interaction-arrow--right';
+            rightArrow.innerHTML = '&#8250;'; // Símbolo de flecha derecha
+            
+            // Agregar flechas al contenedor
+            robotContainer.appendChild(leftArrow);
+            robotContainer.appendChild(rightArrow);
+            
+            // Agregar estilos de las flechas
+            const arrowStyles = document.createElement('style');
+            arrowStyles.id = 'robot-interaction-arrows-styles';
+            arrowStyles.textContent = `
+                /* Estilos base de las flechas */
+                .robot-interaction-arrow {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    
+                    font-size: 2.5rem;
+                    font-weight: bold;
+                    color: rgba(255, 255, 255, 0.7);
+                    
+                    z-index: 1000;
+                    pointer-events: none;
+                    user-select: none;
+                    
+                    transition: all 0.3s ease;
+                    
+                    /* Efecto de brillo sutil */
+                    text-shadow: 
+                        0 0 10px rgba(255, 255, 255, 0.3),
+                        0 0 20px rgba(138, 43, 226, 0.2);
+                    
+                    /* Animación */
+                    animation: arrowPulse 2s ease-in-out infinite;
+                }
+                
+                /* Posicionamiento de flecha izquierda */
+                .robot-interaction-arrow--left {
+                    left: 15%;
+                    animation-delay: 0s;
+                }
+                
+                /* Posicionamiento de flecha derecha */
+                .robot-interaction-arrow--right {
+                    right: 15%;
+                    animation-delay: 1s;
+                }
+                
+                /* Animación de pulso para llamar la atención */
+                @keyframes arrowPulse {
+                    0%, 100% { 
+                        opacity: 0.7; 
+                        transform: translateY(-50%) scale(1);
+                    }
+                    50% { 
+                        opacity: 1; 
+                        transform: translateY(-50%) scale(1.1);
+                    }
+                }
+                
+                /* Estado transparente cuando el usuario está interactuando */
+                .robot-interaction-arrow.interacting {
+                    opacity: 0.2 !important;
+                    animation-play-state: paused;
+                }
+                
+                /* Efecto hover para mouse cercano */
+                .robot-interaction-arrow:hover {
+                    opacity: 1;
+                    transform: translateY(-50%) scale(1.2);
+                }
+                
+                /* Ajustes responsivos */
+                @media (max-width: 768px) {
+                    .robot-interaction-arrow {
+                        font-size: 2rem;
+                    }
+                    
+                    .robot-interaction-arrow--left {
+                        left: 8%;
+                    }
+                    
+                    .robot-interaction-arrow--right {
+                        right: 8%;
+                    }
+                }
+                
+                @media (max-width: 480px) {
+                    .robot-interaction-arrow {
+                        font-size: 1.5rem;
+                    }
+                    
+                    .robot-interaction-arrow--left {
+                        left: 5%;
+                    }
+                    
+                    .robot-interaction-arrow--right {
+                        right: 5%;
+                    }
+                }
+            `;
+            
+            if (!document.getElementById('robot-interaction-arrows-styles')) {
+                document.head.appendChild(arrowStyles);
+                console.log("🎨 Estilos de flechas aplicados");
+            }
+            
+            // Configurar detección de interacción para hacer las flechas transparentes
+            setupArrowInteractionDetection();
+            
+            console.log("✅ Flechas de interacción creadas exitosamente");
         }
-        
-        mutationObserver = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                mutation.addedNodes.forEach((node) => {
-                    if (node.nodeType === Node.ELEMENT_NODE) {
-                        // Check if added node contains watermark-like content
-                        const textContent = node.textContent || '';
-                        if (textContent.toLowerCase().includes('spline') || 
-                            textContent.toLowerCase().includes('built with')) {
-                            node.style.display = 'none !important';
-                            console.log("🔍 Mutation observer ocultó elemento:", textContent);
-                        }
+
+        function setupArrowInteractionDetection() {
+            const arrows = robotContainer.querySelectorAll('.robot-interaction-arrow');
+            let isInteracting = false;
+            let interactionTimeout;
+
+            // Función para hacer las flechas transparentes durante la interacción
+            function setArrowsInteracting(interacting) {
+                arrows.forEach(arrow => {
+                    if (interacting) {
+                        arrow.classList.add('interacting');
+                    } else {
+                        arrow.classList.remove('interacting');
                     }
                 });
+                isInteracting = interacting;
+            }
+
+            // Detección de interacción con mouse
+            robotContainer.addEventListener('mousedown', () => {
+                setArrowsInteracting(true);
+                console.log("🖱️ Interacción con mouse detectada - flechas transparentes");
             });
-        });
-        
-        // Observe the robot container and spline viewer
-        mutationObserver.observe(robotContainer, {
-            childList: true,
-            subtree: true,
-            attributes: true,
-            attributeFilter: ['style', 'class']
-        });
-        
-        if (splineViewer.shadowRoot) {
-            mutationObserver.observe(splineViewer.shadowRoot, {
-                childList: true,
-                subtree: true
+
+            robotContainer.addEventListener('mouseup', () => {
+                // Esperar antes de hacer las flechas visibles de nuevo
+                clearTimeout(interactionTimeout);
+                interactionTimeout = setTimeout(() => {
+                    setArrowsInteracting(false);
+                    console.log("🖱️ Interacción con mouse terminada - flechas visibles");
+                }, 1000);
             });
-        }
-        
-        console.log("👁️ Mutation observer configurado para detectar watermarks dinámicos.");
-    }
-    
-    /**
-     * Method 5: Periodic watermark checking and elimination
-     */
-    function startPeriodicWatermarkCheck() {
-        const checkInterval = setInterval(() => {
-            // Re-apply hiding methods periodically
-            hideWatermarkDirectAccess();
-            
-            // Ensure overlay remains positioned correctly
-            const overlay = robotContainer.querySelector('.watermark-killer-overlay');
-            if (!overlay) {
-                createDynamicWatermarkOverlay();
-            }
-            
-            // Stop checking after user interaction or 30 seconds
-            if (hasInteracted || Date.now() - startTime > 30000) {
-                clearInterval(checkInterval);
-                console.log("🔄 Verificación periódica de watermark finalizada.");
-            }
-        }, 1000);
-        
-        const startTime = Date.now();
-    }
-    
-    /**
-     * Enhanced interaction tracking with better detection
-     */
-    function initializeInteractionTracking() {
-        // Mouse interaction detection
-        robotContainer.addEventListener('mousedown', handleUserInteraction);
-        robotContainer.addEventListener('touchstart', handleUserInteraction);
-        
-        // Enhanced drag detection
-        let isMouseDown = false;
-        let dragThreshold = 5; // pixels
-        let startX, startY;
-        
-        robotContainer.addEventListener('mousedown', (e) => {
-            isMouseDown = true;
-            startX = e.clientX;
-            startY = e.clientY;
-        });
-        
-        robotContainer.addEventListener('mouseup', () => isMouseDown = false);
-        
-        robotContainer.addEventListener('mousemove', (e) => {
-            if (isMouseDown && !hasInteracted) {
-                const deltaX = Math.abs(e.clientX - startX);
-                const deltaY = Math.abs(e.clientY - startY);
-                
-                if (deltaX > dragThreshold || deltaY > dragThreshold) {
-                    handleUserInteraction();
+
+            // Detección de interacción táctil  
+            robotContainer.addEventListener('touchstart', () => {
+                setArrowsInteracting(true);
+                console.log("👆 Interacción táctil detectada - flechas transparentes");
+            });
+
+            robotContainer.addEventListener('touchend', () => {
+                clearTimeout(interactionTimeout);
+                interactionTimeout = setTimeout(() => {
+                    setArrowsInteracting(false);
+                    console.log("👆 Interacción táctil terminada - flechas visibles");
+                }, 1000);
+            });
+
+            // Movimiento del mouse durante arrastre
+            let isDragging = false;
+            robotContainer.addEventListener('mousedown', () => {
+                isDragging = true;
+            });
+
+            robotContainer.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            robotContainer.addEventListener('mousemove', () => {
+                if (isDragging) {
+                    setArrowsInteracting(true);
+                    clearTimeout(interactionTimeout);
+                    interactionTimeout = setTimeout(() => {
+                        if (!isDragging) {
+                            setArrowsInteracting(false);
+                        }
+                    }, 1000);
                 }
-            }
-        });
-        
-        // Enhanced touch gesture detection
-        let touchStartX, touchStartY;
-        
-        robotContainer.addEventListener('touchstart', (e) => {
-            touchStartX = e.touches[0].clientX;
-            touchStartY = e.touches[0].clientY;
-        });
-        
-        robotContainer.addEventListener('touchmove', (e) => {
-            if (!hasInteracted && touchStartX && touchStartY) {
-                const touchX = e.touches[0].clientX;
-                const touchY = e.touches[0].clientY;
-                const deltaX = Math.abs(touchX - touchStartX);
-                const deltaY = Math.abs(touchY - touchStartY);
-                
-                if (deltaX > 10 || deltaY > 10) {
-                    handleUserInteraction();
-                }
-            }
-        });
-        
-        console.log("🎯 Sistema de detección de interacción mejorado configurado.");
-    }
-    
-    /**
-     * Handle user interaction and cleanup
-     */
-    function handleUserInteraction() {
-        if (!hasInteracted) {
-            hasInteracted = true;
-            hideInteractionHint();
-            sessionStorage.setItem('robotInteractionCompleted', 'true');
-            
-            // Cleanup observers
-            if (mutationObserver) {
-                mutationObserver.disconnect();
-            }
-            
-            console.log("👤 Usuario interactuó con el robot. Sistemas de hint y detección desactivados.");
+            });
+
+            console.log("🎯 Sistema de detección de interacción configurado");
         }
     }
-    
+
     /**
-     * Enhanced hint hiding with cleanup
+     * MÓDULO 8: ROBOT INTERACTION HINT
+     * Shows a simple hint for user interaction
      */
-    function hideInteractionHint() {
-        if (interactionHint) {
-            interactionHint.classList.add('hint-hidden');
-            setTimeout(() => {
-                if (interactionHint && interactionHint.parentNode) {
-                    interactionHint.style.display = 'none';
-                }
-            }, 800);
-        }
-    }
-    
-    /**
-     * Show interaction hint with improved positioning
-     */
-    function showInteractionHint() {
-        // Check if user already interacted
-        if (sessionStorage.getItem('robotInteractionCompleted')) {
-            interactionHint.style.display = 'none';
-            console.log("ℹ️ Usuario ya interactuó previamente. Hint ocultado.");
+    function setupRobotInteractionHint() {
+        console.log("💫 Configurando pista de interacción...");
+        
+        const robotContainer = document.querySelector('.hero__robot-container');
+        const interactionHint = document.getElementById('robotHint');
+        
+        if (!robotContainer || !interactionHint) {
+            console.warn("⚠️ Elementos de interacción no encontrados");
             return;
         }
         
-        // Dynamic hint texts with more variety
-        const hintTexts = [
-            'Arrastra para explorar',
-            'Haz clic y arrastra',
-            'Explora el robot 3D',
-            'Mueve para ver más',
-            'Interactúa conmigo',
-            'Toca y explora'
-        ];
+        let hasInteracted = false;
         
-        const randomText = hintTexts[Math.floor(Math.random() * hintTexts.length)];
-        const hintTextElement = interactionHint.querySelector('.hint-text');
-        if (hintTextElement) {
-            hintTextElement.textContent = randomText;
-        }
+        // Position the hint
+        interactionHint.style.cssText = `
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            padding: 8px 16px;
+            background: rgba(75, 0, 130, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--color-text-title);
+            z-index: 999999;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        `;
         
-        // Enhanced hint positioning to ensure it's above any watermark
-        interactionHint.style.zIndex = '20';
-        interactionHint.style.position = 'absolute';
-        
-        // Auto-hide after 15 seconds
-        hintHideTimeout = setTimeout(() => {
-            if (!hasInteracted) {
-                hideInteractionHint();
-                console.log("⏰ Hint auto-ocultado después de 15 segundos.");
+        // Show hint after a delay
+        setTimeout(() => {
+            if (!sessionStorage.getItem('robotInteractionCompleted')) {
+                interactionHint.style.opacity = '1';
+                interactionHint.textContent = 'Arrastra para explorar';
+                
+                // Hide after 10 seconds
+                setTimeout(() => {
+                    if (!hasInteracted) {
+                        interactionHint.style.opacity = '0';
+                    }
+                }, 10000);
             }
-        }, 15000);
+        }, 3000);
         
-        console.log("💡 Hint mejorado mostrado con texto:", randomText);
-    }
-    
-    /**
-     * Responsive behavior handling
-     */
-    function handleResponsiveHint() {
-        const isMobile = window.innerWidth <= 768;
-        const hintTextElement = interactionHint.querySelector('.hint-text');
+        // Hide hint on interaction
+        const handleInteraction = () => {
+            if (!hasInteracted) {
+                hasInteracted = true;
+                interactionHint.style.opacity = '0';
+                sessionStorage.setItem('robotInteractionCompleted', 'true');
+                console.log("👤 Usuario interactuó con el robot");
+            }
+        };
         
-        if (isMobile && hintTextElement) {
-            hintTextElement.textContent = 'Toca y arrastra';
-        }
+        robotContainer.addEventListener('mousedown', handleInteraction);
+        robotContainer.addEventListener('touchstart', handleInteraction);
     }
-    
-    // Initialize the complete system
-    waitForSplineLoad();
-    handleResponsiveHint();
-    
-    // Show hint after ensuring everything is loaded
-    setTimeout(() => {
-        if (isSplineLoaded && interactionHint) {
-            showInteractionHint();
-        }
-    }, 3000);
-    
-    // Handle window resize
-    window.addEventListener('resize', handleResponsiveHint);
-    
-    console.log("🚀 Sistema completo de interacción con robot inicializado.");
-}
 
     // --- INICIALIZACIÓN DE TODOS LOS MÓDULOS ---
     setupStarfield();
     setupTypewriter();
     setupGlassEffect();
-    setupContactForm(); // <-- Llamamos a la nueva función del formulario
-    setupProjectCarousels(); 
-    setupRobotInteractionHint(); // <-- Add this new line here
+    setupContactForm();
+    setupProjectCarousels();
+    setupImprovedWatermarkHiding(); // ✅ Improved watermark hiding with preserved size
+    setupRobotInteractionArrows();  // ✅ Interactive arrows for user guidance
+    setupRobotInteractionHint();    
 
+    console.log("🚀 Todos los módulos inicializados correctamente");
 });
