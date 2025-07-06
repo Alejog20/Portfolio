@@ -359,15 +359,74 @@
 
         <section class="cv section" id="cv">
             <h2 class="section__title">Curriculum Vitae</h2>
-            <div class="cv__tarjeta card">
-                <p class="cv__resumen">
-                    <strong>Desarrollador Full Stack</strong> con experiencia comprobada en automatización de procesos financieros. Especialista en <strong>Python, Java y análisis de datos</strong>, con historial de reducir tiempos operativos en <strong>90%</strong> y generar ahorros de tiempo en mas de 40 horas mensuales.
-                </p>    
-                <p class="cv_resumen">
-                    Combino conocimientos técnicos sólidos con comprensión profunda de operaciones empresariales para crear soluciones que generan valor medible.
-                </p>
-                <div class="cv__boton-container gradient-button-container">
-                    <a href="./assets/New CV.pdf" class="cv__boton gradient-button" download>Descargar CV Completo</a>
+            <div class="cv__container card">
+                <!-- Columna izquierda: Foto y contacto -->
+                <div class="cv__columna-izquierda">
+                    <img class="cv__foto" src="./assets/img-sm.png" alt="Alejandro García - Desarrollador Full Stack Java">
+                    <div class="cv__contacto">
+                        <h3 class="cv__nombre">Alejandro García</h3>
+                        <p class="cv__titulo-profesional">Desarrollador Full Stack Java</p>
+                        <div class="cv__datos-contacto">
+                            <p><i class="ri-phone-line"></i> 301 549 6655</p>
+                            <p><i class="ri-mail-line"></i> garciaalejandro2552@gmail.com</p>
+                            <p><i class="ri-map-pin-line"></i> Colombia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Columna derecha: Información detallada -->
+                <div class="cv__columna-derecha">
+                    <div class="cv__seccion">
+                        <h4 class="cv__subtitulo">Perfil Profesional</h4>
+                        <p class="cv__texto">Desarrollador Full Stack Java especializado en automatización de procesos y análisis de datos financieros. <strong>Experiencia comprobada optimizando eficiencia empresarial</strong> mediante soluciones tecnológicas escalables, con reducción de tiempos del <strong>90%</strong> y ahorro de <strong>45 horas mensuales</strong>.</p>
+                    </div>
+                    
+                    <div class="cv__seccion">
+                        <h4 class="cv__subtitulo">Experiencia Destacada</h4>
+                        <div class="cv__experiencia">
+                            <h5 class="cv__puesto">Analista de Facturación & Desarrollador</h5>
+                            <p class="cv__empresa">Iron Mountain Inc. • Sept 2022 - Presente</p>
+                            <ul class="cv__logros">
+                                <li>Desarrollé automatizaciones con Python que redujeron tiempos de reporting en 90%</li>
+                                <li>Creé dashboards dinámicos en Looker Studio y Power BI para KPIs financieros</li>
+                                <li>Lideré 3 proyectos que aumentaron satisfacción del cliente en 25%</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="cv__seccion">
+                        <h4 class="cv__subtitulo">Habilidades Clave</h4>
+                        <div class="cv__habilidades-grid">
+                            <div class="cv__categoria-habilidad">
+                                <span class="cv__categoria-titulo">Lenguajes</span>
+                                <span class="cv__habilidades-lista">Java, Python, JavaScript, HTML5, CSS3, SQL</span>
+                            </div>
+                            <div class="cv__categoria-habilidad">
+                                <span class="cv__categoria-titulo">Frameworks</span>
+                                <span class="cv__habilidades-lista">React, FastAPI, Bootstrap, Pandas, NumPy</span>
+                            </div>
+                            <div class="cv__categoria-habilidad">
+                                <span class="cv__categoria-titulo">Herramientas</span>
+                                <span class="cv__habilidades-lista">Git, Power BI, Looker Studio, MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cv__seccion">
+                        <h4 class="cv__subtitulo">Educación</h4>
+                        <div class="cv__educacion">
+                            <p><strong>Negocios Internacionales</strong> - Universidad Santo Tomás (2025)</p>
+                            <p><strong>Full Stack Python</strong> - Universidad de Caldas (2022)</p>
+                            <p><strong>Bootcamp Generation</strong> - Desarrollo Full Stack Java (2025)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Botón de descarga centrado -->
+                <div class="cv__boton-descarga">
+                    <div class="cv__boton-container gradient-button-container">
+                        <a href="./assets/New CV.pdf" class="cv__boton gradient-button" download>Descargar CV Completo</a>
+                    </div>
                 </div>
             </div>
         </section>
