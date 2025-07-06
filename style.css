@@ -581,11 +581,24 @@ p {
     }
 }
 
+/* Cards now maintain consistent heights automatically */
+/* Base card height for all screens */
+.proyecto-card {
+    position: relative;
+    overflow: visible;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px; /* Base height for mobile and tablet */
+}
+
+/* Optimized height for desktop screens where cards are wider */
 @media (min-width: 1200px) {
     .proyecto-card {
-        min-height: 350px; /* Optimized height for wide two-column layout */
+        min-height: 300px; /* Reduced height for wide two-column layout */
     }
 }
+
 
 /* Force exactly 3 columns on laptop screens and larger */
 @media (min-width: 1024px) {
@@ -595,15 +608,6 @@ p {
     }
 }
 
-/* Cards now maintain consistent heights automatically */
-.proyecto-card {
-    position: relative;
-    overflow: visible;
-    height: 100%; /* This ensures all cards in a row have the same height */
-    display: flex;
-    flex-direction: column;
-    min-height: 350px; /* Slightly smaller but more consistent */
-}
 
 .proyecto-card__contenido {
     display: flex;
@@ -705,11 +709,366 @@ p {
     }
 }
 
-@media (min-width: 1024px) {
+
+/* ==========================================================================
+   PROJECT CARD CAROUSEL SYSTEM
+   ========================================================================== */
+
+/* --- Card Sizing & Layout --- */
+.proyecto-card {
+    position: relative; /* Essential for positioning the nav arrows */
+    overflow: hidden;   /* Keeps everything contained neatly */
+    display: flex;      /* Aligns content properly */
+    flex-direction: column;
+    /* We set a fixed height to make the grid uniform and tidy */
+    height: 450px; 
+}
+
+/* --- Carousel Container --- */
+.proyecto-card__carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    flex-grow: 1; /* Allows the carousel to fill the card */
+}
+
+/* --- Individual Slides --- */
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Hidden by default */
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-slide.active {
+    opacity: 1; /* The active slide is visible */
+    visibility: visible;
+    z-index: 10;
+}
+
+/* --- Slide Content Styling --- */
+/* This ensures your original description slide still works perfectly */
+.proyecto-card__contenido {
+    height: 100%;
+    padding: 1.5rem;
+    gap: 0.8rem;
+}
+
+/* New styles for the screenshot slides */
+.proyecto-screenshot {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+    background: var(--glass-background); /* Consistent glass background */
+}
+
+/* Ensure title in screenshot slides is styled correctly */
+.proyecto-screenshot .proyecto-card__titulo {
+    flex-shrink: 0; /* Prevents title from shrinking */
+    text-align: center;
+}
+
+.screenshot-image {
+    width: 100%;
+    height: 100%;
+    flex-grow: 1; /* Image takes the remaining space */
+    object-fit: contain; /* 'contain' fits the whole image without cropping */
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+}
+
+/* --- Navigation Arrows --- */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-body);
+    cursor: pointer;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    z-index: 15; /* Above the slides */
+    backdrop-filter: blur(8px);
+    opacity: 0; /* Hidden by default, appear on hover */
+    pointer-events: none;
+}
+
+.proyecto-card:hover .carousel-nav {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.carousel-nav:hover {
+    background: var(--color-neon-primary);
+    color: var(--color-background);
+    box-shadow: var(--neon-glow-primary);
+}
+
+.carousel-nav--prev { left: 15px; }
+.carousel-nav--next { right: 15px; }
+
+/* --- Dot Indicators --- */
+.carousel-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 15;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 6px 10px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: var(--color-accent);
+    box-shadow: 0 0 8px var(--color-accent);
+    transform: scale(1.2);
+}
+/* New carousel system - proper job */
+.proyecto-card {
+    position: relative;
+    overflow: hidden;
+    /* CRITICAL: Set max-height instead of min-height for 30% reduction */
+    max-height: 420px; /* Was effectively 600px before, now 30% less */
+    height: 420px; /* Fixed height for consistency */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Remove any min-height constraints */
+@media (min-width: 1200px) {
     .proyecto-card {
-        min-height: 450px; /* Restore larger height on big screens */
+        min-height: unset; /* Remove the min-height that was forcing cards tall */
+        max-height: 420px;
+        height: 420px;
     }
 }
+
+/* Carousel container - takes full card space */
+.proyecto-card__carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Individual slides */
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Active slide is visible */
+.carousel-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Content container for main info slide */
+.proyecto-card__contenido {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.5rem; /* Reduced padding for more content space */
+    gap: 0.8rem; /* Tighter spacing */
+}
+
+/* Adjust text sizes for reduced height */
+.proyecto-card__icono {
+    font-size: 3rem; /* Smaller icon */
+    color: var(--color-neon-primary);
+    text-shadow: var(--neon-glow-primary);
+    margin-bottom: 0;
+}
+
+.proyecto-card__titulo {
+    font-size: 1.3rem; /* Smaller title */
+    line-height: 1.1;
+    margin-bottom: 0;
+}
+
+.proyecto-card__descripcion {
+    font-size: 0.9rem; /* Smaller description */
+    line-height: 1.4;
+    flex-grow: 1;
+    overflow-y: auto; /* Allow scrolling if needed */
+    margin-bottom: 0;
+}
+
+/* Screenshot slides styling */
+.proyecto-screenshot {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 0.5rem;
+}
+
+.screenshot-image {
+    width: 100%;
+    height: calc(100% - 40px); /* Leave room for caption */
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+}
+
+.screenshot-caption {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--color-text-body);
+    margin: 0;
+    padding: 0.25rem;
+}
+
+/* Navigation arrows - glassmorphism style */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--color-background);
+    border: 2px solid var(--glass-border);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-body);
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    z-index: 20;
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Show arrows on card hover */
+.proyecto-card:hover .carousel-nav {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.carousel-nav:hover {
+    background: var(--color-neon-primary);
+    color: var(--color-text-title);
+    box-shadow: var(--neon-glow-primary);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav--prev {
+    left: 10px;
+}
+
+.carousel-nav--next {
+    right: 10px;
+}
+
+/* Dot indicators */
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 15;
+}
+
+.indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: var(--color-neon-primary);
+    box-shadow: 0 0 6px var(--color-neon-primary);
+    width: 24px;
+    border-radius: 4px;
+}
+
+/* Project link button stays at bottom */
+.proyecto-card__enlace {
+    align-self: stretch;
+    margin-top: auto;
+    text-align: center;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    color: var(--color-text-body);
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    border: 2px solid var(--glass-border);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: var(--color-background);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .proyecto-card {
+        max-height: 380px; /* Even more compact on mobile */
+        height: 380px;
+    }
+    
+    .carousel-nav {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+    
+    /* Always show arrows on mobile since no hover */
+    .carousel-nav {
+        opacity: 0.8;
+        pointer-events: auto;
+    }
+}
+
 
 
 /* --- Habilidades --- */

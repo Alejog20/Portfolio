@@ -167,9 +167,73 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /**
+     * MÓDULO 5: CAROUSEL DE PROYECTOS
+     * Controla la navegación de slides dentro de cada tarjeta de proyecto.
+     */
+    function setupProjectCarousels() {
+        const projectCards = document.querySelectorAll('.proyecto-card');
+
+        projectCards.forEach(card => {
+            const slides = card.querySelectorAll('.carousel-slide');
+            const indicators = card.querySelectorAll('.indicator');
+            const nextBtn = card.querySelector('.carousel-nav--next');
+            const prevBtn = card.querySelector('.carousel-nav--prev');
+            let currentIndex = 0;
+
+            if (slides.length <= 1) return; // Don't setup carousel if only one slide
+
+            function showSlide(index) {
+                // Ensure index is within bounds
+                if (index >= slides.length) {
+                    currentIndex = 0;
+                } else if (index < 0) {
+                    currentIndex = slides.length - 1;
+                } else {
+                    currentIndex = index;
+                }
+
+                // Update slides
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active');
+                    if (i === currentIndex) {
+                        slide.classList.add('active');
+                    }
+                });
+
+                // Update indicators
+                indicators.forEach((indicator, i) => {
+                    indicator.classList.remove('active');
+                    if (i === currentIndex) {
+                        indicator.classList.add('active');
+                    }
+                });
+            }
+
+            nextBtn.addEventListener('click', () => {
+                showSlide(currentIndex + 1);
+            });
+
+            prevBtn.addEventListener('click', () => {
+                showSlide(currentIndex - 1);
+            });
+            
+            indicators.forEach(indicator => {
+                indicator.addEventListener('click', (e) => {
+                    const slideIndex = parseInt(e.target.getAttribute('data-slide'));
+                    showSlide(slideIndex);
+                });
+            });
+
+            // Initialize the first slide
+            showSlide(currentIndex);
+        });
+    }
+
     // --- INICIALIZACIÓN DE TODOS LOS MÓDULOS ---
     setupStarfield();
     setupTypewriter();
     setupGlassEffect();
     setupContactForm(); // <-- Llamamos a la nueva función del formulario
+    setupProjectCarousels(); 
 });
