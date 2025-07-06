@@ -628,6 +628,112 @@ p {
     font-size: 1rem;
 }
 
+
+/* Estilos para habilidades en columna izquierda */
+.cv__habilidades-seccion {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cv__subtitulo-izquierda {
+    font-family: var(--font-display);
+    color: var(--color-text-title);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 3px var(--color-accent);
+    text-align: center;
+}
+
+.cv__habilidades-grid-izquierda {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.cv__habilidades-grid-izquierda .cv__categoria-habilidad {
+    text-align: center;
+}
+
+.cv__habilidades-grid-izquierda .cv__categoria-titulo {
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.cv__habilidades-grid-izquierda .cv__habilidades-lista {
+    font-size: 0.75rem;
+    line-height: 1.3;
+}
+
+/* Redes sociales iluminadas */
+.cv__redes-sociales {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cv__iconos-redes {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.cv__icono-red {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--color-text-body);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.cv__icono-red:hover {
+    background: var(--color-neon-primary);
+    border-color: var(--color-neon-primary);
+    color: var(--color-text-title);
+    transform: translateY(-2px) scale(1.1);
+    box-shadow: 0 0 15px var(--color-neon-primary);
+    /* Efecto de texto iluminado como en los botones de proyecto */
+    text-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.8),
+        0 0 10px rgba(220, 220, 220, 0.6),
+        0 0 15px rgba(229, 228, 226, 0.4);
+}
+
+/* Efectos específicos por red social */
+.cv__icono-red:nth-child(1):hover { /* LinkedIn */
+    background: #0077B5;
+    box-shadow: 0 0 15px #0077B5;
+}
+
+.cv__icono-red:nth-child(2):hover { /* GitHub */
+    background: #333;
+    box-shadow: 0 0 15px #666;
+}
+
+.cv__icono-red:nth-child(3):hover { /* Twitter/X */
+    background: #1DA1F2;
+    box-shadow: 0 0 15px #1DA1F2;
+}
+
+.cv__icono-red:nth-child(4):hover { /* Instagram */
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow: 0 0 15px #e6683c;
+}
+
 /* Columna derecha: Contenido detallado */
 .cv__columna-derecha {
     grid-row: 1 / 2;
