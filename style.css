@@ -213,6 +213,7 @@ p {
    Header & Navigation - ENHANCED NEON SYSTEM
    ========================================================================== */
 .header {
+    justify-content: center; /* Centrado en desktop */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -241,6 +242,49 @@ p {
 .header__nav {
     display: flex;
     gap: clamp(1rem, 4vw, 2rem);
+}
+
+.mobile-nav-toggle,
+.mobile-nav-menu {
+    display: none; /* Ocultos en desktop */
+}
+
+@media (max-width: 768px) {
+    .header {
+        justify-content: flex-end; /* Botón de hamburguesa a la derecha */
+    }
+    .header__nav {
+        display: none; /* Oculta el nav de desktop */
+    }
+    .mobile-nav-toggle {
+        display: block; /* Muestra el botón hamburguesa */
+        background: transparent;
+        border: none;
+        color: var(--color-text-title);
+        font-size: 2.2rem;
+        cursor: pointer;
+        z-index: 1001;
+    }
+    .mobile-nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: min(70vw, 320px);
+        height: 100vh;
+        background: rgba(7, 0, 7, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        z-index: 1000;
+        transition: right 0.4s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+    body.mobile-menu-open .mobile-nav-menu {
+        right: 0;
+    }
 }
 
 .header__link {
@@ -513,7 +557,7 @@ p {
 }
 
 /* --- Carousel Navigation Styling --- */
-.carousel-nav {
+.project-carousel__nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -531,23 +575,28 @@ p {
     transition: all 0.3s ease;
     z-index: 15;
     backdrop-filter: blur(2px);
+    
+    /* Initially hidden */
     opacity: 0;
     pointer-events: none;
+    visibility: hidden;
 }
 
-.proyecto-card:hover .carousel-nav {
+/* Show navigation buttons ONLY on hover of their parent carousel */
+.project-carousel:hover.project-carousel__nav {
     opacity: 1;
     pointer-events: auto;
+    visibility: visible;
 }
 
-.carousel-nav:hover {
+.project-carousel__nav:hover {
     background: var(--color-neon-primary);
     color: var(--color-background);
     box-shadow: 0 0 8px var(--color-neon-primary);
 }
 
-.carousel-nav--prev { left: 10px; }
-.carousel-nav--next { right: 10px; }
+.project-carousel__nav--prev { left: 10px; }
+.project-carousel__nav--next { right: 10px; }
 
 /* --- Carousel Indicator Styling --- */
 .carousel-indicators {
@@ -1006,63 +1055,13 @@ p {
     text-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
-/* ==========================================================================
-   MEJORA: REPRODUCTOR DE MÚSICA ADAPTATIVO Y PROPORCIONAL
-   ========================================================================== */
 
-/* Contenedor principal con efecto de vidrio mejorado */
-.musica__embed-container {
-    position: relative;
-    width: 100%;
-    max-width: 800px; /* Aumentamos el ancho máximo para una apariencia más grande */
-    margin: 2rem auto;
-    border-radius: var(--border-radius);
-    padding: 16px; /* Aumentamos el padding para un marco más pronunciado */
 
-    /* Glassmorphism de alta calidad */
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-    backdrop-filter: blur(15px) saturate(160%);
-    -webkit-backdrop-filter: blur(15px) saturate(160%);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-}
+/* --- Ajustes para Móviles --- */
+/* Ya no necesitamos media queries para la altura del iframe,
+   `aspect-ratio` lo maneja todo automáticamente. */
 
-/* El iframe del reproductor con altura adaptable */
-.musica__embed-container iframe {
-    width: 100%;
-    display: block;
-    border: none;
-    border-radius: calc(var(--border-radius) - 8px); /* Se ajusta al padding del contenedor */
 
-    /*
-     * SOLUCIÓN: Usamos clamp() para una altura fluida y proporcional.
-     * Esto significa:
-     * - Altura mínima de 450px en pantallas pequeñas.
-     * - Altura ideal del 60% del ancho de la ventana (60vw).
-     * - Altura máxima de 600px en pantallas grandes.
-     */
-    height: clamp(450px, 60vw, 600px);
-}
-
-/* Ajustes para tabletas (hasta 768px) */
-@media (max-width: 768px) {
-    .musica__embed-container iframe {
-        /* Reducimos la altura en tabletas para que no ocupe toda la pantalla */
-        height: clamp(400px, 55vw, 500px);
-    }
-}
-
-/* Ajustes para móviles (hasta 480px) */
-@media (max-width: 480px) {
-    .musica__embed-container {
-        padding: 8px; /* Reducimos el marco en pantallas pequeñas */
-    }
-
-    .musica__embed-container iframe {
-        /* Reducimos aún más para una mejor experiencia en móviles */
-        height: 380px;
-    }
-}
 /* --- Contact Form --- */
 .contacto__contenido {
     max-width: 800px;
@@ -1480,36 +1479,29 @@ p {
     }
 }
 
-/* SOLUCIÓN: Agregar esto a tu CSS para corregir las flechas duplicadas */
-
-/* 1. Asegurar que las flechas del carrusel SOLO aparezcan en proyectos */
+/* --- CARRUSEL DE PROYECTOS --- */
+/* Ocultamos las flechas por defecto */
 .carousel-nav {
+    display: none;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    /* ... otros estilos base que ya tenías ... */
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid var(--glass-border);
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 36px; height: 36px;
+    align-items: center; justify-content: center;
     color: var(--color-text-body);
-    cursor: pointer;
-    font-size: 20px;
-    transition: all 0.3s ease;
-    z-index: 15;
-    backdrop-filter: blur(5px);
-    opacity: 0;
-    pointer-events: none;
-    
-    /* NUEVO: Restringir solo a contenedores de proyectos */
-    visibility: hidden;
+    cursor: pointer; font-size: 20px;
+    transition: all 0.3s ease; z-index: 15;
 }
-
-/* 2. Solo mostrar flechas del carrusel en hover de tarjetas de proyecto */
+/* Las mostramos ÚNICAMENTE al pasar el mouse sobre la tarjeta */
 .proyecto-card:hover .carousel-nav {
+    display: flex;
     opacity: 1;
     pointer-events: auto;
     visibility: visible;
@@ -1554,30 +1546,6 @@ p {
     left: -9999px !important; /* Mover fuera de la pantalla */
 }
 
-/* 2. Asegurar que las flechas del carrusel solo funcionen en proyectos */
-.carousel-nav {
-    /* Restablecer estilos base solo para proyectos */
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--glass-border);
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-text-body);
-    cursor: pointer;
-    font-size: 20px;
-    transition: all 0.3s ease;
-    z-index: 15;
-    backdrop-filter: blur(5px);
-    opacity: 0;
-    pointer-events: none;
-    visibility: hidden;
-}
 
 /* 3. Solo mostrar flechas del carrusel en tarjetas de proyecto */
 .proyectos .proyecto-card:hover .carousel-nav {
@@ -1790,7 +1758,13 @@ p {
         width: 85%;
         margin: 0 auto !important;
     }
+
+        /* Adicional: Mejora la legibilidad del texto en la tarjeta del hero */
+    .hero-card-text {
+        text-align: left;
+    }
 }
+
 
 @media (max-width: 575px) {
     .hero__robot-container {
@@ -1836,181 +1810,6 @@ p {
         text-align: center !important;
     }
 }
-
-/* 4. MEJORAR REPRODUCTOR DE MÚSICA - DOBLE ALTURA Y GLASSMORPHISM MEJORADO */
-.musica__embed-container {
-    position: relative;
-    width: 100%;
-    max-width: 660px;
-    margin: 0 auto;
-    border-radius: var(--border-radius);
-    padding: 12px; /* Aumentado de 8px */
-    
-    /* GLASSMORPHISM MEJORADO AL MÁXIMO */
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.15) 0%, 
-        rgba(255, 255, 255, 0.08) 25%,
-        rgba(255, 255, 255, 0.12) 50%, 
-        rgba(255, 255, 255, 0.06) 75%,
-        rgba(255, 255, 255, 0.10) 100%);
-    
-    /* Backdrop filter mejorado */
-    backdrop-filter: blur(20px) saturate(180%) contrast(120%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%) contrast(120%);
-    
-    /* Bordes con gradiente mejorado */
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    
-    /* SOMBRAS OSCURAS MEJORADAS - 4px arriba y abajo */
-    box-shadow: 
-        0 -4px 8px rgba(0, 0, 0, 0.4),  /* Sombra superior */
-        0 4px 8px rgba(0, 0, 0, 0.4),   /* Sombra inferior */
-        0 8px 25px rgba(0, 0, 0, 0.3),  /* Sombra difusa */
-        0 2px 8px rgba(0, 0, 0, 0.15),  /* Sombra de definición */
-        inset 0 1px 3px rgba(255, 255, 255, 0.2),  /* Highlight interno superior */
-        inset 0 -1px 3px rgba(0, 0, 0, 0.1);       /* Sombra interna inferior */
-}
-
-/* Efecto especular mejorado */
-.musica__embed-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 40%;
-    background: linear-gradient(180deg, 
-        rgba(255, 255, 255, 0.2) 0%, 
-        rgba(255, 255, 255, 0.1) 30%,
-        rgba(255, 255, 255, 0.05) 60%,
-        transparent 100%);
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* Borde interno brillante */
-.musica__embed-container::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.3) 0%, 
-        transparent 25%,
-        transparent 75%,
-        rgba(255, 255, 255, 0.2) 100%);
-    border-radius: inherit;
-    mask: linear-gradient(#fff 0 0) content-box, 
-          linear-gradient(#fff 0 0);
-    mask-composite: xor;
-    -webkit-mask-composite: xor;
-    pointer-events: none;
-    z-index: 2;
-}
-
-/* IFRAME CON DOBLE ALTURA */
-.musica__embed-container iframe {
-    width: 100%;
-    /* DOBLE ALTURA: de clamp(300px, 50vw, 450px) a rangos dobles */
-    height: clamp(600px, 100vw, 900px) !important;
-    border: none;
-    border-radius: calc(var(--border-radius) - 8px);
-    position: relative;
-    z-index: 3;
-    
-    /* Filtros mejorados */
-    filter: brightness(0.95) contrast(1.1) saturate(1.05);
-    
-    /* Sombras internas mejoradas */
-    box-shadow: 
-        inset 0 2px 6px rgba(0, 0, 0, 0.25),
-        inset 0 -2px 6px rgba(0, 0, 0, 0.15),
-        inset 0 0 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Efecto hover para interactividad */
-.musica__embed-container:hover {
-    transform: translateY(-2px);
-    
-    /* Sombras más intensas en hover */
-    box-shadow: 
-        0 -6px 12px rgba(0, 0, 0, 0.5),  /* Sombra superior más intensa */
-        0 6px 12px rgba(0, 0, 0, 0.5),   /* Sombra inferior más intensa */
-        0 12px 35px rgba(0, 0, 0, 0.4),  /* Sombra difusa más grande */
-        0 4px 12px rgba(0, 0, 0, 0.2),   /* Sombra de definición */
-        inset 0 1px 3px rgba(255, 255, 255, 0.25),
-        inset 0 -1px 3px rgba(0, 0, 0, 0.15);
-    
-    transition: all 0.3s ease;
-}
-
-/* RESPONSIVE PARA EL REPRODUCTOR MEJORADO */
-@media (max-width: 768px) {
-    .musica__embed-container {
-        padding: 10px;
-        
-        /* Glassmorphism simplificado pero efectivo en móviles */
-        backdrop-filter: blur(15px) saturate(150%);
-        -webkit-backdrop-filter: blur(15px) saturate(150%);
-        
-        /* Sombras ajustadas para móviles */
-        box-shadow: 
-            0 -3px 6px rgba(0, 0, 0, 0.35),
-            0 3px 6px rgba(0, 0, 0, 0.35),
-            0 6px 20px rgba(0, 0, 0, 0.25),
-            inset 0 1px 2px rgba(255, 255, 255, 0.15);
-    }
-    
-    .musica__embed-container iframe {
-        /* Altura ajustada para móviles pero manteniendo proporción doble */
-        height: clamp(500px, 90vw, 700px) !important;
-        filter: brightness(0.97);
-        box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
-    }
-}
-
-@media (max-width: 480px) {
-    .musica__embed-container {
-        padding: 8px;
-        
-        /* Glassmorphism optimizado para pantallas muy pequeñas */
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        
-        /* Sombras mínimas pero efectivas */
-        box-shadow: 
-            0 -2px 4px rgba(0, 0, 0, 0.3),
-            0 2px 4px rgba(0, 0, 0, 0.3),
-            0 4px 15px rgba(0, 0, 0, 0.2);
-    }
-    
-    .musica__embed-container iframe {
-        /* Altura para móviles pequeños - proporción doble mantenida */
-        height: clamp(440px, 80vw, 560px) !important;
-        filter: none;
-        box-shadow: none;
-    }
-    
-    /* Desactivar efectos pesados en pantallas muy pequeñas */
-    .musica__embed-container::before,
-    .musica__embed-container::after {
-        display: none;
-    }
-}
-
-/* MEJORAS ADICIONALES DE ACCESIBILIDAD */
-@media (prefers-reduced-motion: reduce) {
-    .musica__embed-container,
-    .musica__embed-container:hover {
-        transition: none;
-        transform: none;
-    }
-}
-
-
-/* ==========================================================================
-   SOLUCIÓN DEFINITIVA PARA LA FLECHA REBELDE
-   ========================================================================== */
 /*
   Ocultamos con máxima prioridad cualquier flecha de carrusel
   que intente aparecer dentro de la sección .hero.
@@ -2022,4 +1821,251 @@ p {
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
+}
+
+/* Las mostramos ÚNICAMENTE al pasar el mouse sobre una tarjeta de proyecto */
+.proyectos .proyecto-card:hover .carousel-nav {
+    display: flex; /* Las volvemos visibles y funcionales */
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.proyectos .proyecto-card .carousel-nav:hover {
+    background: var(--color-neon-primary);
+    color: var(--color-text-title);
+    box-shadow: 0 0 10px var(--color-neon-primary);
+}
+
+
+/* --- 3. SOLUCIÓN PARA EL CENTRADO EN MÓVILES --- */
+/* Aplicamos estos estilos en pantallas de tablet hacia abajo */
+@media (max-width: 991px) {
+    /* Centra el robot y el contenido de texto en la sección hero */
+    .hero {
+        align-items: center;
+    }
+    
+    /* Alinea el texto de la tarjeta del hero a la izquierda para mejor lectura */
+    .hero-card-text {
+        text-align: left;
+    }
+}
+
+
+
+
+/* Botón de menú hamburguesa (oculto en escritorio) */
+.mobile-nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--color-text-title);
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1001; /* Asegura que esté por encima de otros elementos */
+}
+
+/* Estilos para pantallas de tablet y móviles */
+@media (max-width: 768px) {
+    /* Ocultamos la navegación de escritorio */
+    .header__nav {
+        display: none;
+    }
+    
+    /* Mostramos el botón de menú hamburguesa */
+    .mobile-nav-toggle {
+        display: block;
+    }
+
+    /* Estilos del panel del menú móvil (inicialmente fuera de la pantalla) */
+    .mobile-nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Inicia fuera de la pantalla */
+        width: 70%;
+        max-width: 320px;
+        height: 100vh;
+        background: var(--glass-background);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        z-index: 1000;
+        transition: right 0.4s ease-in-out;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+    
+    /* Estado activo: cuando el menú está abierto */
+    .mobile-menu-open .mobile-nav-menu {
+        right: 0; /* Desplaza el menú a la vista */
+    }
+
+    /* Estilos para los enlaces dentro del menú móvil */
+    .mobile-nav-menu .header__link {
+        font-size: 1.2rem;
+        color: var(--color-text-title);
+    }
+}
+
+
+/* ==========================================================================
+   REFACTORIZACIÓN PROFESIONAL DE COMPONENTES Y RESPONSIVE
+   ========================================================================== */
+
+/* --- 1. REPRODUCTOR DE MÚSICA PROPORCIONAL Y RESPONSIVO --- */
+
+.musica__embed-container {
+    width: 100%;
+    max-width: 660px; /* Límite para legibilidad en pantallas grandes */
+    margin: 2rem auto;
+    padding: 12px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(15px) saturate(160%);
+    -webkit-backdrop-filter: blur(15px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    border-radius: var(--border-radius);
+}
+
+.musica__embed-container iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 7 / 9; /* Fija la proporción correcta para cualquier ancho */
+    display: block;
+    border: none;
+    border-radius: calc(var(--border-radius) - 8px);
+}
+
+/* --- 2. NAVBAR RESPONSIVA CON MENÚ HAMBURGUESA --- */
+
+/* El header ahora justifica su contenido al extremo derecho en móvil */
+.header {
+    justify-content: center; /* Centrado por defecto en desktop */
+}
+
+.mobile-nav-toggle {
+    display: none; /* Oculto en desktop */
+    background: transparent;
+    border: none;
+    color: var(--color-text-title);
+    font-size: 2.2rem;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.mobile-nav-menu {
+    display: none; /* Oculto por completo en desktop */
+}
+
+/* --- 3. LÓGICA RESPONSIVE PARA TABLET Y MÓVILES --- */
+
+@media (max-width: 768px) {
+    .header {
+        justify-content: flex-end; /* Alinea el botón de hamburguesa a la derecha */
+    }
+
+    /* Ocultamos la navegación de escritorio */
+    .header__nav {
+        display: none;
+    }
+    
+    /* Mostramos el botón de menú hamburguesa */
+    .mobile-nav-toggle {
+        display: block;
+    }
+
+    /* Estilos del panel del menú móvil (inicialmente fuera de la pantalla) */
+    .mobile-nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Inicia fuera de la pantalla */
+        width: 70%;
+        max-width: 320px;
+        height: 100vh;
+        background: rgba(7, 0, 7, 0.85); /* Fondo oscuro semitransparente */
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        z-index: 1000;
+        transition: right 0.4s ease-in-out;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+    
+    /* Clase que se añade con JS para mostrar el menú */
+    body.mobile-menu-open .mobile-nav-menu {
+        right: 0; /* Desplaza el menú a la vista */
+    }
+
+    /* Estilos para los enlaces dentro del menú móvil */
+    .mobile-nav-menu .header__link {
+        font-size: 1.2rem;
+        color: var(--color-text-title);
+        opacity: 0; /* Para animación de aparición */
+        transform: translateY(10px);
+        animation: fadeInLink 0.3s ease forwards;
+    }
+
+    /* Animación escalonada para los enlaces */
+    .mobile-menu-open .mobile-nav-menu .header__link:nth-child(1) { animation-delay: 0.2s; }
+    .mobile-menu-open .mobile-nav-menu .header__link:nth-child(2) { animation-delay: 0.3s; }
+    .mobile-menu-open .mobile-nav-menu .header__link:nth-child(3) { animation-delay: 0.4s; }
+    .mobile-menu-open .mobile-nav-menu .header__link:nth-child(4) { animation-delay: 0.5s; }
+    .mobile-menu-open .mobile-nav-menu .header__link:nth-child(5) { animation-delay: 0.6s; }
+
+    @keyframes fadeInLink {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Centrado del robot */
+    .hero {
+        align-items: center;
+    }
+}
+
+
+/* ==========================================================================
+   SOLUCIÓN PRECISA PARA EL CARRUSEL
+   ========================================================================== */
+
+/* 1. Ocultamos las flechas del carrusel por defecto de forma segura */
+.carousel-nav {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 15;
+    /* ... (mantén tus otros estilos como color, fondo, etc.) ... */
+}
+
+/* 2. FORZAMOS la ocultación de las flechas en la sección HERO */
+.hero .carousel-nav {
+    display: none !important;
+}
+
+/* 3. Mostramos las flechas ÚNICAMENTE al hacer hover 
+      en una tarjeta DENTRO de la sección de proyectos. */
+.proyectos .proyecto-card:hover .carousel-nav {
+    display: flex; /* O el valor que uses para mostrarlas */
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+}
+
+/* 4. Estilos de hover para las flechas (ya los tienes, pero asegúrate de que estén) */
+.proyectos .proyecto-card .carousel-nav:hover {
+    background: var(--color-neon-primary);
+    color: var(--color-text-title);
+    box-shadow: 0 0 10px var(--color-neon-primary);
 }

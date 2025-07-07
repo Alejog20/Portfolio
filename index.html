@@ -31,12 +31,24 @@
             <a href="#habilidades" class="header__link">Habilidades</a>
             <a href="#cv" class="header__link">CV</a>
             <a href="#contacto" class="header__link">Contacto</a>
-        </nav>   
+        </nav>
+
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
+            <i class="ri-menu-line"></i>
+        </button>
+
+        <div class="mobile-nav-menu" id="mobileNavMenu">
+            <a href="#sobre-mi" class="header__link">Sobre mí</a>
+            <a href="#proyectos" class="header__link">Proyectos</a>
+            <a href="#habilidades" class="header__link">Habilidades</a>
+            <a href="#cv" class="header__link">CV</a>
+            <a href="#contacto" class="header__link">Contacto</a>
+        </div>
     </header>
     
     <main class="main">
         <section class="hero" id="hero">
-            <<div class="hero__robot-container">
+            <div class="hero__robot-container">
                 <spline-viewer class="hero__robot-3d" url="https://prod.spline.design/iEpgX0ZDoR5b6lWb/scene.splinecode"></spline-viewer>
                 
                 <!-- Custom interaction hint overlay - THIS IS WHAT WAS MISSING -->
@@ -484,16 +496,15 @@
         <section class="musica section" id="musica">
             <h2 class="section__title">Música que me mueve</h2>
             <div class="musica__embed-container">
-                <iframe 
-                    allow="autoplay; encrypted-media; fullscreen; clipboard-write" 
-                    frameborder="0" 
-                    style="width:100%;overflow:hidden;border-radius:10px;" 
-                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                <iframe
+                    allow="autoplay; encrypted-media; fullscreen; clipboard-write"
+                    frameborder="0"
                     loading="lazy"
                     title="Apple Music Playlist - EDM Collection"
+                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
                     src="https://embed.music.apple.com/co/playlist/edm2/pl.u-DdANN9oC0e2m2Ka">
                 </iframe>
-                
+              
                 <!-- Fallback message for devices where embed doesn't work -->
                 <noscript>
                     <div style="text-align: center; padding: 2rem; color: var(--color-text-body);">
